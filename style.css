@@ -198,7 +198,7 @@ pre.good { border-color: var(--good); }
   flex-direction: column;
 }
 
-.stations div:nth-child(2), .stations div:nth-child(2) span { background: var(--hl); color: var(--on-hl); }
+.stations .hot, .stations .hot span { background: var(--hl); color: var(--on-hl); }
 .stations span { color: var(--muted); font-size: 1.05rem; }
 
 @media (max-width: 520px) {

@@ -36,9 +36,10 @@
       <a href="#ratchets">11. quality ratchets</a>
       <a href="#where">12. where rules live</a>
       <a href="#overwatch">13. overwatch</a>
-      <a href="#careful">14. careful now</a>
-      <a href="#monday">15. try it monday</a>
-      <a href="#rebrand">16. wait, isn't this just...?</a>
+      <a href="#slices">14. thin slices</a>
+      <a href="#careful">15. careful now</a>
+      <a href="#monday">16. try it monday</a>
+      <a href="#rebrand">17. wait, isn't this just...?</a>
     </nav>
   </section>
 
@@ -73,7 +74,7 @@
       <li><b>spot</b> a mistake in a diff, a review, an incident</li>
       <li><b>name</b> the category, not the line</li>
       <li><b>encode</b> it as a deterministic check</li>
-      <li><b>run</b> it in the editor, the hook, the CI</li>
+      <li><b>run</b> it in the LSP, the watcher, the CI</li>
       <li><b>let the agent self correct</b> from the error message</li>
     </ol>
     <p class="arrow">↺ forever</p>
@@ -118,7 +119,7 @@
     <p>Agents come and go. Claude Code today, Codex tomorrow, something new next quarter.</p>
     <div class="stations">
       <div><b>tied to one agent</b><span>prompts, skills, memory, clever system messages</span></div>
-      <div><b>lives in the repo</b><span>lint config, types, tests, CI, watchers</span></div>
+      <div class="hot"><b>lives in the repo</b><span>lint config, types, tests, CI, watchers</span></div>
     </div>
     <p>The repo is the <strong>shared context</strong>. Every agent and every human reads it, every session, no setup required.</p>
     <p class="aside">Tune the agent and you improve one tool. Harden the codebase and you improve all of them, including the ones that don't exist yet.</p>
@@ -146,7 +147,7 @@
     <h2>actionable errors are <span class="hl">just in time prompts</span></h2>
     <div class="stations">
       <div><b>AGENTS.md</b><span>loaded every session, all of it, relevant or not. Burns context. Easy to skim past.</span></div>
-      <div><b>an actionable error</b><span>appears only when the mistake happens, on the exact line, with the exact fix.</span></div>
+      <div class="hot"><b>an actionable error</b><span>appears only when the mistake happens, on the exact line, with the exact fix.</span></div>
     </div>
     <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
     <p>A rule that never fires costs zero tokens. A rule that fires is the most relevant prompt the agent will see all day.</p>
@@ -208,11 +209,12 @@ thu  371  ✓ ratchet tightened</code></pre>
     <h2>where rules live</h2>
     <p>Run them where the agent will trip over them <span class="hl">fastest</span>.</p>
     <div class="stations">
-      <div><b>editor</b><span>LSP squiggles as it types</span></div>
-      <div><b>agent hook</b><span>lint after every edit, feed errors straight back</span></div>
+      <div class="hot"><b>LSP</b><span>diagnostics on every save, for every agent and every editor</span></div>
+      <div class="hot"><b>watch mode daemons</b><span>tests and linters rerun on every change, failures handed straight back</span></div>
       <div><b>pre commit</b><span>nothing broken gets saved</span></div>
       <div><b>CI</b><span>the backstop that never sleeps</span></div>
     </div>
+    <p>Agent hooks tie you to one agent. LSPs and daemons live with the codebase and work for all of them, humans included.</p>
     <p class="aside">The shorter the loop, the less the agent wanders off building on a broken idea.</p>
   </section>
 
@@ -231,8 +233,21 @@ thu  371  ✓ ratchet tightened</code></pre>
     <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
   </section>
 
-  <section class="page" id="careful">
+  <section class="page" id="slices">
     <span class="num">14</span>
+    <h2>thin slices, <span class="hl">straight to trunk</span></h2>
+    <p>Small enough to review in a minute. Small enough to revert in a second. On main many times a day.</p>
+    <div class="stations">
+      <div><b>harness engineering</b><span>worktree swarms, orchestrator agents, forty parallel branches, merge queues for robots</span></div>
+      <div class="hot"><b>thin slices</b><span>one small change, green, on trunk, next</span></div>
+    </div>
+    <p class="big">Most harness engineering is a workaround for <span class="hl">slices that are too thick</span>.</p>
+    <p>Trunk is the shared context. Every slice that lands keeps it current for every agent and every human.</p>
+    <p class="aside">We once had a feature branch live for 45 minutes. <a href="https://benomahony.com/blog/the-45-min-long-lived-feature-branch/">We now call that long lived.</a></p>
+  </section>
+
+  <section class="page" id="careful">
+    <span class="num">15</span>
     <h2>careful now</h2>
     <ul class="warn">
       <li><b>noisy rules are bugs.</b> A false positive teaches agents (and humans) to add <code>noqa</code> everywhere.</li>
@@ -243,7 +258,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="monday">
-    <span class="num">15</span>
+    <span class="num">16</span>
     <h2>try it monday</h2>
     <ul class="todo">
       <li>keep a <b>"that again?!"</b> list for one week</li>
@@ -256,7 +271,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="rebrand">
-    <span class="num">16</span>
+    <span class="num">17</span>
     <h2>wait, isn't this just <span class="hl">continuous improvement</span>?</h2>
     <p>...yes. 🤫</p>
     <table class="rebrand">
