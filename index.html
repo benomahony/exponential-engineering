@@ -30,14 +30,15 @@
       <a href="#both-ways">5. it cuts both ways</a>
       <a href="#codebase">6. harden the codebase</a>
       <a href="#ladder">7. the ladder</a>
-      <a href="#anatomy">8. anatomy of a rule</a>
-      <a href="#examples">9. real rules</a>
-      <a href="#ratchets">10. quality ratchets</a>
-      <a href="#where">11. where rules live</a>
-      <a href="#overwatch">12. overwatch</a>
-      <a href="#careful">13. careful now</a>
-      <a href="#monday">14. try it monday</a>
-      <a href="#rebrand">15. wait, isn't this just...?</a>
+      <a href="#jit">8. just in time prompts</a>
+      <a href="#anatomy">9. anatomy of a rule</a>
+      <a href="#examples">10. real rules</a>
+      <a href="#ratchets">11. quality ratchets</a>
+      <a href="#where">12. where rules live</a>
+      <a href="#overwatch">13. overwatch</a>
+      <a href="#careful">14. careful now</a>
+      <a href="#monday">15. try it monday</a>
+      <a href="#rebrand">16. wait, isn't this just...?</a>
     </nav>
   </section>
 
@@ -140,8 +141,20 @@
     <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
   </section>
 
-  <section class="page" id="anatomy">
+  <section class="page" id="jit">
     <span class="num">8</span>
+    <h2>actionable errors are <span class="hl">just in time prompts</span></h2>
+    <div class="stations">
+      <div><b>AGENTS.md</b><span>loaded every session, all of it, relevant or not. Burns context. Easy to skim past.</span></div>
+      <div><b>an actionable error</b><span>appears only when the mistake happens, on the exact line, with the exact fix.</span></div>
+    </div>
+    <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
+    <p>A rule that never fires costs zero tokens. A rule that fires is the most relevant prompt the agent will see all day.</p>
+    <p class="aside">The best prompt arrives exactly when the agent is about to be wrong.</p>
+  </section>
+
+  <section class="page" id="anatomy">
+    <span class="num">9</span>
     <h2>anatomy of a good rule</h2>
     <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
     <pre class="bad"><code>error: banned import</code></pre>
@@ -160,7 +173,7 @@
   </section>
 
   <section class="page" id="examples">
-    <span class="num">9</span>
+    <span class="num">10</span>
     <h2>real rules, real cheap</h2>
     <p>Ban a library with <b>ruff</b>:</p>
     <pre><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
@@ -177,7 +190,7 @@ severity: error</code></pre>
   </section>
 
   <section class="page" id="ratchets">
-    <span class="num">10</span>
+    <span class="num">11</span>
     <h2>quality <span class="hl">ratchets</span></h2>
     <p>A ratchet only turns one way. Pick a number: lint violations, type errors, coverage. Commit it. CI fails if it gets worse and tightens it when it gets better.</p>
     <pre><code>lint violations
@@ -191,7 +204,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="where">
-    <span class="num">11</span>
+    <span class="num">12</span>
     <h2>where rules live</h2>
     <p>Run them where the agent will trip over them <span class="hl">fastest</span>.</p>
     <div class="stations">
@@ -204,7 +217,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="overwatch">
-    <span class="num">12</span>
+    <span class="num">13</span>
     <h2><span class="hl">overwatch</span></h2>
     <p>The fastest loop is the one nobody has to start. Run your tests and linters in <b>watch mode</b>, right beside the agent.</p>
     <ul class="checks">
@@ -219,7 +232,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="careful">
-    <span class="num">13</span>
+    <span class="num">14</span>
     <h2>careful now</h2>
     <ul class="warn">
       <li><b>noisy rules are bugs.</b> A false positive teaches agents (and humans) to add <code>noqa</code> everywhere.</li>
@@ -230,7 +243,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="monday">
-    <span class="num">14</span>
+    <span class="num">15</span>
     <h2>try it monday</h2>
     <ul class="todo">
       <li>keep a <b>"that again?!"</b> list for one week</li>
@@ -243,7 +256,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="rebrand">
-    <span class="num">15</span>
+    <span class="num">16</span>
     <h2>wait, isn't this just <span class="hl">continuous improvement</span>?</h2>
     <p>...yes. 🤫</p>
     <table class="rebrand">
