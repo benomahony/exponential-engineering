@@ -185,6 +185,16 @@ pre.good { border-color: var(--good); }
 
 .credit { font-size: 1rem; color: var(--muted); }
 
+@property --violations { syntax: "<integer>"; inherits: false; initial-value: 317; }
+.ratchet { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 0.5rem 0 1rem; }
+.gear { width: 90px; overflow: visible; }
+.wheel path { fill: var(--hl); stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+.wheel circle { fill: var(--ink); }
+.pawl { fill: var(--accent); stroke: var(--ink); stroke-width: 2; }
+.count { display: block; font: 3rem/1 "Permanent Marker", cursive; color: var(--accent); counter-reset: v var(--violations); }
+.count::after { content: counter(v); }
+.count-label { color: var(--muted); font-size: 1rem; }
+
 .rebrand { width: 100%; border-collapse: collapse; font-size: 1.05rem; line-height: 1.25; }
 .rebrand th, .rebrand td { border: 2px solid var(--ink); padding: 0.3rem 0.5rem; text-align: left; vertical-align: top; }
 .rebrand th { background: var(--hl); color: var(--on-hl); font-weight: normal; font-family: "Permanent Marker", cursive; }

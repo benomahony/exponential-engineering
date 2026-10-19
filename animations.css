@@ -9,6 +9,8 @@
 @keyframes sweep { from { background-size: 0% 100%; color: var(--ink); } }
 @keyframes draw { from { stroke-dashoffset: 1; } }
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes tick { 0% { --violations: 412; } 25% { --violations: 398; } 50% { --violations: 371; } 75% { --violations: 342; } 100% { --violations: 317; } }
+@keyframes click { 0% { transform: rotate(0deg); } 25% { transform: rotate(-30deg); } 50% { transform: rotate(-60deg); } 75% { transform: rotate(-90deg); } 100% { transform: rotate(-120deg); } }
 
 @keyframes tui-s1 { 0%, 3.1% { opacity: 0; transform: translateY(4px); } 5.1%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 @keyframes tui-s2 { 0%, 15.6% { opacity: 0; transform: translateY(4px); } 17.6%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
@@ -45,6 +47,14 @@
       animation-timeline: view();
       animation-range: entry 50% cover 40%;
     }
+    .ratchet { view-timeline-name: --ratchet; }
+    .count, .wheel {
+      animation: tick linear both;
+      animation-timing-function: steps(1, end);
+      animation-timeline: --ratchet;
+      animation-range: entry 40% cover 70%;
+    }
+    .wheel { animation-name: click; transform-box: view-box; transform-origin: 0 0; }
     .chart .expo, .chart .better {
       animation: draw linear both;
       animation-timeline: view();

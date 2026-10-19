@@ -209,6 +209,13 @@ severity: error</code></pre>
   <section class="page" id="ratchets">
     <h2>quality <span class="hl">ratchets</span></h2>
     <p>A ratchet only turns one way. Pick a number: lint violations, type errors, coverage. Commit it. CI fails if it gets worse and tightens it when it gets better.</p>
+    <div class="ratchet" aria-hidden="true">
+      <svg class="gear" viewBox="-50 -62 100 112">
+        <path d="M0 -44 L-7 -58 L7 -58 Z" class="pawl"/>
+        <g class="wheel"><path d="M30.0 0.0 L40.0 0.0 L26.0 15.0 L34.6 20.0 L15.0 26.0 L20.0 34.6 L0.0 30.0 L0.0 40.0 L-15.0 26.0 L-20.0 34.6 L-26.0 15.0 L-34.6 20.0 L-30.0 0.0 L-40.0 0.0 L-26.0 -15.0 L-34.6 -20.0 L-15.0 -26.0 L-20.0 -34.6 L-0.0 -30.0 L-0.0 -40.0 L15.0 -26.0 L20.0 -34.6 L26.0 -15.0 L34.6 -20.0 Z"/><circle r="7"/></g>
+      </svg>
+      <div><span class="count"></span><span class="count-label">lint violations, only ever down</span></div>
+    </div>
     <pre><code>lint violations
 mon  412
 tue  398  ✓ ratchet tightened
