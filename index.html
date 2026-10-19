@@ -14,7 +14,7 @@
 <main class="zine">
 
   <section class="page cover" id="cover">
-    <p class="issue">issue #1 · a zine about agentic engineering</p>
+    <p class="issue">issue #1 · a zine about agentic engineering<br>(continuous improvement, but make it agentic)</p>
     <h1>Exponential<br><span class="hl">Engineering</span></h1>
     <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
       <path d="M10 110 H190 M10 110 V10" class="axis"/>
@@ -37,6 +37,7 @@
       <a href="#overwatch">12. overwatch</a>
       <a href="#careful">13. careful now</a>
       <a href="#monday">14. try it monday</a>
+      <a href="#rebrand">15. wait, isn't this just...?</a>
     </nav>
   </section>
 
@@ -61,7 +62,7 @@
       <p class="q">"What rule would have caught this <strong>automatically</strong>?"</p>
       <p>Then write that rule. Lint it. Run it everywhere.</p>
     </div>
-    <p>It's <strong>kaizen</strong> for codebases that are written by robots. Toyota called it <strong>poka yoke</strong>: mistake proofing. Make the wrong thing impossible, or at least <em>loud</em>.</p>
+    <p>It's <strong>kaizen</strong> for codebases that are written by robots. Yes, Toyota did this in the 1950s. We have more YAML. Toyota called it <strong>poka yoke</strong>: mistake proofing. Make the wrong thing impossible, or at least <em>loud</em>.</p>
   </section>
 
   <section class="page" id="loop">
@@ -184,6 +185,7 @@ wed  401  ✗ CI fails: 401 &gt; 398
 thu  371  ✓ ratchet tightened</code></pre>
     <p>No big bang cleanup. Turn the new rule on <em>today</em>, freeze the existing violations, block every new one, and let the count only fall.</p>
     <p class="aside">Every gain gets locked in. Nobody, human or agent, can quietly give it back.</p>
+    <p class="credit">Quality Ratchets are from <a href="https://www.oreilly.com/library/view/building-ai-agent/0642572243906/"><em>Building AI Agent Platforms</em></a> by Ben O'Mahony and Fabian Nonnenmacher (O'Reilly)</p>
   </section>
 
   <section class="page" id="where">
@@ -238,9 +240,26 @@ thu  371  ✓ ratchet tightened</code></pre>
     </ul>
   </section>
 
+  <section class="page" id="rebrand">
+    <span class="num">15</span>
+    <h2>wait, isn't this just <span class="hl">continuous improvement</span>?</h2>
+    <p>...yes. 🤫</p>
+    <table class="rebrand">
+      <tr><th>Toyota, 1950s</th><th>us, now</th></tr>
+      <tr><td>kaizen</td><td>exponential engineering</td></tr>
+      <tr><td>poka yoke</td><td>a lint rule</td></tr>
+      <tr><td>andon cord</td><td>overwatch going red</td></tr>
+      <tr><td>jidoka: stop the line</td><td>the turn can't end while red</td></tr>
+      <tr><td>five whys</td><td>five whys, but the agent answers instantly and confidently</td></tr>
+      <tr><td>the new hire</td><td>the new hire, typing 400 words a second, with no memory of yesterday</td></tr>
+    </table>
+    <p>The ideas aren't new. The <strong>speed</strong> is. When your juniors write a thousand lines an hour, a missing rule doesn't cost you a bug. It costs you a <em>pattern</em>.</p>
+    <p class="aside">Please don't tell W. Edwards Deming we put a GPU in it.</p>
+  </section>
+
   <section class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
-    <p class="colophon">made with plain HTML and CSS · <a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a> · print it, fold it, pass it on</p>
+    <p class="colophon">made with plain HTML and CSS · <a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a> · print it, fold it, pass it on<br>more in <a href="https://www.oreilly.com/library/view/building-ai-agent/0642572243906/"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </section>
 
 </main>

@@ -178,6 +178,13 @@ pre.good { border-color: var(--good); }
 .warn li::marker { content: "⚠ "; color: var(--accent); }
 .warn li { margin-bottom: 0.6rem; }
 
+.credit { font-size: 1rem; color: var(--muted); }
+
+.rebrand { width: 100%; border-collapse: collapse; font-size: 1.05rem; line-height: 1.25; }
+.rebrand th, .rebrand td { border: 2px solid var(--ink); padding: 0.3rem 0.5rem; text-align: left; vertical-align: top; }
+.rebrand th { background: var(--hl); font-weight: normal; font-family: "Permanent Marker", cursive; }
+.rebrand td:first-child { color: var(--muted); }
+
 .stations { display: grid; gap: 0.5rem; margin: 1rem 0; }
 
 .stations div {
