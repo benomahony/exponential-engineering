@@ -54,6 +54,9 @@ body {
 }
 
 .page:nth-child(even) { transform: rotate(0.7deg); }
+.page:nth-child(4n+2) { --hl: #ff9ecf; }
+.page:nth-child(4n+3) { --hl: #8fe3a6; }
+.page:nth-child(4n) { --hl: #8ccfff; }
 
 .page.cover, .page.back, .page.demo {
   grid-column: 1 / -1;
