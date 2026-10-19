@@ -175,7 +175,7 @@
       <div class="hot"><b>the NASA way</b><span>every rule on, strictest mode, warnings and infos fail the build</span></div>
     </div>
     <p class="big">A warning you tolerate is a rule you taught the agent to <span class="hl">ignore</span>.</p>
-    <p class="credit">More: <a href="https://spinroot.com/gerard/pdf/P10.pdf">The Power of 10</a> by Gerard Holzmann, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a>, and <a href="https://github.com/benomahony/NASA-LSP">nasa-lsp</a> to enforce it in Python.</p>
+    <p class="credit">More: <a href="https://spinroot.com/gerard/pdf/P10.pdf">The Power of 10</a> by Gerard Holzmann, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a>, and <a href="https://github.com/benomahony/zanity">zanity</a> to enforce it across Python, Zig, Go, TypeScript, Rust and Java.</p>
   </section>
 
   <section class="page" id="jit">
@@ -270,6 +270,7 @@ thu  371  ✓ ratchet tightened</code></pre>
       <li>full suite runs first, so you start green</li>
       <li>every save reruns what changed</li>
       <li>failures go <b>straight back to the agent</b>, before it moves on</li>
+      <li>runs <b>zanity</b> beside your tests</li>
       <li>the turn can't end while the build is red</li>
     </ul>
     <pre class="grab"><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
@@ -341,15 +342,10 @@ thu  371  ✓ ratchet tightened</code></pre>
   <section class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
     <p class="pledge grab">From today, any mistake my agent makes twice becomes a rule.</p>
-    <p class="kicker">steal this: everything on, strictest settings (Python flavour), one tap selects it</p>
-    <pre class="grab"><code>[tool.ruff.lint]
-select = ["ALL"]
-
-[tool.pyright]
-typeCheckingMode = "strict"
-
-[tool.pytest.ini_options]
-filterwarnings = ["error"]</code></pre>
+    <p class="kicker">steal this: everything on, every language, one tap selects it</p>
+    <pre class="grab"><code>curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
+zanity init
+zanity check . --fail-on warning --strict</code></pre>
     <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </section>
