@@ -6,8 +6,8 @@
 @keyframes slide-left { from { opacity: 0; transform: translateX(-2rem); } }
 @keyframes slide-right { from { opacity: 0; transform: translateX(2rem); } }
 @keyframes sweep {
-  from { background: linear-gradient(var(--hl), var(--hl)) 0 0 / 0% 100% no-repeat; color: var(--ink); }
-  to { background: linear-gradient(var(--hl), var(--hl)) 0 0 / 100% 100% no-repeat; }
+  from { background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top)) 0 0 / 0% 100% no-repeat; box-shadow: none; color: var(--ink); }
+  to { background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top)) 0 0 / 100% 100% no-repeat; box-shadow: none; }
 }
 @keyframes draw { from { stroke-dashoffset: 1; } }
 @keyframes spin { to { transform: rotate(360deg); } }
