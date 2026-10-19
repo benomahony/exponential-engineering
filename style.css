@@ -90,7 +90,6 @@ h2 { font-size: 2rem; }
 .aside { font-style: italic; border-left: 3px dashed var(--muted); padding-left: 0.75rem; }
 .big { font-size: 1.6rem; line-height: 1.25; }
 .tagline { font-size: 1.6rem; }
-.arrow { font-family: "Permanent Marker", cursive; font-size: 1.8rem; text-align: center; margin: 0; color: var(--accent); }
 .verdict { margin: 0.25rem 0 0.75rem; }
 
 a { color: inherit; }
@@ -124,6 +123,13 @@ pre.good { border-color: var(--good); }
 .expo { stroke: var(--accent); stroke-width: 4; }
 .label { fill: var(--ink); font: 14px "Patrick Hand", cursive; }
 .label.small { font-size: 11px; fill: var(--muted); }
+.loop-svg { width: 100%; max-width: 420px; display: block; margin: 0.5rem auto; overflow: visible; }
+.arc { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.arrowhead { fill: var(--ink); }
+.node { fill: var(--hl); stroke: var(--ink); stroke-width: 2.5; }
+.runner { fill: var(--accent); }
+.step { fill: var(--ink); font: 19px "Permanent Marker", cursive; }
+.forever { fill: var(--accent); font: 26px "Permanent Marker", cursive; }
 
 .toc {
   display: flex;
@@ -155,16 +161,7 @@ pre.good { border-color: var(--good); }
 
 .q { font-size: 1.5rem; color: var(--accent); }
 
-.loop, .ladder { padding-left: 0; list-style: none; }
-
-.loop li {
-  border: 2px solid var(--ink);
-  padding: 0.35rem 0.75rem;
-  margin: 0 0 0.4rem;
-}
-
-.loop li:nth-child(odd) { margin-right: 2rem; }
-.loop li:nth-child(even) { margin-left: 2rem; }
+.ladder { padding-left: 0; list-style: none; }
 
 .ladder li {
   border-left: 4px solid var(--ink);

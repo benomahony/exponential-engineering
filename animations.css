@@ -8,11 +8,9 @@
 @keyframes slide-right { from { opacity: 0; transform: translateX(2rem); } }
 @keyframes sweep { from { background-size: 0% 100%; } }
 @keyframes draw { from { stroke-dashoffset: 1; } }
-@keyframes spin { to { transform: rotate(-360deg); } }
 
 @media (prefers-reduced-motion: no-preference) {
   .expo, .better { stroke-dasharray: 1; }
-  .spin { display: inline-block; animation: spin 3s linear infinite; }
 
   @supports (animation-timeline: view()) {
     .page > *, .ladder li, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
@@ -21,8 +19,8 @@
       animation-range: entry 0% entry 70%;
     }
     .page h2 { animation-name: tilt; }
-    .speech.left, .loop li:nth-child(odd) { animation-name: slide-left; }
-    .speech.right, .loop li:nth-child(even) { animation-name: slide-right; }
+    .speech.left { animation-name: slide-left; }
+    .speech.right { animation-name: slide-right; }
     .hl {
       animation: sweep linear both;
       animation-timeline: view();
@@ -41,4 +39,8 @@
   .cover .hl { animation: sweep 0.6s 0.6s ease-in-out both; }
   .cover .expo { animation: draw 1.2s 0.8s ease-in-out both; }
   .cover .tagline { animation-delay: 0.4s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runner { display: none; }
 }

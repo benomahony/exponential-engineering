@@ -26,7 +26,7 @@
   </section>
 
   <section class="page" id="problem">
-    <h2>the treadmill</h2>
+    <h2>agentic engineering</h2>
     <p>Your agent writes a bug. You spot it. You say <em>"please don't do that"</em>. It fixes it.</p>
     <div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
     <div class="speech right">fixed! ✨</div>
@@ -49,14 +49,31 @@
 
   <section class="page" id="loop">
     <h2>the loop</h2>
-    <ol class="loop">
-      <li><b>spot</b> a mistake in a diff, a review, an incident</li>
-      <li><b>name</b> the category, not the line</li>
-      <li><b>encode</b> it as a deterministic check</li>
-      <li><b>run</b> it in the LSP, the watcher, the CI</li>
-      <li><b>let the agent self correct</b> from the error message</li>
-    </ol>
-    <p class="arrow"><span class="spin">↺</span> forever</p>
+    <svg class="loop-svg" viewBox="-30 0 460 330" role="img" aria-label="The loop: spot a mistake, name the category, encode a deterministic check, run it in the LSP, watcher and CI, let the agent self correct, forever">
+      <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="arrowhead"/></marker></defs>
+      <path d="M225.4 58.1 A105 105 0 0 1 289.0 104.4" class="arc" marker-end="url(#arrowhead)"/>
+      <path d="M304.7 152.7 A105 105 0 0 1 280.4 227.5" class="arc" marker-end="url(#arrowhead)"/>
+      <path d="M239.3 257.4 A105 105 0 0 1 160.7 257.4" class="arc" marker-end="url(#arrowhead)"/>
+      <path d="M119.6 227.5 A105 105 0 0 1 95.3 152.7" class="arc" marker-end="url(#arrowhead)"/>
+      <path d="M111.0 104.4 A105 105 0 0 1 174.6 58.1" class="arc" marker-end="url(#arrowhead)"/>
+      <circle r="6" class="runner"><animateMotion dur="8s" repeatCount="indefinite" path="M200 55 A105 105 0 1 1 199.99 55 z"/></circle>
+      <circle cx="200.0" cy="55.0" r="9" class="node"/>
+      <text x="200.0" y="17.0" text-anchor="middle" class="step">spot</text>
+      <text x="200.0" y="34.0" text-anchor="middle" class="label">a mistake</text>
+      <circle cx="299.9" cy="127.6" r="9" class="node"/>
+      <text x="317.9" y="123.6" text-anchor="start" class="step">name</text>
+      <text x="317.9" y="140.6" text-anchor="start" class="label">the category</text>
+      <circle cx="261.7" cy="244.9" r="9" class="node"/>
+      <text x="261.7" y="274.9" text-anchor="middle" class="step">encode</text>
+      <text x="261.7" y="291.9" text-anchor="middle" class="label">a deterministic check</text>
+      <circle cx="138.3" cy="244.9" r="9" class="node"/>
+      <text x="138.3" y="274.9" text-anchor="middle" class="step">run</text>
+      <text x="138.3" y="291.9" text-anchor="middle" class="label">LSP, watcher, CI</text>
+      <circle cx="100.1" cy="127.6" r="9" class="node"/>
+      <text x="82.1" y="123.6" text-anchor="end" class="step">self correct</text>
+      <text x="82.1" y="140.6" text-anchor="end" class="label">from the error</text>
+      <text x="200" y="168" text-anchor="middle" class="forever">forever</text>
+    </svg>
     <p class="aside">Each lap is small. Five minutes. One rule. The point is that you never run the same lap twice.</p>
   </section>
 
