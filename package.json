@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "lint:css": "stylelint \"*.css\"",
+    "lint:html": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --Werror index.html"
+  },
+  "devDependencies": {
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "vnu-jar": "^26.10.12"
+  }
+}

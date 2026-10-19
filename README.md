@@ -11,6 +11,9 @@ We practice what we preach: everything on, zero findings.
 ```sh
 zanity check . --fail-on warning --strict
 uv run pytest
+npm ci
+npm run lint:html
+npm run lint:css
 ```
 
 `pytest` runs [axe](https://github.com/dequelabs/axe-core) against the page in light and dark mode at desktop and phone widths, and fails on any violation or anything axe marks for review. CI runs both on every push and pull request.
