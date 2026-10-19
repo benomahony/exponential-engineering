@@ -36,7 +36,7 @@
     </svg>
     <ul class="chips" aria-label="Rules added">
       <li>+ no bare except</li>
-      <li>+ banned: pandas</li>
+      <li>+ zero warnings</li>
       <li>+ http needs a timeout</li>
     </ul>
     <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
@@ -180,12 +180,12 @@
   <section class="page" id="anatomy">
     <h2>anatomy of a good rule</h2>
     <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
-    <pre class="bad"><code>error: banned import</code></pre>
+    <pre class="bad"><code>error: forbidden call</code></pre>
     <p class="verdict">😐 the agent guesses</p>
-    <pre class="good"><code>error: `pandas` is banned.
-  Use duckdb for SQL style queries
-  or polars for dataframes.
-  See docs/data.md</code></pre>
+    <pre class="good"><code>error: datetime.now() reads the wall clock.
+  Use clock.now() so tests can
+  freeze time.
+  See docs/time.md</code></pre>
     <p class="verdict">😎 the agent knows</p>
     <ul class="checks">
       <li>says <b>what</b> is wrong</li>
@@ -197,10 +197,9 @@
 
   <section class="page" id="examples">
     <h2>real rules, real cheap</h2>
-    <p>Ban a library with <b>ruff</b>:</p>
+    <p>Point agents at the right API with <b>ruff</b>:</p>
     <pre class="grab"><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
-"pandas".msg = "Use duckdb or polars instead."
-"requests".msg = "Use httpx with a timeout."</code></pre>
+"datetime.datetime.now".msg = "Use clock.now() so tests can freeze time."</code></pre>
     <p>Ban a pattern with <b>ast-grep</b>:</p>
     <pre class="grab"><code>id: no-print-in-lib
 language: python
@@ -319,13 +318,15 @@ thu  371  ✓ ratchet tightened</code></pre>
   <section class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
     <p class="pledge grab">From today, any mistake my agent makes twice becomes a rule.</p>
-    <p class="kicker">steal this starter config, one tap selects it</p>
+    <p class="kicker">steal this: everything on, strictest settings (Python flavour), one tap selects it</p>
     <pre class="grab"><code>[tool.ruff.lint]
-select = ["E", "F", "BLE", "S", "TID"]
+select = ["ALL"]
 
-[tool.ruff.lint.flake8-tidy-imports.banned-api]
-"pandas".msg = "Use duckdb or polars instead."
-"requests".msg = "Use httpx with a timeout."</code></pre>
+[tool.pyright]
+typeCheckingMode = "strict"
+
+[tool.pytest.ini_options]
+filterwarnings = ["error"]</code></pre>
     <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </section>
