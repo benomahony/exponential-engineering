@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exponential Engineering</title>
+  <meta name="description" content="A tiny zine about making every agent mistake the last of its kind.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="zine">
+
+  <section class="page cover" id="cover">
+    <p class="issue">issue #1 · a zine about agentic engineering</p>
+    <h1>Exponential<br><span class="hl">Engineering</span></h1>
+    <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
+      <path d="M10 110 H190 M10 110 V10" class="axis"/>
+      <path d="M10 108 L190 70" class="linear"/>
+      <path d="M10 108 C110 106 150 90 188 12" class="expo"/>
+    </svg>
+    <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
+    <nav class="toc">
+      <a href="#problem">1. the treadmill</a>
+      <a href="#idea">2. the big idea</a>
+      <a href="#loop">3. the loop</a>
+      <a href="#why">4. why exponential?</a>
+      <a href="#ladder">5. the ladder</a>
+      <a href="#anatomy">6. anatomy of a rule</a>
+      <a href="#examples">7. real rules</a>
+      <a href="#where">8. where rules live</a>
+      <a href="#careful">9. careful now</a>
+      <a href="#monday">10. try it monday</a>
+    </nav>
+  </section>
+
+  <section class="page" id="problem">
+    <span class="num">1</span>
+    <h2>the treadmill</h2>
+    <p>Your agent writes a bug. You spot it. You say <em>"please don't do that"</em>. It fixes it.</p>
+    <div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
+    <div class="speech right">fixed! ✨</div>
+    <p>Next week, a different session, a different file:</p>
+    <div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
+    <p class="big">You fixed the <span class="hl">instance</span>.<br>The <span class="hl">category</span> is still alive.</p>
+    <p class="aside">Agents don't remember last Tuesday. Your codebase does.</p>
+  </section>
+
+  <section class="page" id="idea">
+    <span class="num">2</span>
+    <h2>the big idea</h2>
+    <p class="big">When you find a mistake, don't fix <em>it</em>.<br>Fix <span class="hl">every future version of it</span>.</p>
+    <div class="box">
+      <p>Ask one question:</p>
+      <p class="q">"What rule would have caught this <strong>automatically</strong>?"</p>
+      <p>Then write that rule. Lint it. Run it everywhere.</p>
+    </div>
+    <p>It's <strong>kaizen</strong> for codebases that are written by robots. Toyota called it <strong>poka yoke</strong>: mistake proofing. Make the wrong thing impossible, or at least <em>loud</em>.</p>
+  </section>
+
+  <section class="page" id="loop">
+    <span class="num">3</span>
+    <h2>the loop</h2>
+    <ol class="loop">
+      <li><b>spot</b> a mistake in a diff, a review, an incident</li>
+      <li><b>name</b> the category, not the line</li>
+      <li><b>encode</b> it as a deterministic check</li>
+      <li><b>run</b> it in the editor, the hook, the CI</li>
+      <li><b>let the agent self correct</b> from the error message</li>
+    </ol>
+    <p class="arrow">↺ forever</p>
+    <p class="aside">Each lap is small. Five minutes. One rule. The point is that you never run the same lap twice.</p>
+  </section>
+
+  <section class="page" id="why">
+    <span class="num">4</span>
+    <h2>why <span class="hl">exponential</span>?</h2>
+    <p>A fix touches <strong>one</strong> line.</p>
+    <p>A rule touches <strong>every line</strong> written by <strong>every agent</strong> in <strong>every session</strong>, forever.</p>
+    <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
+      <path d="M20 135 H250 M20 135 V10" class="axis"/>
+      <path d="M20 132 L245 95" class="linear"/>
+      <path d="M20 132 C140 130 200 100 242 18" class="expo"/>
+      <text x="150" y="130" class="label">fixing instances</text>
+      <text x="120" y="45" class="label">adding rules</text>
+      <text x="200" y="148" class="label small">time →</text>
+    </svg>
+    <p>Rules compound like interest. Your agents get <em>better</em> without getting <em>smarter</em>, because the space of wrong answers keeps shrinking.</p>
+  </section>
+
+  <section class="page" id="ladder">
+    <span class="num">5</span>
+    <h2>the enforcement ladder</h2>
+    <p>Not all "rules" are equal. Climb as high as you can.</p>
+    <ol class="ladder" reversed>
+      <li><b>unrepresentable</b> types make it impossible</li>
+      <li><b>type checker</b> fails the build</li>
+      <li><b>lint rule</b> fails with a fix hint</li>
+      <li><b>test</b> catches it after the fact</li>
+      <li><b>review comment</b> catches it sometimes</li>
+      <li><b>AGENTS.md</b> prose: a polite wish</li>
+    </ol>
+    <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
+  </section>
+
+  <section class="page" id="anatomy">
+    <span class="num">6</span>
+    <h2>anatomy of a good rule</h2>
+    <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
+    <pre class="bad"><code>error: banned import</code></pre>
+    <p class="verdict">😐 the agent guesses</p>
+    <pre class="good"><code>error: `pandas` is banned.
+  Use duckdb for SQL style queries
+  or polars for dataframes.
+  See docs/data.md</code></pre>
+    <p class="verdict">😎 the agent knows</p>
+    <ul class="checks">
+      <li>says <b>what</b> is wrong</li>
+      <li>says <b>what to do instead</b></li>
+      <li>points <b>where</b> to read more</li>
+      <li>is <b>deterministic</b>: same input, same answer</li>
+    </ul>
+  </section>
+
+  <section class="page" id="examples">
+    <span class="num">7</span>
+    <h2>real rules, real cheap</h2>
+    <p>Ban a library with <b>ruff</b>:</p>
+    <pre><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"pandas".msg = "Use duckdb or polars instead."
+"requests".msg = "Use httpx with a timeout."</code></pre>
+    <p>Ban a pattern with <b>ast-grep</b>:</p>
+    <pre><code>id: no-print-in-lib
+language: python
+rule:
+  pattern: print($$$ARGS)
+message: Use the logger from app.log, not print().
+severity: error</code></pre>
+    <p class="aside">Most mistakes are already a rule someone wrote. Turn it on before you write your own.</p>
+  </section>
+
+  <section class="page" id="where">
+    <span class="num">8</span>
+    <h2>where rules live</h2>
+    <p>Run them where the agent will trip over them <span class="hl">fastest</span>.</p>
+    <div class="stations">
+      <div><b>editor</b><span>LSP squiggles as it types</span></div>
+      <div><b>agent hook</b><span>lint after every edit, feed errors straight back</span></div>
+      <div><b>pre commit</b><span>nothing broken gets saved</span></div>
+      <div><b>CI</b><span>the backstop that never sleeps</span></div>
+    </div>
+    <p class="aside">The shorter the loop, the less the agent wanders off building on a broken idea.</p>
+  </section>
+
+  <section class="page" id="careful">
+    <span class="num">9</span>
+    <h2>careful now</h2>
+    <ul class="warn">
+      <li><b>noisy rules are bugs.</b> A false positive teaches agents (and humans) to add <code>noqa</code> everywhere.</li>
+      <li><b>prune.</b> Hundreds of prose rules make agents follow <em>fewer</em> of them. Lint rules only speak when broken, so they scale. Prose doesn't.</li>
+      <li><b>escape hatches need reasons.</b> <code># noqa: BLE001 retry loop logs it</code></li>
+      <li><b>don't make an LLM your linter.</b> Pass or fail, every time, for free.</li>
+    </ul>
+  </section>
+
+  <section class="page" id="monday">
+    <span class="num">10</span>
+    <h2>try it monday</h2>
+    <ul class="todo">
+      <li>keep a <b>"that again?!"</b> list for one week</li>
+      <li>for each entry, find an existing lint rule</li>
+      <li>no rule exists? write one with ast-grep or semgrep</li>
+      <li>wire lint into your agent's post edit hook</li>
+      <li>make CI fail on it</li>
+      <li>delete the matching line from AGENTS.md 🎉</li>
+    </ul>
+  </section>
+
+  <section class="page back" id="back">
+    <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
+    <p class="colophon">made with plain HTML and CSS · <a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a> · print it, fold it, pass it on</p>
+  </section>
+
+</main>
+</body>
+</html>
