@@ -34,7 +34,7 @@ body {
   font: 1.25rem/1.45 "Patrick Hand", "Comic Sans MS", cursive;
 }
 
-.zine {
+.pages {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: 2.5rem;
@@ -78,7 +78,7 @@ h2 { font-size: 2rem; }
   padding: 0 0.15em;
 }
 
-.zine { counter-reset: page; }
+.pages { counter-reset: page; }
 div.page { counter-increment: page; }
 
 div.page::after {
@@ -90,7 +90,7 @@ div.page::after {
   color: var(--muted);
 }
 
-.issue, .aside, .colophon { color: var(--muted); }
+.kicker, .aside, .colophon { color: var(--muted); }
 .aside { font-style: italic; border-left: 3px dashed var(--muted); padding-left: 0.75rem; }
 .big { font-size: 1.6rem; line-height: 1.25; }
 .tagline { font-size: 1.6rem; }
@@ -219,7 +219,7 @@ pre.good { border-color: var(--good); }
 
 @media print {
   body { background: white; }
-  .zine { display: block; padding: 0; }
+  .pages { display: block; padding: 0; }
   .page { box-shadow: none; transform: none; break-after: page; margin: 0; }
   .page:nth-child(even) { transform: none; }
 }

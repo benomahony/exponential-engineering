@@ -16,9 +16,9 @@
 		<link rel="stylesheet" href="$site.asset('style.css').link()">
 	</head>
 	<body>
-		<main class="zine">
+		<main class="pages">
 			<section class="page cover" id="cover">
-				<p class="issue">issue #1 · a zine about agentic engineering<br>(continuous improvement, but make it agentic)</p>
+				<p class="kicker">continuous improvement, but make it agentic</p>
 				<h1>Exponential<br><span class="hl">Engineering</span></h1>
 				<svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
 					<path d="M10 110 H190 M10 110 V10" class="axis"/>
@@ -31,7 +31,7 @@
 			<ctx :html="$page.content()"></ctx>
 			<section class="page back" id="back">
 				<p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
-				<p class="colophon">made with <a href="https://zine-ssg.io">Zine</a> · <a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a> · print it, fold it, pass it on<br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
+				<p class="colophon">made with <a href="https://zine-ssg.io">Zine</a> · <a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
 			</section>
 		</main>
 	</body>

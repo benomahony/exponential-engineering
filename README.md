@@ -1,6 +1,6 @@
 # exponential-engineering
 
-A tiny zine about making every agent mistake the last of its kind: when you find a bug, add a lint rule that rules out the whole category.
+How to make every agent mistake the last of its kind: when you find a bug, add a lint rule that rules out the whole category.
 
 Live at https://exponentialengineering.dev, built with [Zine](https://zine-ssg.io/).
 
@@ -12,7 +12,7 @@ Install Zine 0.14.0, then start the development server from the repository root:
 zine
 ```
 
-Each zine page is a section in `content/index.smd`: `# [title]($section.id('slug').attrs('page'))`. The contents list and page numbers are generated from them.
+Each page is a section in `content/index.smd`: `# [title]($section.id('slug').attrs('page'))`. The contents list and page numbers are generated from them.
 
 ## Build
 

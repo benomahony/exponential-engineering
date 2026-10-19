@@ -1,6 +1,6 @@
 ---
 .title = "Exponential Engineering",
-.description = "A tiny zine about making every agent mistake the last of its kind.",
+.description = "How to make every agent mistake the last of its kind.",
 .date = .date("2026-10-19T00:00:00"),
 .authors = ["Ben O'Mahony"],
 .layout = "index.shtml",
