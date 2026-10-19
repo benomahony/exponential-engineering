@@ -167,6 +167,17 @@
     <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
   </section>
 
+  <section class="page" id="strict">
+    <h2>everything on. <span class="hl">zero warnings.</span></h2>
+    <p>NASA's Power of 10, rule 10: every warning on at the most pedantic setting, static analysers every day, and ship with <strong>zero</strong> warnings.</p>
+    <div class="stations">
+      <div><b>the usual</b><span>defaults, a few hundred warnings, infos nobody reads</span></div>
+      <div class="hot"><b>the NASA way</b><span>every rule on, strictest mode, warnings and infos fail the build</span></div>
+    </div>
+    <p class="big">A warning you tolerate is a rule you taught the agent to <span class="hl">ignore</span>.</p>
+    <p class="credit">More: <a href="https://spinroot.com/gerard/pdf/P10.pdf">The Power of 10</a> by Gerard Holzmann, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a>, and <a href="https://github.com/benomahony/NASA-LSP">nasa-lsp</a> to enforce it in Python.</p>
+  </section>
+
   <section class="page" id="jit">
     <h2>actionable errors are <span class="hl">just in time prompts</span></h2>
     <div class="stations">
@@ -227,6 +238,17 @@ wed  401  ✗ CI fails: 401 &gt; 398
 thu  371  ✓ ratchet tightened</code></pre>
     <p class="aside">No big bang cleanup. Turn the rule on today, freeze the old violations, block every new one.</p>
     <p class="credit">Quality Ratchets are from <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> by Ben O'Mahony and Fabian Nonnenmacher (O'Reilly). See also <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#every-failure-becomes-a-ratchet">every failure becomes a ratchet</a>.</p>
+  </section>
+
+  <section class="page" id="no-backlog">
+    <h2><span class="hl">no backlog</span></h2>
+    <p>Allen Holub: "Backlogs are a symptom, not a tool." If it's important, it will come back.</p>
+    <div class="stations">
+      <div><b>the ticket</b><span>"fix lint warnings", parked forever, growing</span></div>
+      <div class="hot"><b>fix it now</b><span>the agent just made the fix cheap, so there is nothing to defer</span></div>
+    </div>
+    <p class="big">TigerStyle calls it <span class="hl">zero technical debt</span>: do it right the first time, you may never come back.</p>
+    <p class="credit">More: <a href="https://blog.holub.com/p/nobacklog">#NoBacklog</a> by Allen Holub, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a> by TigerBeetle.</p>
   </section>
 
   <section class="page" id="where">
@@ -290,6 +312,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   <section class="page" id="monday">
     <h2>try it monday</h2>
     <ul class="todo">
+      <li>turn every linter and type checker to its strictest setting</li>
       <li>keep a <b>"that again?!"</b> list for one week</li>
       <li>for each entry, find an existing lint rule</li>
       <li>no rule exists? write one with ast-grep or semgrep</li>
