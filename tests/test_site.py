@@ -13,6 +13,7 @@ SHAMED_LIBRARIES = ["pandas", "requests", "numpy", "django", "flask", "jquery"]
 DASHES = ["—", "–"]
 WIDTHS = [320, 402, 768, 1100, 1440]
 COVER_ANIMATION_MS = 4000
+MINIMUM_CONTRAST = 4.5
 
 
 class Tags(HTMLParser):
@@ -138,3 +139,49 @@ def test_page_loads_without_console_errors(page: Page) -> None:
     page.goto(SITE.as_uri())
     page.wait_for_timeout(500)
     assert errors == [], f"the browser reported {errors}"
+
+
+def channels(colour: str) -> tuple[float, float, float]:
+    colour = colour.strip()
+    assert colour.startswith(("#", "rgb")), f"cannot read colour {colour!r}: use hex or rgb()"
+    if colour.startswith("#"):
+        values = [int(colour[i:i + 2], 16) for i in (1, 3, 5)]
+    else:
+        values = [int(float(part)) for part in re.findall(r"[\d.]+", colour)[:3]]
+    assert all(0 <= value <= 255 for value in values), f"{colour} has a channel outside 0 to 255"
+    return (values[0] / 255, values[1] / 255, values[2] / 255)
+
+
+def luminance(colour: str) -> float:
+    assert colour.strip(), "luminance needs a colour"
+    linear = [part / 12.92 if part <= 0.03928 else ((part + 0.055) / 1.055) ** 2.4 for part in channels(colour)]
+    result = 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+    assert 0 <= result <= 1, f"luminance of {colour} came out as {result}"
+    return result
+
+
+def contrast(foreground: str, background: str) -> float:
+    assert foreground.strip() and background.strip(), "contrast needs both a foreground and a background colour"
+    lighter, darker = sorted([luminance(foreground), luminance(background)], reverse=True)
+    ratio = (lighter + 0.05) / (darker + 0.05)
+    assert 1 <= ratio <= 21, f"contrast of {foreground} on {background} came out as {ratio}"
+    return ratio
+
+
+@pytest.mark.parametrize("scheme", ["light", "dark"])
+def test_highlighted_text_reads_on_its_band_and_on_the_paper(page: Page, scheme: str) -> None:
+    page.emulate_media(color_scheme=scheme, reduced_motion="reduce")
+    page.goto(SITE.as_uri())
+    highlights = page.evaluate("""() => [...document.querySelectorAll('.hl')].map((e) => {
+        const style = getComputedStyle(e);
+        const solid = style.backgroundColor !== 'rgba(0, 0, 0, 0)';
+        return [e.textContent.trim(), style.color, style.getPropertyValue('--hl'), solid ? null : style.getPropertyValue('--paper')];
+    })""")
+    assert highlights, "the page has no .hl highlights to check"
+    failures = [
+        f"{text!r}: {ratio:.2f} on {name}"
+        for text, ink, band, paper in highlights
+        for name, background in (("its band", band), ("the paper", paper))
+        if background is not None and (ratio := contrast(ink, background)) < MINIMUM_CONTRAST
+    ]
+    assert failures == [], f"highlighted text below {MINIMUM_CONTRAST}:1 in {scheme} mode: {failures}"
