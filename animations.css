@@ -1,0 +1,44 @@
+.zine { overflow-x: clip; }
+.hl { background-repeat: no-repeat; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(1.5rem); } }
+@keyframes drop { from { opacity: 0; transform: translateY(-1.5rem) rotate(-3deg); } }
+@keyframes tilt { from { opacity: 0; transform: rotate(-4deg) scale(0.9); } }
+@keyframes slide-left { from { opacity: 0; transform: translateX(-2rem); } }
+@keyframes slide-right { from { opacity: 0; transform: translateX(2rem); } }
+@keyframes sweep { from { background-size: 0% 100%; } }
+@keyframes draw { from { stroke-dashoffset: 1; } }
+@keyframes spin { to { transform: rotate(-360deg); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .expo, .better { stroke-dasharray: 1; }
+  .spin { display: inline-block; animation: spin 3s linear infinite; }
+
+  @supports (animation-timeline: view()) {
+    .page > *, .ladder li, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .page h2 { animation-name: tilt; }
+    .speech.left, .loop li:nth-child(odd) { animation-name: slide-left; }
+    .speech.right, .loop li:nth-child(even) { animation-name: slide-right; }
+    .hl {
+      animation: sweep linear both;
+      animation-timeline: view();
+      animation-range: entry 50% cover 40%;
+    }
+    .chart .expo, .chart .better {
+      animation: draw linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 50%;
+    }
+  }
+
+  .cover > *, .cover .hl, .cover .expo { animation-timeline: auto; animation-range: normal; }
+  .cover > * { animation: rise 0.6s ease-out both; }
+  .cover h1 { animation: drop 0.7s 0.1s ease-out both; }
+  .cover .hl { animation: sweep 0.6s 0.6s ease-in-out both; }
+  .cover .expo { animation: draw 1.2s 0.8s ease-in-out both; }
+  .cover .tagline { animation-delay: 0.4s; }
+}

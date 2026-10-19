@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
 </head>
 <body>
 <main class="zine">
@@ -19,7 +20,7 @@
     <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
       <path d="M10 110 H190 M10 110 V10" class="axis"/>
       <path d="M10 108 L190 70" class="linear"/>
-      <path d="M10 108 C110 106 150 90 188 12" class="expo"/>
+      <path d="M10 108 C110 106 150 90 188 12" class="expo" pathLength="1"/>
     </svg>
     <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
   </section>
@@ -55,7 +56,7 @@
       <li><b>run</b> it in the LSP, the watcher, the CI</li>
       <li><b>let the agent self correct</b> from the error message</li>
     </ol>
-    <p class="arrow">↺ forever</p>
+    <p class="arrow"><span class="spin">↺</span> forever</p>
     <p class="aside">Each lap is small. Five minutes. One rule. The point is that you never run the same lap twice.</p>
   </section>
 
@@ -66,7 +67,7 @@
     <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
       <path d="M20 135 H250 M20 135 V10" class="axis"/>
       <path d="M20 132 L245 95" class="linear"/>
-      <path d="M20 132 C140 130 200 100 242 18" class="expo"/>
+      <path d="M20 132 C140 130 200 100 242 18" class="expo" pathLength="1"/>
       <text x="150" y="130" class="label">fixing instances</text>
       <text x="120" y="45" class="label">adding rules</text>
       <text x="200" y="148" class="label small">time →</text>
@@ -79,8 +80,8 @@
     <p>Agents copy what they see. Every pattern in your repo is a template for the next thousand lines.</p>
     <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
       <path d="M20 75 H250 M20 140 V10" class="axis"/>
-      <path d="M20 75 C140 74 200 55 242 12" class="better"/>
-      <path d="M20 75 C140 76 200 95 242 138" class="expo"/>
+      <path d="M20 75 C140 74 200 55 242 12" class="better" pathLength="1"/>
+      <path d="M20 75 C140 76 200 95 242 138" class="expo" pathLength="1"/>
       <text x="120" y="38" class="label">ratchet up</text>
       <text x="110" y="118" class="label">rot down</text>
       <text x="200" y="88" class="label small">time →</text>
