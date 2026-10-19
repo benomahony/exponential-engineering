@@ -7,18 +7,21 @@
   --good: #2f8f5b;
   --desk: #e9e4d8;
   --code-bg: #f1ece0;
+  --on-hl: #1c1b19;
+  --hl-top: 45%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #24221f;
-    --ink: #f3efe6;
-    --muted: #b5afa3;
-    --hl: #8a6f00;
-    --accent: #ff7a63;
-    --good: #6fd39b;
-    --desk: #161513;
-    --code-bg: #2f2c28;
+    --paper: #1d1f24;
+    --ink: #eef0f3;
+    --muted: #a3a8b2;
+    --hl: #ffe45c;
+    --accent: #ff6b57;
+    --good: #5fd49a;
+    --desk: #0f1013;
+    --code-bg: #2a2d34;
+    --hl-top: 6%;
   }
 }
 
@@ -70,7 +73,8 @@ h1 { font-size: clamp(2.6rem, 9vw, 5rem); }
 h2 { font-size: 2rem; }
 
 .hl {
-  background: linear-gradient(transparent 45%, var(--hl) 45%, var(--hl) 90%, transparent 90%);
+  background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top), var(--hl) 92%, transparent 92%);
+  color: var(--on-hl);
   padding: 0 0.15em;
 }
 
@@ -113,7 +117,8 @@ pre.good { border-color: var(--good); }
 
 .curve, .chart { width: 100%; max-width: 260px; display: block; margin: 0.5rem auto; }
 .chart { max-width: 340px; }
-.axis, .linear, .expo { fill: none; stroke-linecap: round; }
+.axis, .linear, .expo, .better { fill: none; stroke-linecap: round; }
+.better { stroke: var(--good); stroke-width: 4; }
 .axis { stroke: var(--ink); stroke-width: 2; }
 .linear { stroke: var(--muted); stroke-width: 3; stroke-dasharray: 6 6; }
 .expo { stroke: var(--accent); stroke-width: 4; }
@@ -140,7 +145,7 @@ pre.good { border-color: var(--good); }
 }
 
 .speech.left { border-bottom-left-radius: 0; }
-.speech.right { margin-left: auto; border-bottom-right-radius: 0; background: var(--hl); }
+.speech.right { margin-left: auto; border-bottom-right-radius: 0; background: var(--hl); color: var(--on-hl); }
 
 .box {
   border: 2px dashed var(--ink);
@@ -168,7 +173,7 @@ pre.good { border-color: var(--good); }
   padding: 0.3rem 0.75rem;
 }
 
-.ladder li:first-child { background: var(--hl); border-top: 2px solid var(--ink); }
+.ladder li:first-child { background: var(--hl); color: var(--on-hl); border-top: 2px solid var(--ink); }
 .ladder li:last-child { color: var(--muted); }
 
 .checks, .todo, .warn { padding-left: 1.25rem; }
@@ -176,6 +181,13 @@ pre.good { border-color: var(--good); }
 .todo li::marker { content: "☐ "; }
 .warn li::marker { content: "⚠ "; color: var(--accent); }
 .warn li { margin-bottom: 0.6rem; }
+
+.credit { font-size: 1rem; color: var(--muted); }
+
+.rebrand { width: 100%; border-collapse: collapse; font-size: 1.05rem; line-height: 1.25; }
+.rebrand th, .rebrand td { border: 2px solid var(--ink); padding: 0.3rem 0.5rem; text-align: left; vertical-align: top; }
+.rebrand th { background: var(--hl); color: var(--on-hl); font-weight: normal; font-family: "Permanent Marker", cursive; }
+.rebrand td:first-child { color: var(--muted); }
 
 .stations { display: grid; gap: 0.5rem; margin: 1rem 0; }
 
@@ -186,7 +198,7 @@ pre.good { border-color: var(--good); }
   flex-direction: column;
 }
 
-.stations div:nth-child(2) { background: var(--hl); }
+.stations div:nth-child(2), .stations div:nth-child(2) span { background: var(--hl); color: var(--on-hl); }
 .stations span { color: var(--muted); font-size: 1.05rem; }
 
 @media (max-width: 520px) {
