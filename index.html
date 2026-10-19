@@ -67,11 +67,9 @@
     <h2>the big idea</h2>
     <p class="big">When you find a mistake, don't fix <em>it</em>.<br>Fix <span class="hl">every future version of it</span>.</p>
     <div class="box">
-      <p>Ask one question:</p>
       <p class="q">"What rule would have caught this <strong>automatically</strong>?"</p>
-      <p>Then write that rule. Lint it. Run it everywhere.</p>
+      <p>Write that rule. Run it everywhere.</p>
     </div>
-    <p>It's <strong>kaizen</strong> for codebases that are written by robots. Yes, Toyota did this in the 1950s. We have more YAML. Toyota called it <strong>poka yoke</strong>: mistake proofing. Make the wrong thing impossible, or at least <em>loud</em>.</p>
   </section>
 
   <section class="page" id="loop">
@@ -101,13 +99,12 @@
       <text x="82.1" y="140.6" text-anchor="end" class="label">from the error</text>
       <text x="200" y="168" text-anchor="middle" class="forever">forever</text>
     </svg>
-    <p class="aside">Each lap is small. Five minutes. One rule. The point is that you never run the same lap twice.</p>
+    <p class="aside">Five minutes. One rule. Never the same lap twice.</p>
   </section>
 
   <section class="page" id="why">
     <h2>why <span class="hl">exponential</span>?</h2>
-    <p>A fix touches <strong>one</strong> line.</p>
-    <p>A rule touches <strong>every line</strong> written by <strong>every agent</strong> in <strong>every session</strong>, forever.</p>
+    <p>A fix touches <strong>one</strong> line. A rule touches <strong>every line</strong>, by <strong>every agent</strong>, forever.</p>
     <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
       <path d="M20 135 H250 M20 135 V10" class="axis"/>
       <path d="M20 132 L245 95" class="linear"/>
@@ -116,7 +113,7 @@
       <text x="120" y="45" class="label">adding rules</text>
       <text x="200" y="148" class="label small">time →</text>
     </svg>
-    <p>Rules compound like interest. Your agents get <em>better</em> without getting <em>smarter</em>, because the space of wrong answers keeps shrinking.</p>
+    <p>Your agents get <em>better</em> without getting <em>smarter</em>.</p>
   </section>
 
   <section class="page" id="both-ways">
@@ -130,7 +127,6 @@
       <text x="110" y="118" class="label">rot down</text>
       <text x="200" y="88" class="label small">time →</text>
     </svg>
-    <p>One sloppy <code>except: pass</code> becomes ten. Ten becomes the house style. The agent isn't wrong, it's <em>consistent</em>.</p>
     <p class="big">No rules isn't standing still.<br>It's <span class="hl">compounding the other way</span>.</p>
   </section>
 
@@ -141,8 +137,7 @@
       <div><b>tied to one agent</b><span>prompts, skills, memory, clever system messages</span></div>
       <div class="hot"><b>lives in the repo</b><span>lint config, types, tests, CI, watchers</span></div>
     </div>
-    <p>The repo is the <strong>shared context</strong>. Every agent and every human reads it, every session, no setup required.</p>
-    <p class="aside">Tune the agent and you improve one tool. Harden the codebase and you improve all of them, including the ones that don't exist yet.</p>
+    <p class="aside">The repo is the shared context. Harden it and every agent gets better, including ones that don't exist yet.</p>
     <p class="credit">More: <a href="https://benomahony.com/blog/hardening-codebases-for-agentic-coding/">hardening codebases for agentic coding</a></p>
   </section>
 
@@ -169,7 +164,6 @@
     </div>
     <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
     <p>A rule that never fires costs zero tokens. A rule that fires is the most relevant prompt the agent will see all day.</p>
-    <p class="aside">The best prompt arrives exactly when the agent is about to be wrong.</p>
   </section>
 
   <section class="page" id="anatomy">
@@ -208,7 +202,7 @@ severity: error</code></pre>
 
   <section class="page" id="ratchets">
     <h2>quality <span class="hl">ratchets</span></h2>
-    <p>A ratchet only turns one way. Pick a number: lint violations, type errors, coverage. Commit it. CI fails if it gets worse and tightens it when it gets better.</p>
+    <p>Pick a number. Commit it. CI fails if it gets worse and tightens when it gets better.</p>
     <div class="ratchet" aria-hidden="true">
       <svg class="gear" viewBox="-50 -62 100 112">
         <path d="M0 -44 L-7 -58 L7 -58 Z" class="pawl"/>
@@ -221,8 +215,7 @@ mon  412
 tue  398  ✓ ratchet tightened
 wed  401  ✗ CI fails: 401 &gt; 398
 thu  371  ✓ ratchet tightened</code></pre>
-    <p>No big bang cleanup. Turn the new rule on <em>today</em>, freeze the existing violations, block every new one, and let the count only fall.</p>
-    <p class="aside">Every gain gets locked in. Nobody, human or agent, can quietly give it back.</p>
+    <p class="aside">No big bang cleanup. Turn the rule on today, freeze the old violations, block every new one.</p>
     <p class="credit">Quality Ratchets are from <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> by Ben O'Mahony and Fabian Nonnenmacher (O'Reilly). See also <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#every-failure-becomes-a-ratchet">every failure becomes a ratchet</a>.</p>
   </section>
 
@@ -236,7 +229,6 @@ thu  371  ✓ ratchet tightened</code></pre>
       <div><b>CI</b><span>the backstop that never sleeps</span></div>
     </div>
     <p>Agent hooks tie you to one agent. LSPs and daemons live with the codebase and work for all of them, humans included.</p>
-    <p class="aside">The shorter the loop, the less the agent wanders off building on a broken idea.</p>
   </section>
 
   <section class="page" id="overwatch">
@@ -248,7 +240,6 @@ thu  371  ✓ ratchet tightened</code></pre>
       <li>failures go <b>straight back to the agent</b>, before it moves on</li>
       <li>the turn can't end while the build is red</li>
     </ul>
-    <pre><code>overwatch zig ✓ 4/4 steps succeeded; 48/48 tests passed</code></pre>
     <pre><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
     <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
   </section>
@@ -261,7 +252,6 @@ thu  371  ✓ ratchet tightened</code></pre>
       <div class="hot"><b>thin slices</b><span>one small change, green, on trunk, next</span></div>
     </div>
     <p class="big">Most harness engineering is a workaround for <span class="hl">slices that are too thick</span>.</p>
-    <p>Trunk is the shared context. Every slice that lands keeps it current for every agent and every human.</p>
     <p class="aside">We once had a feature branch live for 45 minutes. <a href="https://benomahony.com/blog/the-45-min-long-lived-feature-branch/">We now call that long lived.</a></p>
   </section>
 
@@ -275,7 +265,6 @@ thu  371  ✓ ratchet tightened</code></pre>
     <p>The only number that matters:</p>
     <p class="big">time to <span class="hl">first customer feedback</span></p>
     <p>Not lines of code. Not PRs merged. How fast does a real person tell you whether it's any good?</p>
-    <p class="aside">Agents made building cheap. Being wrong is still expensive. Find out sooner.</p>
   </section>
 
   <section class="page" id="careful">
