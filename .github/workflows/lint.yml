@@ -91,3 +91,16 @@ jobs:
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884
       - run: uv sync --locked
       - run: uv run typos
+
+  links:
+    name: Links (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8
+        with:
+          lycheeVersion: v0.24.2
+          args: --no-progress --config lychee.toml index.html README.md
+          fail: true
