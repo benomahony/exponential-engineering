@@ -1,3 +1,4 @@
+import hashlib
 import re
 import struct
 from html.parser import HTMLParser
@@ -9,6 +10,7 @@ from playwright.sync_api import Page
 ROOT = Path(__file__).parent.parent
 SITE = ROOT / "index.html"
 HTML = SITE.read_text()
+STYLESHEETS = {path.name: path.read_bytes() for path in ROOT.glob("*.css")}
 SHAMED_LIBRARIES = ["pandas", "requests", "numpy", "django", "flask", "jquery"]
 DASHES = ["—", "–"]
 WIDTHS = [320, 402, 768, 1100, 1440]
@@ -79,11 +81,13 @@ def test_page_ships_no_javascript() -> None:
     assert handlers == [], f"found inline handlers {handlers}: the page ships no JavaScript"
 
 
-def test_local_stylesheets_are_versioned() -> None:
+def test_local_stylesheets_are_versioned_by_their_content() -> None:
     links = [attrs["href"] for tag, attrs in parsed().tags if tag == "link" and attrs.get("rel") == "stylesheet" and not attrs["href"].startswith("http")]
     assert links, "index.html links no local stylesheets"
-    unversioned = [href for href in links if not re.search(r"\?v=\d+$", href)]
-    assert unversioned == [], f"{unversioned} have no ?v=N: phones cache stylesheets for days, so version every local one"
+    expected = {name: hashlib.sha256(content).hexdigest()[:8] for name, content in STYLESHEETS.items()}
+    assert {href.split("?")[0] for href in links} == set(expected), f"index.html should link exactly {sorted(expected)}"
+    stale = [f"{href} should end ?v={expected[href.split('?')[0]]}" for href in links if href != f"{href.split('?')[0]}?v={expected[href.split('?')[0]]}"]
+    assert stale == [], f"phones cache stylesheets for days, so each link carries the first 8 characters of its file's sha256: {stale}"
 
 
 def test_social_card_is_1200_by_630_and_linked() -> None:
