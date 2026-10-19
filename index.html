@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exponential Engineering</title>
-  <meta name="description" content="Every time your agent makes a mistake, add a rule that rules out the whole category. Rules compound. So does quality.">
+  <meta name="description" content="Every time your agent makes a mistake, add a deterministic rule, a lint check not a line in RULES.md, that rules out the whole category. Rules compound. So does quality.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://exponentialengineering.dev/">
   <meta property="og:title" content="Exponential Engineering">
-  <meta property="og:description" content="Every time your agent makes a mistake, add a rule that rules out the whole category. Rules compound. So does quality.">
+  <meta property="og:description" content="Every time your agent makes a mistake, add a deterministic rule, a lint check not a line in RULES.md, that rules out the whole category. Rules compound. So does quality.">
   <meta property="og:image" content="https://exponentialengineering.dev/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Exponential Engineering: a curve bending upwards as rules are added">
+  <meta property="og:image:alt" content="Exponential Engineering: a curve bending upwards as deterministic rules are added">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffe45c">
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%226%22%20fill%3D%22%23ffe45c%22%2F%3E%3Cpath%20d%3D%22M5%2027%20C17%2027%2022%2022%2027%205%22%20fill%3D%22none%22%20stroke%3D%22%23e8462e%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
@@ -28,13 +28,13 @@
   <section class="page cover" id="cover">
     <p class="kicker">continuous improvement, but make it agentic</p>
     <h1>Exponential<br><span class="hl">Engineering</span></h1>
-    <p class="lede">Every time your agent makes a mistake, add a rule that rules out the <strong>whole category</strong>. Rules compound. So does quality.</p>
+    <p class="lede">Every time your agent makes a mistake, add a <strong>deterministic rule</strong> that rules out the <strong>whole category</strong>. A lint check, not a line in RULES.md. Rules compound. So does quality.</p>
     <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
       <path d="M10 110 H190 M10 110 V10" class="axis"/>
       <path d="M10 108 L190 70" class="linear"/>
       <path d="M10 108 C70 108 130 106 188 98" class="expo"><animate attributeName="d" begin="0.8s" dur="3s" fill="freeze" values="M10 108 C70 108 130 106 188 98;M10 108 C70 108 130 106 188 98;M10 108 C90 107 140 98 188 72;M10 108 C90 107 140 98 188 72;M10 108 C100 106 145 90 188 42;M10 108 C100 106 145 90 188 42;M10 108 C110 106 150 90 188 12" keyTimes="0;0.2;0.3;0.53;0.63;0.87;1"/></path>
     </svg>
-    <ul class="chips" aria-label="Rules added">
+    <ul class="chips" aria-label="Lint rules added">
       <li>+ no bare except</li>
       <li>+ zero warnings</li>
       <li>+ http needs a timeout</li>
@@ -60,7 +60,7 @@
 <span class="add">    +         log.warning("retry", error=err)</span></div><div class="tui-step s7"><span class="tui-dot ok"></span> <b>overwatch</b> <span class="ok">✓ lint clean · 48/48 tests passed</span></div></div>
       <div class="tui-input"><span class="tui-prompt"></span> <span class="tui-cursor"></span></div>
     </div>
-    <p class="big">Nobody reviewed that. <span class="hl">The rule did.</span></p>
+    <p class="big">Nobody reviewed that. <span class="hl">The lint rule did.</span></p>
   </section>
 
   <section class="page" id="problem">
@@ -78,8 +78,8 @@
     <h2>the big idea</h2>
     <p class="big">When you find a mistake, don't fix <em>it</em>.<br>Fix <span class="hl">every future version of it</span>.</p>
     <div class="box">
-      <p class="q">"What rule would have caught this <strong>automatically</strong>?"</p>
-      <p>Write that rule. Run it everywhere.</p>
+      <p class="q">"What deterministic rule would have caught this <strong>automatically</strong>?"</p>
+      <p>Write it as a lint rule, not a line in RULES.md. Run it everywhere.</p>
     </div>
   </section>
 
@@ -115,7 +115,7 @@
 
   <section class="page" id="why">
     <h2>why <span class="hl">exponential</span>?</h2>
-    <p>A fix touches <strong>one</strong> line. A rule touches <strong>every line</strong>, by <strong>every agent</strong>, forever.</p>
+    <p>A fix touches <strong>one</strong> line. A deterministic rule touches <strong>every line</strong>, by <strong>every agent</strong>, forever.</p>
     <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
       <path d="M20 135 H250 M20 135 V10" class="axis"/>
       <path d="M20 132 L245 95" class="linear"/>
@@ -161,7 +161,7 @@
       <li><b>lint rule</b> fails with a fix hint</li>
       <li><b>test</b> catches it after the fact</li>
       <li><b>review comment</b> catches it sometimes</li>
-      <li><b>AGENTS.md</b> prose: a polite wish</li>
+      <li><b>AGENTS.md, RULES.md</b> prose: a polite wish</li>
     </ol>
     <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
     <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
@@ -185,7 +185,7 @@
       <div class="hot"><b>an actionable error</b><span>appears only when the mistake happens, on the exact line, with the exact fix.</span></div>
     </div>
     <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
-    <p>A rule that never fires costs zero tokens. A rule that fires is the most relevant prompt the agent will see all day.</p>
+    <p>A lint rule that never fires costs zero tokens. One that fires is the most relevant prompt the agent will see all day.</p>
   </section>
 
   <section class="page" id="anatomy">
@@ -341,12 +341,12 @@ thu  371  ✓ ratchet tightened</code></pre>
 
   <section class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
-    <p class="pledge grab">From today, any mistake my agent makes twice becomes a rule.</p>
+    <p class="pledge grab">From today, any mistake my agent makes twice becomes a deterministic rule.</p>
     <p class="kicker">steal this: everything on, every language, one tap selects it</p>
     <pre class="grab"><code>curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
 zanity init
 zanity check . --fail-on warning --strict</code></pre>
-    <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
+    <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </section>
 
