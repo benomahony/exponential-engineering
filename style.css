@@ -3,12 +3,11 @@
   --ink: #1c1b19;
   --muted: #5d5a54;
   --hl: #ffe45c;
-  --accent: #e8462e;
+  --accent: #cc3a23;
   --good: #2f8f5b;
   --desk: #e9e4d8;
   --code-bg: #f1ece0;
   --on-hl: #1c1b19;
-  --hl-top: 45%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,7 +20,6 @@
     --good: #5fd49a;
     --desk: #0f1013;
     --code-bg: #2a2d34;
-    --hl-top: 6%;
   }
 }
 
@@ -76,7 +74,7 @@ h1 { font-size: clamp(2.6rem, 9vw, 5rem); }
 h2 { font-size: 2rem; }
 
 .hl {
-  background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top), var(--hl) 92%, transparent 92%);
+  background-color: var(--hl);
   color: var(--on-hl);
   padding: 0 0.15em;
 }
@@ -128,15 +126,20 @@ pre.good { border-color: var(--good); }
 .axis { stroke: var(--ink); stroke-width: 2; }
 .linear { stroke: var(--muted); stroke-width: 3; stroke-dasharray: 6 6; }
 .expo { stroke: var(--accent); stroke-width: 4; }
-.label { fill: var(--ink); font: 14px "Patrick Hand", cursive; }
-.label.small { font-size: 11px; fill: var(--muted); }
-.loop-svg { width: 100%; max-width: 420px; display: block; margin: 0.5rem auto; overflow: visible; }
+.loop-svg { max-width: 420px; }
+.diagram { position: relative; container-type: inline-size; margin: 0.5rem auto; }
+.diagram svg { display: block; width: 100%; overflow: visible; }
+.tag { position: absolute; line-height: normal; white-space: nowrap; background-color: var(--paper); transform: translate(0, -72%); font-size: calc(var(--size) * 100cqi / var(--vbw)); }
+.tag.middle { transform: translate(-50%, -72%); }
+.tag.end { transform: translate(-100%, -72%); }
+.tag.label { --size: 14; color: var(--ink); font-family: "Patrick Hand", cursive; }
+.tag.label.small { --size: 11; color: var(--muted); }
+.tag.step { --size: 19; color: var(--ink); font-family: "Permanent Marker", cursive; }
+.tag.forever { --size: 26; color: var(--accent); font-family: "Permanent Marker", cursive; }
 .arc { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
 .arrowhead { fill: var(--ink); }
 .node { fill: var(--hl); stroke: var(--ink); stroke-width: 2.5; }
 .runner { fill: var(--accent); }
-.step { fill: var(--ink); font: 19px "Permanent Marker", cursive; }
-.forever { fill: var(--accent); font: 26px "Permanent Marker", cursive; }
 
 .toc {
   display: flex;

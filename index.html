@@ -85,59 +85,65 @@
 
   <section class="page" id="loop">
     <h2>the loop</h2>
-    <svg class="loop-svg" viewBox="-30 0 460 330" role="img" aria-label="The loop: spot a mistake, name the category, encode a deterministic check, run it in the LSP, watcher and CI, let the agent self correct, forever">
-      <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="arrowhead"/></marker></defs>
-      <path d="M225.4 58.1 A105 105 0 0 1 289.0 104.4" class="arc" marker-end="url(#arrowhead)"/>
-      <path d="M304.7 152.7 A105 105 0 0 1 280.4 227.5" class="arc" marker-end="url(#arrowhead)"/>
-      <path d="M239.3 257.4 A105 105 0 0 1 160.7 257.4" class="arc" marker-end="url(#arrowhead)"/>
-      <path d="M119.6 227.5 A105 105 0 0 1 95.3 152.7" class="arc" marker-end="url(#arrowhead)"/>
-      <path d="M111.0 104.4 A105 105 0 0 1 174.6 58.1" class="arc" marker-end="url(#arrowhead)"/>
-      <circle r="6" class="runner"><animateMotion dur="8s" repeatCount="indefinite" path="M200 55 A105 105 0 1 1 199.99 55 z"/></circle>
-      <circle cx="200.0" cy="55.0" r="9" class="node"/>
-      <text x="200.0" y="17.0" text-anchor="middle" class="step">spot</text>
-      <text x="200.0" y="34.0" text-anchor="middle" class="label">a mistake</text>
-      <circle cx="299.9" cy="127.6" r="9" class="node"/>
-      <text x="317.9" y="123.6" text-anchor="start" class="step">name</text>
-      <text x="317.9" y="140.6" text-anchor="start" class="label">the category</text>
-      <circle cx="261.7" cy="244.9" r="9" class="node"/>
-      <text x="261.7" y="274.9" text-anchor="middle" class="step">encode</text>
-      <text x="261.7" y="291.9" text-anchor="middle" class="label">a deterministic check</text>
-      <circle cx="138.3" cy="244.9" r="9" class="node"/>
-      <text x="138.3" y="274.9" text-anchor="middle" class="step">run</text>
-      <text x="138.3" y="291.9" text-anchor="middle" class="label">LSP, watcher, CI</text>
-      <circle cx="100.1" cy="127.6" r="9" class="node"/>
-      <text x="82.1" y="123.6" text-anchor="end" class="step">self correct</text>
-      <text x="82.1" y="140.6" text-anchor="end" class="label">from the error</text>
-      <text x="200" y="168" text-anchor="middle" class="forever">forever</text>
-    </svg>
+    <div class="diagram loop-svg" style="--vbw: 460">
+      <svg viewBox="-30 0 460 330" role="img" aria-label="The loop: spot a mistake, name the category, encode a deterministic check, run it in the LSP, watcher and CI, let the agent self correct, forever">
+        <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="arrowhead"/></marker></defs>
+        <path d="M225.4 58.1 A105 105 0 0 1 289.0 104.4" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M304.7 152.7 A105 105 0 0 1 280.4 227.5" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M239.3 257.4 A105 105 0 0 1 160.7 257.4" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M119.6 227.5 A105 105 0 0 1 95.3 152.7" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M111.0 104.4 A105 105 0 0 1 174.6 58.1" class="arc" marker-end="url(#arrowhead)"/>
+        <circle r="6" class="runner"><animateMotion dur="8s" repeatCount="indefinite" path="M200 55 A105 105 0 1 1 199.99 55 z"/></circle>
+        <circle cx="200.0" cy="55.0" r="9" class="node"/>
+        <circle cx="299.9" cy="127.6" r="9" class="node"/>
+        <circle cx="261.7" cy="244.9" r="9" class="node"/>
+        <circle cx="138.3" cy="244.9" r="9" class="node"/>
+        <circle cx="100.1" cy="127.6" r="9" class="node"/>
+      </svg>
+      <span class="tag step middle" style="left: 50.0%; top: 5.2%" aria-hidden="true">spot</span>
+      <span class="tag label middle" style="left: 50.0%; top: 11.8%" aria-hidden="true">a mistake</span>
+      <span class="tag step" style="left: 75.6%; top: 37.5%" aria-hidden="true">name</span>
+      <span class="tag label" style="left: 75.6%; top: 44.1%" aria-hidden="true">the category</span>
+      <span class="tag step middle" style="left: 63.4%; top: 83.3%" aria-hidden="true">encode</span>
+      <span class="tag label middle" style="left: 63.4%; top: 90.0%" aria-hidden="true">a deterministic check</span>
+      <span class="tag step middle" style="left: 36.6%; top: 83.3%" aria-hidden="true">run</span>
+      <span class="tag label middle" style="left: 36.6%; top: 90.0%" aria-hidden="true">LSP, watcher, CI</span>
+      <span class="tag step end" style="left: 24.4%; top: 37.5%" aria-hidden="true">self correct</span>
+      <span class="tag label end" style="left: 24.4%; top: 44.1%" aria-hidden="true">from the error</span>
+      <span class="tag forever middle" style="left: 50.0%; top: 50.9%" aria-hidden="true">forever</span>
+    </div>
     <p class="aside">Five minutes. One rule. Never the same lap twice.</p>
   </section>
 
   <section class="page" id="why">
     <h2>why <span class="hl">exponential</span>?</h2>
     <p>A fix touches <strong>one</strong> line. A deterministic rule touches <strong>every line</strong>, by <strong>every agent</strong>, forever.</p>
-    <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
-      <path d="M20 135 H250 M20 135 V10" class="axis"/>
-      <path d="M20 132 L245 95" class="linear"/>
-      <path d="M20 132 C140 130 200 100 242 18" class="expo" pathLength="1"/>
-      <text x="150" y="130" class="label">fixing instances</text>
-      <text x="120" y="45" class="label">adding rules</text>
-      <text x="200" y="148" class="label small">time →</text>
-    </svg>
+    <div class="diagram chart" style="--vbw: 260">
+      <svg viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
+        <path d="M20 135 H250 M20 135 V10" class="axis"/>
+        <path d="M20 132 L245 95" class="linear"/>
+        <path d="M20 132 C140 130 200 100 242 18" class="expo" pathLength="1"/>
+      </svg>
+      <span class="tag label" style="left: 63.5%; top: 85.0%" aria-hidden="true">fixing instances</span>
+      <span class="tag label" style="left: 46.2%; top: 30.0%" aria-hidden="true">adding rules</span>
+      <span class="tag label small" style="left: 76.9%; top: 98.7%" aria-hidden="true">time →</span>
+    </div>
     <p>Your agents get <em>better</em> without getting <em>smarter</em>.</p>
   </section>
 
   <section class="page" id="both-ways">
     <h2>it cuts <span class="hl">both ways</span></h2>
     <p>Agents copy what they see. Every pattern in your repo is a template for the next thousand lines.</p>
-    <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
-      <path d="M20 75 H250 M20 140 V10" class="axis"/>
-      <path d="M20 75 C140 74 200 55 242 12" class="better" pathLength="1"/>
-      <path d="M20 75 C140 76 200 95 242 138" class="expo" pathLength="1"/>
-      <text x="120" y="38" class="label">ratchet up</text>
-      <text x="110" y="118" class="label">rot down</text>
-      <text x="200" y="88" class="label small">time →</text>
-    </svg>
+    <div class="diagram chart" style="--vbw: 260">
+      <svg viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
+        <path d="M20 75 H250 M20 140 V10" class="axis"/>
+        <path d="M20 75 C140 74 200 55 242 12" class="better" pathLength="1"/>
+        <path d="M20 75 C140 76 200 95 242 138" class="expo" pathLength="1"/>
+      </svg>
+      <span class="tag label" style="left: 46.2%; top: 25.3%" aria-hidden="true">ratchet up</span>
+      <span class="tag label" style="left: 42.3%; top: 78.7%" aria-hidden="true">rot down</span>
+      <span class="tag label small" style="left: 76.9%; top: 58.7%" aria-hidden="true">time →</span>
+    </div>
     <p class="big">No rules isn't standing still.<br>It's <span class="hl">compounding the other way</span>.</p>
   </section>
 
