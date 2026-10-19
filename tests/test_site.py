@@ -185,3 +185,43 @@ def test_highlighted_text_reads_on_its_band_and_on_the_paper(page: Page, scheme:
         if background is not None and (ratio := contrast(ink, background)) < MINIMUM_CONTRAST
     ]
     assert failures == [], f"highlighted text below {MINIMUM_CONTRAST}:1 in {scheme} mode: {failures}"
+
+
+OVERLAPPING_HIGHLIGHTS = """() => {
+    const textRects = (root) => {
+        const rects = [];
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) {
+            if (!walker.currentNode.textContent.trim()) continue;
+            const range = document.createRange();
+            range.selectNodeContents(walker.currentNode);
+            rects.push(...range.getClientRects());
+        }
+        return rects;
+    };
+    const overlaps = [];
+    for (const highlight of document.querySelectorAll('.hl')) {
+        const block = highlight.closest('h1, h2, h3, p, li, td, th');
+        for (const band of highlight.getClientRects()) {
+            const middle = band.top + band.height / 2;
+            for (const text of textRects(block)) {
+                const otherLine = text.bottom < middle || text.top > middle;
+                const height = Math.min(band.bottom, text.bottom) - Math.max(band.top, text.top);
+                const width = Math.min(band.right, text.right) - Math.max(band.left, text.left);
+                if (otherLine && height > 0.5 && width > 0.5) overlaps.push(`${highlight.textContent.trim()} by ${height.toFixed(1)}px`);
+            }
+        }
+    }
+    return [...new Set(overlaps)];
+}"""
+
+
+@pytest.mark.parametrize("scheme", ["light", "dark"])
+@pytest.mark.parametrize("width", WIDTHS)
+def test_highlights_never_cover_a_neighbouring_line(page: Page, scheme: str, width: int) -> None:
+    page.emulate_media(color_scheme=scheme, reduced_motion="reduce")
+    page.set_viewport_size({"width": width, "height": 900})
+    page.goto(SITE.as_uri())
+    page.evaluate("document.fonts.ready.then(() => true)")
+    overlaps = page.evaluate(OVERLAPPING_HIGHLIGHTS)
+    assert overlaps == [], f"at {width}px in {scheme} mode these highlights paint over the line above or below: {overlaps}. Give the block a line-height at least as tall as its font's glyph box"

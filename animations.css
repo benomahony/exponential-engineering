@@ -39,7 +39,6 @@
   from {
     background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top)) 0 0 / 0% 100% no-repeat;
     box-shadow: none;
-    color: var(--ink);
   }
 
   to {

@@ -31,7 +31,7 @@ body {
   margin: 0;
   background: var(--desk);
   color: var(--ink);
-  font: 1.25rem/1.45 "Patrick Hand", "Comic Sans MS", cursive;
+  font: 1.25rem/1.55 "Patrick Hand", "Comic Sans MS", cursive;
 }
 
 .pages {
@@ -68,7 +68,7 @@ body {
 h1, h2 {
   font-family: "Permanent Marker", cursive;
   font-weight: normal;
-  line-height: 1.05;
+  line-height: 1.6;
   margin: 0 0 0.75rem;
 }
 
@@ -85,6 +85,7 @@ h2 { font-size: 2rem; }
   :root:not([data-theme="light"]) .hl {
     background-color: var(--hl);
     box-shadow: none;
+    animation: none;
   }
 }
 
@@ -106,7 +107,7 @@ h2 { font-size: 2rem; }
 
 .big {
   font-size: 1.6rem;
-  line-height: 1.25;
+  line-height: 1.55;
 }
 .tagline { font-size: 1.6rem; }
 
