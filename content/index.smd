@@ -10,16 +10,16 @@
 
 Your agent writes a bug. You spot it. You say _"please don't do that"_. It fixes it.
 
-```=html
-<div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
-<div class="speech right">fixed! ✨</div>
-```
+>[]($block.attrs('speech'))
+>I swallowed an exception with a bare `except: pass`
+
+>[]($block.attrs('speech','reply'))
+>fixed! ✨
 
 Next week, a different session, a different file:
 
-```=html
-<div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
-```
+>[]($block.attrs('speech'))
+>I swallowed an exception with a bare `except: pass`
 
 >[]($block.attrs('big'))
 >You fixed the [instance]($text.attrs('hl')).\
@@ -102,12 +102,13 @@ One sloppy `except: pass` becomes ten. Ten becomes the house style. The agent is
 
 Agents come and go. Claude Code today, Codex tomorrow, something new next quarter.
 
-```=html
-<div class="stations">
-  <div><b>tied to one agent</b><span>prompts, skills, memory, clever system messages</span></div>
-  <div class="hot"><b>lives in the repo</b><span>lint config, types, tests, CI, watchers</span></div>
-</div>
-```
+>[]($block.attrs('card'))
+>**tied to one agent**\
+>prompts, skills, memory, clever system messages
+
+>[]($block.attrs('card','hot'))
+>**lives in the repo**\
+>lint config, types, tests, CI, watchers
 
 The repo is the **shared context**. Every agent and every human reads it, every session, no setup required.
 
@@ -137,12 +138,13 @@ Not all "rules" are equal. Climb as high as you can.
 
 # [actionable errors are just in time prompts]($section.id('jit').attrs('page'))
 
-```=html
-<div class="stations">
-  <div><b>AGENTS.md</b><span>loaded every session, all of it, relevant or not. Burns context. Easy to skim past.</span></div>
-  <div class="hot"><b>an actionable error</b><span>appears only when the mistake happens, on the exact line, with the exact fix.</span></div>
-</div>
-```
+>[]($block.attrs('card'))
+>**AGENTS.md**\
+>loaded every session, all of it, relevant or not. Burns context. Easy to skim past.
+
+>[]($block.attrs('card','hot'))
+>**an actionable error**\
+>appears only when the mistake happens, on the exact line, with the exact fix.
 
 >[]($block.attrs('big'))
 >Don't front load the context.\
@@ -157,15 +159,20 @@ A rule that never fires costs zero tokens. A rule that fires is the most relevan
 
 The error message **is the prompt**. The agent reads it and fixes itself.
 
-```=html
-<pre class="bad"><code>error: banned import</code></pre>
-<p class="verdict">😐 the agent guesses</p>
-<pre class="good"><code>error: `pandas` is banned.
-  Use duckdb for SQL style queries
-  or polars for dataframes.
-  See docs/data.md</code></pre>
-<p class="verdict">😎 the agent knows</p>
-```
+>[]($block.attrs('bad'))
+>```
+>error: banned import
+>```
+>😐 the agent guesses
+
+>[]($block.attrs('good'))
+>```
+>error: `pandas` is banned.
+>  Use duckdb for SQL style queries
+>  or polars for dataframes.
+>  See docs/data.md
+>```
+>😎 the agent knows
 
 >[]($block.attrs('checks'))
 >- says **what** is wrong
@@ -221,14 +228,21 @@ No big bang cleanup. Turn the new rule on _today_, freeze the existing violation
 
 Run them where the agent will trip over them [fastest]($text.attrs('hl')).
 
-```=html
-<div class="stations">
-  <div class="hot"><b>LSP</b><span>diagnostics on every save, for every agent and every editor</span></div>
-  <div class="hot"><b>watch mode daemons</b><span>tests and linters rerun on every change, failures handed straight back</span></div>
-  <div><b>pre commit</b><span>nothing broken gets saved</span></div>
-  <div><b>CI</b><span>the backstop that never sleeps</span></div>
-</div>
-```
+>[]($block.attrs('card','hot'))
+>**LSP**\
+>diagnostics on every save, for every agent and every editor
+
+>[]($block.attrs('card','hot'))
+>**watch mode daemons**\
+>tests and linters rerun on every change, failures handed straight back
+
+>[]($block.attrs('card'))
+>**pre commit**\
+>nothing broken gets saved
+
+>[]($block.attrs('card'))
+>**CI**\
+>the backstop that never sleeps
 
 Agent hooks tie you to one agent. LSPs and daemons live with the codebase and work for all of them, humans included.
 
@@ -260,12 +274,13 @@ overwatch zig ✓ 4/4 steps succeeded; 48/48 tests passed
 
 Small enough to review in a minute. Small enough to revert in a second. On main many times a day.
 
-```=html
-<div class="stations">
-  <div><b>harness engineering</b><span>worktree swarms, orchestrator agents, forty parallel branches, merge queues for robots</span></div>
-  <div class="hot"><b>thin slices</b><span>one small change, green, on trunk, next</span></div>
-</div>
-```
+>[]($block.attrs('card'))
+>**harness engineering**\
+>worktree swarms, orchestrator agents, forty parallel branches, merge queues for robots
+
+>[]($block.attrs('card','hot'))
+>**thin slices**\
+>one small change, green, on trunk, next
 
 >[]($block.attrs('big'))
 >Most harness engineering is a workaround for [slices that are too thick]($text.attrs('hl')).
@@ -279,12 +294,13 @@ Trunk is the shared context. Every slice that lands keeps it current for every a
 
 Two pizza teams were sized for humans typing. With agents, the plates got smaller.
 
-```=html
-<div class="stations">
-  <div><b>two pizza team</b><span>eight people, a backlog, a sprint, a demo in two weeks</span></div>
-  <div class="hot"><b>tapas team</b><span>three or four people across product, design and engineering, mobbing with agents, lots of small plates, everyone tastes everything</span></div>
-</div>
-```
+>[]($block.attrs('card'))
+>**two pizza team**\
+>eight people, a backlog, a sprint, a demo in two weeks
+
+>[]($block.attrs('card','hot'))
+>**tapas team**\
+>three or four people across product, design and engineering, mobbing with agents, lots of small plates, everyone tastes everything
 
 The only number that matters:
 
