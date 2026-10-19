@@ -4,12 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exponential Engineering</title>
-  <meta name="description" content="How to make every agent mistake the last of its kind.">
+  <meta name="description" content="Every time your agent makes a mistake, add a deterministic rule, a lint check not a line in RULES.md, that rules out the whole category. Rules compound. So does quality.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exponentialengineering.dev/">
+  <meta property="og:title" content="Exponential Engineering">
+  <meta property="og:description" content="Every time your agent makes a mistake, add a deterministic rule, a lint check not a line in RULES.md, that rules out the whole category. Rules compound. So does quality.">
+  <meta property="og:image" content="https://exponentialengineering.dev/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Exponential Engineering: a curve bending upwards as deterministic rules are added">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffe45c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%226%22%20fill%3D%22%23ffe45c%22%2F%3E%3Cpath%20d%3D%22M5%2027%20C17%2027%2022%2022%2027%205%22%20fill%3D%22none%22%20stroke%3D%22%23e8462e%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="animations.css?v=2">
 </head>
 <body>
 <main class="pages">
@@ -17,16 +28,43 @@
   <section class="page cover" id="cover">
     <p class="kicker">continuous improvement, but make it agentic</p>
     <h1>Exponential<br><span class="hl">Engineering</span></h1>
+    <p class="lede">Every time your agent makes a mistake, add a <strong>deterministic rule</strong> that rules out the <strong>whole category</strong>. A lint check, not a line in RULES.md. Rules compound. So does quality.</p>
     <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
       <path d="M10 110 H190 M10 110 V10" class="axis"/>
       <path d="M10 108 L190 70" class="linear"/>
-      <path d="M10 108 C110 106 150 90 188 12" class="expo" pathLength="1"/>
+      <path d="M10 108 C70 108 130 106 188 98" class="expo"><animate attributeName="d" begin="0.8s" dur="3s" fill="freeze" values="M10 108 C70 108 130 106 188 98;M10 108 C70 108 130 106 188 98;M10 108 C90 107 140 98 188 72;M10 108 C90 107 140 98 188 72;M10 108 C100 106 145 90 188 42;M10 108 C100 106 145 90 188 42;M10 108 C110 106 150 90 188 12" keyTimes="0;0.2;0.3;0.53;0.63;0.87;1"/></path>
     </svg>
+    <ul class="chips" aria-label="Lint rules added">
+      <li>+ no bare except</li>
+      <li>+ zero warnings</li>
+      <li>+ http needs a timeout</li>
+    </ul>
     <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
   </section>
 
+  <section class="page demo" id="demo">
+    <h2>the whole idea in <span class="hl">fifteen seconds</span></h2>
+    <div class="tui" role="img" aria-label="A coding agent writes a blind except, the linter rejects it with an actionable hint, and the agent reads the hint and fixes it without a human">
+      <div class="tui-bar"><i></i><i></i><i></i><span>agent · ~/shop</span></div>
+      <div class="tui-body"><div class="tui-step s1"><span class="tui-prompt"></span> add retries to the payments client</div><div class="tui-step s2"><span class="tui-dot"></span> <b>Edit</b>(src/payments/client.py)
+<span class="tree"></span><span class="add">+     try:</span>
+<span class="add">    +         return client.post(url)</span>
+<span class="add">    +     except Exception:</span>
+<span class="add">    +         pass</span></div><div class="tui-step s3"><span class="tui-dot err"></span> <b>overwatch</b> <span class="err">✗ lint failed</span>
+<span class="tree"></span><span class="err">BLE001 Do not catch blind exception</span>
+<span class="dim">    hint: catch httpx.HTTPError and log it with log.warning
+    see docs/errors.md</span></div><div class="tui-step s4"><span class="tui-think"></span> <span class="dim">Read the error (2s)</span></div><div class="tui-step s5"><span class="tui-dot"></span> A blind except hides failed payments. Catching httpx.HTTPError and logging it instead.</div><div class="tui-step s6"><span class="tui-dot"></span> <b>Edit</b>(src/payments/client.py)
+<span class="tree"></span><span class="del">-     except Exception:</span>
+<span class="del">    -         pass</span>
+<span class="add">    +     except httpx.HTTPError as err:</span>
+<span class="add">    +         log.warning("retry", error=err)</span></div><div class="tui-step s7"><span class="tui-dot ok"></span> <b>overwatch</b> <span class="ok">✓ lint clean · 48/48 tests passed</span></div></div>
+      <div class="tui-input"><span class="tui-prompt"></span> <span class="tui-cursor"></span></div>
+    </div>
+    <p class="big">Nobody reviewed that. <span class="hl">The lint rule did.</span></p>
+  </section>
+
   <section class="page" id="problem">
-    <h2>the treadmill</h2>
+    <h2>agentic engineering</h2>
     <p>Your agent writes a bug. You spot it. You say <em>"please don't do that"</em>. It fixes it.</p>
     <div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
     <div class="speech right">fixed! ✨</div>
@@ -40,53 +78,72 @@
     <h2>the big idea</h2>
     <p class="big">When you find a mistake, don't fix <em>it</em>.<br>Fix <span class="hl">every future version of it</span>.</p>
     <div class="box">
-      <p>Ask one question:</p>
-      <p class="q">"What rule would have caught this <strong>automatically</strong>?"</p>
-      <p>Then write that rule. Lint it. Run it everywhere.</p>
+      <p class="q">"What deterministic rule would have caught this <strong>automatically</strong>?"</p>
+      <p>Write it as a lint rule, not a line in RULES.md. Run it everywhere.</p>
     </div>
-    <p>It's <strong>kaizen</strong> for codebases that are written by robots. Yes, Toyota did this in the 1950s. We have more YAML. Toyota called it <strong>poka yoke</strong>: mistake proofing. Make the wrong thing impossible, or at least <em>loud</em>.</p>
   </section>
 
   <section class="page" id="loop">
     <h2>the loop</h2>
-    <ol class="loop">
-      <li><b>spot</b> a mistake in a diff, a review, an incident</li>
-      <li><b>name</b> the category, not the line</li>
-      <li><b>encode</b> it as a deterministic check</li>
-      <li><b>run</b> it in the LSP, the watcher, the CI</li>
-      <li><b>let the agent self correct</b> from the error message</li>
-    </ol>
-    <p class="arrow"><span class="spin">↺</span> forever</p>
-    <p class="aside">Each lap is small. Five minutes. One rule. The point is that you never run the same lap twice.</p>
+    <div class="diagram loop-svg" style="--vbw: 460">
+      <svg viewBox="-30 0 460 330" role="img" aria-label="The loop: spot a mistake, name the category, encode a deterministic check, run it in the LSP, watcher and CI, let the agent self correct, forever">
+        <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="arrowhead"/></marker></defs>
+        <path d="M225.4 58.1 A105 105 0 0 1 289.0 104.4" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M304.7 152.7 A105 105 0 0 1 280.4 227.5" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M239.3 257.4 A105 105 0 0 1 160.7 257.4" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M119.6 227.5 A105 105 0 0 1 95.3 152.7" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M111.0 104.4 A105 105 0 0 1 174.6 58.1" class="arc" marker-end="url(#arrowhead)"/>
+        <circle r="6" class="runner"><animateMotion dur="8s" repeatCount="indefinite" path="M200 55 A105 105 0 1 1 199.99 55 z"/></circle>
+        <circle cx="200.0" cy="55.0" r="9" class="node"/>
+        <circle cx="299.9" cy="127.6" r="9" class="node"/>
+        <circle cx="261.7" cy="244.9" r="9" class="node"/>
+        <circle cx="138.3" cy="244.9" r="9" class="node"/>
+        <circle cx="100.1" cy="127.6" r="9" class="node"/>
+      </svg>
+      <span class="tag step middle" style="left: 50.0%; top: 5.2%" aria-hidden="true">spot</span>
+      <span class="tag label middle" style="left: 50.0%; top: 11.8%" aria-hidden="true">a mistake</span>
+      <span class="tag step" style="left: 75.6%; top: 37.5%" aria-hidden="true">name</span>
+      <span class="tag label" style="left: 75.6%; top: 44.1%" aria-hidden="true">the category</span>
+      <span class="tag step middle" style="left: 63.4%; top: 83.3%" aria-hidden="true">encode</span>
+      <span class="tag label middle" style="left: 63.4%; top: 90.0%" aria-hidden="true">a deterministic check</span>
+      <span class="tag step middle" style="left: 36.6%; top: 83.3%" aria-hidden="true">run</span>
+      <span class="tag label middle" style="left: 36.6%; top: 90.0%" aria-hidden="true">LSP, watcher, CI</span>
+      <span class="tag step end" style="left: 24.4%; top: 37.5%" aria-hidden="true">self correct</span>
+      <span class="tag label end" style="left: 24.4%; top: 44.1%" aria-hidden="true">from the error</span>
+      <span class="tag forever middle" style="left: 50.0%; top: 50.9%" aria-hidden="true">forever</span>
+    </div>
+    <p class="aside">Five minutes. One rule. Never the same lap twice.</p>
   </section>
 
   <section class="page" id="why">
     <h2>why <span class="hl">exponential</span>?</h2>
-    <p>A fix touches <strong>one</strong> line.</p>
-    <p>A rule touches <strong>every line</strong> written by <strong>every agent</strong> in <strong>every session</strong>, forever.</p>
-    <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
-      <path d="M20 135 H250 M20 135 V10" class="axis"/>
-      <path d="M20 132 L245 95" class="linear"/>
-      <path d="M20 132 C140 130 200 100 242 18" class="expo" pathLength="1"/>
-      <text x="150" y="130" class="label">fixing instances</text>
-      <text x="120" y="45" class="label">adding rules</text>
-      <text x="200" y="148" class="label small">time →</text>
-    </svg>
-    <p>Rules compound like interest. Your agents get <em>better</em> without getting <em>smarter</em>, because the space of wrong answers keeps shrinking.</p>
+    <p>A fix touches <strong>one</strong> line. A deterministic rule touches <strong>every line</strong>, by <strong>every agent</strong>, forever.</p>
+    <div class="diagram chart" style="--vbw: 260">
+      <svg viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
+        <path d="M20 135 H250 M20 135 V10" class="axis"/>
+        <path d="M20 132 L245 95" class="linear"/>
+        <path d="M20 132 C140 130 200 100 242 18" class="expo" pathLength="1"/>
+      </svg>
+      <span class="tag label" style="left: 63.5%; top: 85.0%" aria-hidden="true">fixing instances</span>
+      <span class="tag label" style="left: 46.2%; top: 30.0%" aria-hidden="true">adding rules</span>
+      <span class="tag label small" style="left: 76.9%; top: 98.7%" aria-hidden="true">time →</span>
+    </div>
+    <p>Your agents get <em>better</em> without getting <em>smarter</em>.</p>
   </section>
 
   <section class="page" id="both-ways">
     <h2>it cuts <span class="hl">both ways</span></h2>
     <p>Agents copy what they see. Every pattern in your repo is a template for the next thousand lines.</p>
-    <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
-      <path d="M20 75 H250 M20 140 V10" class="axis"/>
-      <path d="M20 75 C140 74 200 55 242 12" class="better" pathLength="1"/>
-      <path d="M20 75 C140 76 200 95 242 138" class="expo" pathLength="1"/>
-      <text x="120" y="38" class="label">ratchet up</text>
-      <text x="110" y="118" class="label">rot down</text>
-      <text x="200" y="88" class="label small">time →</text>
-    </svg>
-    <p>One sloppy <code>except: pass</code> becomes ten. Ten becomes the house style. The agent isn't wrong, it's <em>consistent</em>.</p>
+    <div class="diagram chart" style="--vbw: 260">
+      <svg viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
+        <path d="M20 75 H250 M20 140 V10" class="axis"/>
+        <path d="M20 75 C140 74 200 55 242 12" class="better" pathLength="1"/>
+        <path d="M20 75 C140 76 200 95 242 138" class="expo" pathLength="1"/>
+      </svg>
+      <span class="tag label" style="left: 46.2%; top: 25.3%" aria-hidden="true">ratchet up</span>
+      <span class="tag label" style="left: 42.3%; top: 78.7%" aria-hidden="true">rot down</span>
+      <span class="tag label small" style="left: 76.9%; top: 58.7%" aria-hidden="true">time →</span>
+    </div>
     <p class="big">No rules isn't standing still.<br>It's <span class="hl">compounding the other way</span>.</p>
   </section>
 
@@ -97,8 +154,7 @@
       <div><b>tied to one agent</b><span>prompts, skills, memory, clever system messages</span></div>
       <div class="hot"><b>lives in the repo</b><span>lint config, types, tests, CI, watchers</span></div>
     </div>
-    <p>The repo is the <strong>shared context</strong>. Every agent and every human reads it, every session, no setup required.</p>
-    <p class="aside">Tune the agent and you improve one tool. Harden the codebase and you improve all of them, including the ones that don't exist yet.</p>
+    <p class="aside">The repo is the shared context. Harden it and every agent gets better, including ones that don't exist yet.</p>
     <p class="credit">More: <a href="https://benomahony.com/blog/hardening-codebases-for-agentic-coding/">hardening codebases for agentic coding</a></p>
   </section>
 
@@ -111,10 +167,21 @@
       <li><b>lint rule</b> fails with a fix hint</li>
       <li><b>test</b> catches it after the fact</li>
       <li><b>review comment</b> catches it sometimes</li>
-      <li><b>AGENTS.md</b> prose: a polite wish</li>
+      <li><b>AGENTS.md, RULES.md</b> prose: a polite wish</li>
     </ol>
     <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
     <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
+  </section>
+
+  <section class="page" id="strict">
+    <h2>everything on. <span class="hl">zero warnings.</span></h2>
+    <p>NASA's Power of 10, rule 10: every warning on at the most pedantic setting, static analysers every day, and ship with <strong>zero</strong> warnings.</p>
+    <div class="stations">
+      <div><b>the usual</b><span>defaults, a few hundred warnings, infos nobody reads</span></div>
+      <div class="hot"><b>the NASA way</b><span>every rule on, strictest mode, warnings and infos fail the build</span></div>
+    </div>
+    <p class="big">A warning you tolerate is a rule you taught the agent to <span class="hl">ignore</span>.</p>
+    <p class="credit">More: <a href="https://spinroot.com/gerard/pdf/P10.pdf">The Power of 10</a> by Gerard Holzmann, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a>, and <a href="https://github.com/benomahony/zanity">zanity</a> to enforce it across Python, Zig, Go, TypeScript, Rust and Java.</p>
   </section>
 
   <section class="page" id="jit">
@@ -124,19 +191,18 @@
       <div class="hot"><b>an actionable error</b><span>appears only when the mistake happens, on the exact line, with the exact fix.</span></div>
     </div>
     <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
-    <p>A rule that never fires costs zero tokens. A rule that fires is the most relevant prompt the agent will see all day.</p>
-    <p class="aside">The best prompt arrives exactly when the agent is about to be wrong.</p>
+    <p>A lint rule that never fires costs zero tokens. One that fires is the most relevant prompt the agent will see all day.</p>
   </section>
 
   <section class="page" id="anatomy">
     <h2>anatomy of a good rule</h2>
     <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
-    <pre class="bad"><code>error: banned import</code></pre>
+    <pre class="bad"><code>error: forbidden call</code></pre>
     <p class="verdict">😐 the agent guesses</p>
-    <pre class="good"><code>error: `pandas` is banned.
-  Use duckdb for SQL style queries
-  or polars for dataframes.
-  See docs/data.md</code></pre>
+    <pre class="good"><code>error: datetime.now() reads the wall clock.
+  Use clock.now() so tests can
+  freeze time.
+  See docs/time.md</code></pre>
     <p class="verdict">😎 the agent knows</p>
     <ul class="checks">
       <li>says <b>what</b> is wrong</li>
@@ -148,12 +214,11 @@
 
   <section class="page" id="examples">
     <h2>real rules, real cheap</h2>
-    <p>Ban a library with <b>ruff</b>:</p>
-    <pre><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
-"pandas".msg = "Use duckdb or polars instead."
-"requests".msg = "Use httpx with a timeout."</code></pre>
+    <p>Point agents at the right API with <b>ruff</b>:</p>
+    <pre class="grab"><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"datetime.datetime.now".msg = "Use clock.now() so tests can freeze time."</code></pre>
     <p>Ban a pattern with <b>ast-grep</b>:</p>
-    <pre><code>id: no-print-in-lib
+    <pre class="grab"><code>id: no-print-in-lib
 language: python
 rule:
   pattern: print($$$ARGS)
@@ -164,15 +229,32 @@ severity: error</code></pre>
 
   <section class="page" id="ratchets">
     <h2>quality <span class="hl">ratchets</span></h2>
-    <p>A ratchet only turns one way. Pick a number: lint violations, type errors, coverage. Commit it. CI fails if it gets worse and tightens it when it gets better.</p>
+    <p>Pick a number. Commit it. CI fails if it gets worse and tightens when it gets better.</p>
+    <div class="ratchet" aria-hidden="true">
+      <svg class="gear" viewBox="-50 -62 100 112">
+        <path d="M0 -44 L-7 -58 L7 -58 Z" class="pawl"/>
+        <g class="wheel"><path d="M30.0 0.0 L40.0 0.0 L26.0 15.0 L34.6 20.0 L15.0 26.0 L20.0 34.6 L0.0 30.0 L0.0 40.0 L-15.0 26.0 L-20.0 34.6 L-26.0 15.0 L-34.6 20.0 L-30.0 0.0 L-40.0 0.0 L-26.0 -15.0 L-34.6 -20.0 L-15.0 -26.0 L-20.0 -34.6 L-0.0 -30.0 L-0.0 -40.0 L15.0 -26.0 L20.0 -34.6 L26.0 -15.0 L34.6 -20.0 Z"/><circle r="7"/></g>
+      </svg>
+      <div><span class="count"></span><span class="count-label">lint violations, only ever down</span></div>
+    </div>
     <pre><code>lint violations
 mon  412
 tue  398  ✓ ratchet tightened
 wed  401  ✗ CI fails: 401 &gt; 398
 thu  371  ✓ ratchet tightened</code></pre>
-    <p>No big bang cleanup. Turn the new rule on <em>today</em>, freeze the existing violations, block every new one, and let the count only fall.</p>
-    <p class="aside">Every gain gets locked in. Nobody, human or agent, can quietly give it back.</p>
+    <p class="aside">No big bang cleanup. Turn the rule on today, freeze the old violations, block every new one.</p>
     <p class="credit">Quality Ratchets are from <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> by Ben O'Mahony and Fabian Nonnenmacher (O'Reilly). See also <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#every-failure-becomes-a-ratchet">every failure becomes a ratchet</a>.</p>
+  </section>
+
+  <section class="page" id="no-backlog">
+    <h2><span class="hl">no backlog</span></h2>
+    <p>Allen Holub: "Backlogs are a symptom, not a tool." If it's important, it will come back.</p>
+    <div class="stations">
+      <div><b>the ticket</b><span>"fix lint warnings", parked forever, growing</span></div>
+      <div class="hot"><b>fix it now</b><span>the agent just made the fix cheap, so there is nothing to defer</span></div>
+    </div>
+    <p class="big">TigerStyle calls it <span class="hl">zero technical debt</span>: do it right the first time, you may never come back.</p>
+    <p class="credit">More: <a href="https://blog.holub.com/p/nobacklog">#NoBacklog</a> by Allen Holub, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a> by TigerBeetle.</p>
   </section>
 
   <section class="page" id="where">
@@ -185,7 +267,6 @@ thu  371  ✓ ratchet tightened</code></pre>
       <div><b>CI</b><span>the backstop that never sleeps</span></div>
     </div>
     <p>Agent hooks tie you to one agent. LSPs and daemons live with the codebase and work for all of them, humans included.</p>
-    <p class="aside">The shorter the loop, the less the agent wanders off building on a broken idea.</p>
   </section>
 
   <section class="page" id="overwatch">
@@ -195,10 +276,10 @@ thu  371  ✓ ratchet tightened</code></pre>
       <li>full suite runs first, so you start green</li>
       <li>every save reruns what changed</li>
       <li>failures go <b>straight back to the agent</b>, before it moves on</li>
+      <li>runs <b>zanity</b> beside your tests</li>
       <li>the turn can't end while the build is red</li>
     </ul>
-    <pre><code>overwatch zig ✓ 4/4 steps succeeded; 48/48 tests passed</code></pre>
-    <pre><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
+    <pre class="grab"><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
     <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
   </section>
 
@@ -210,7 +291,6 @@ thu  371  ✓ ratchet tightened</code></pre>
       <div class="hot"><b>thin slices</b><span>one small change, green, on trunk, next</span></div>
     </div>
     <p class="big">Most harness engineering is a workaround for <span class="hl">slices that are too thick</span>.</p>
-    <p>Trunk is the shared context. Every slice that lands keeps it current for every agent and every human.</p>
     <p class="aside">We once had a feature branch live for 45 minutes. <a href="https://benomahony.com/blog/the-45-min-long-lived-feature-branch/">We now call that long lived.</a></p>
   </section>
 
@@ -224,7 +304,6 @@ thu  371  ✓ ratchet tightened</code></pre>
     <p>The only number that matters:</p>
     <p class="big">time to <span class="hl">first customer feedback</span></p>
     <p>Not lines of code. Not PRs merged. How fast does a real person tell you whether it's any good?</p>
-    <p class="aside">Agents made building cheap. Being wrong is still expensive. Find out sooner.</p>
   </section>
 
   <section class="page" id="careful">
@@ -240,6 +319,7 @@ thu  371  ✓ ratchet tightened</code></pre>
   <section class="page" id="monday">
     <h2>try it monday</h2>
     <ul class="todo">
+      <li>turn every linter and type checker to its strictest setting</li>
       <li>keep a <b>"that again?!"</b> list for one week</li>
       <li>for each entry, find an existing lint rule</li>
       <li>no rule exists? write one with ast-grep or semgrep</li>
@@ -267,6 +347,12 @@ thu  371  ✓ ratchet tightened</code></pre>
 
   <section class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
+    <p class="pledge grab">From today, any mistake my agent makes twice becomes a deterministic rule.</p>
+    <p class="kicker">steal this: everything on, every language, one tap selects it</p>
+    <pre class="grab"><code>curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
+zanity init
+zanity check . --fail-on warning --strict</code></pre>
+    <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </section>
 
