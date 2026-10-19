@@ -11,37 +11,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="pages">
+<main class="zine">
 
   <section class="page cover" id="cover">
-    <p class="kicker">continuous improvement, but make it agentic</p>
+    <p class="issue">continuous improvement, but make it agentic</p>
     <h1>Exponential<br><span class="hl">Engineering</span></h1>
     <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
       <path d="M10 110 H190 M10 110 V10" class="axis"/>
       <path d="M10 108 L190 70" class="linear"/>
-      <path d="M10 108 C110 106 150 90 188 12" class="expo" pathLength="1"/>
+      <path d="M10 108 C110 106 150 90 188 12" class="expo"/>
     </svg>
     <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
-    <nav class="toc">
-      <a href="#problem">1. the treadmill</a>
-      <a href="#idea">2. the big idea</a>
-      <a href="#loop">3. the loop</a>
-      <a href="#why">4. why exponential?</a>
-      <a href="#both-ways">5. it cuts both ways</a>
-      <a href="#codebase">6. harden the codebase</a>
-      <a href="#ladder">7. the ladder</a>
-      <a href="#jit">8. just in time prompts</a>
-      <a href="#anatomy">9. anatomy of a rule</a>
-      <a href="#examples">10. real rules</a>
-      <a href="#ratchets">11. quality ratchets</a>
-      <a href="#where">12. where rules live</a>
-      <a href="#overwatch">13. overwatch</a>
-      <a href="#slices">14. thin slices</a>
-      <a href="#tapas">15. tapas teams</a>
-      <a href="#careful">16. careful now</a>
-      <a href="#monday">17. try it monday</a>
-      <a href="#rebrand">18. wait, isn't this just...?</a>
-    </nav>
   </section>
 
   <section class="page" id="problem">
@@ -75,7 +55,7 @@
       <li><b>run</b> it in the LSP, the watcher, the CI</li>
       <li><b>let the agent self correct</b> from the error message</li>
     </ol>
-    <p class="arrow"><span class="spin">↺</span> forever</p>
+    <p class="arrow">↺ forever</p>
     <p class="aside">Each lap is small. Five minutes. One rule. The point is that you never run the same lap twice.</p>
   </section>
 
@@ -86,7 +66,7 @@
     <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="Fixing instances grows linearly, adding rules compounds">
       <path d="M20 135 H250 M20 135 V10" class="axis"/>
       <path d="M20 132 L245 95" class="linear"/>
-      <path d="M20 132 C140 130 200 100 242 18" class="expo" pathLength="1"/>
+      <path d="M20 132 C140 130 200 100 242 18" class="expo"/>
       <text x="150" y="130" class="label">fixing instances</text>
       <text x="120" y="45" class="label">adding rules</text>
       <text x="200" y="148" class="label small">time →</text>
@@ -99,8 +79,8 @@
     <p>Agents copy what they see. Every pattern in your repo is a template for the next thousand lines.</p>
     <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
       <path d="M20 75 H250 M20 140 V10" class="axis"/>
-      <path d="M20 75 C140 74 200 55 242 12" class="better" pathLength="1"/>
-      <path d="M20 75 C140 76 200 95 242 138" class="expo" pathLength="1"/>
+      <path d="M20 75 C140 74 200 55 242 12" class="better"/>
+      <path d="M20 75 C140 76 200 95 242 138" class="expo"/>
       <text x="120" y="38" class="label">ratchet up</text>
       <text x="110" y="118" class="label">rot down</text>
       <text x="200" y="88" class="label small">time →</text>

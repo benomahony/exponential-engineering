@@ -5,6 +5,7 @@
   --hl: #ffe45c;
   --accent: #e8462e;
   --good: #2f8f5b;
+  --desk: #e9e4d8;
   --code-bg: #f1ece0;
   --on-hl: #1c1b19;
   --hl-top: 45%;
@@ -18,6 +19,7 @@
     --hl: #ffe45c;
     --accent: #ff6b57;
     --good: #5fd49a;
+    --desk: #0f1013;
     --code-bg: #2a2d34;
     --hl-top: 6%;
   }
@@ -27,21 +29,38 @@
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--desk);
   color: var(--ink);
   font: 1.25rem/1.45 "Patrick Hand", "Comic Sans MS", cursive;
 }
 
-.pages {
-  overflow-x: clip;
-  max-width: 720px;
+.zine {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 2.5rem;
+  max-width: 980px;
   margin: 0 auto;
   padding: 2.5rem 16px 4rem;
 }
 
-.page { padding: 2.5rem 0; }
-.page + .page { border-top: 2px dashed var(--muted); }
-.page.cover, .page.back { text-align: center; }
+.page {
+  position: relative;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 2rem 1.75rem 1.75rem;
+  aspect-ratio: 1 / 1.414;
+  transform: rotate(-0.6deg);
+}
+
+.page:nth-child(even) { transform: rotate(0.7deg); }
+
+.page.cover, .page.back {
+  grid-column: 1 / -1;
+  aspect-ratio: auto;
+  text-align: center;
+  transform: none;
+}
 
 h1, h2 {
   font-family: "Permanent Marker", cursive;
@@ -55,12 +74,19 @@ h2 { font-size: 2rem; }
 
 .hl {
   background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top), var(--hl) 92%, transparent 92%);
-  background-repeat: no-repeat;
   color: var(--on-hl);
   padding: 0 0.15em;
 }
 
-.kicker, .aside, .colophon { color: var(--muted); }
+.num {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-family: "Permanent Marker", cursive;
+  color: var(--muted);
+}
+
+.issue, .aside, .colophon { color: var(--muted); }
 .aside { font-style: italic; border-left: 3px dashed var(--muted); padding-left: 0.75rem; }
 .big { font-size: 1.6rem; line-height: 1.25; }
 .tagline { font-size: 1.6rem; }
@@ -175,50 +201,14 @@ pre.good { border-color: var(--good); }
 .stations .hot, .stations .hot span { background: var(--hl); color: var(--on-hl); }
 .stations span { color: var(--muted); font-size: 1.05rem; }
 
-
-@keyframes rise { from { opacity: 0; transform: translateY(1.5rem); } }
-@keyframes drop { from { opacity: 0; transform: translateY(-1.5rem) rotate(-3deg); } }
-@keyframes tilt { from { opacity: 0; transform: rotate(-4deg) scale(0.9); } }
-@keyframes slide-left { from { opacity: 0; transform: translateX(-2rem); } }
-@keyframes slide-right { from { opacity: 0; transform: translateX(2rem); } }
-@keyframes sweep { from { background-size: 0% 100%; } }
-@keyframes draw { from { stroke-dashoffset: 1; } }
-@keyframes spin { to { transform: rotate(-360deg); } }
-
-@media (prefers-reduced-motion: no-preference) {
-  .expo, .better { stroke-dasharray: 1; }
-  .spin { display: inline-block; animation: spin 3s linear infinite; }
-
-  @supports (animation-timeline: view()) {
-    .page > *, .ladder li, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
-      animation: rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 70%;
-    }
-    .page h2 { animation-name: tilt; }
-    .speech.left, .loop li:nth-child(odd) { animation-name: slide-left; }
-    .speech.right, .loop li:nth-child(even) { animation-name: slide-right; }
-    .hl {
-      animation: sweep linear both;
-      animation-timeline: view();
-      animation-range: entry 50% cover 40%;
-    }
-    .chart .expo, .chart .better {
-      animation: draw linear both;
-      animation-timeline: view();
-      animation-range: entry 30% cover 50%;
-    }
-  }
-
-  .cover > *, .cover .hl, .cover .expo { animation-timeline: auto; animation-range: normal; }
-  .cover > * { animation: rise 0.6s ease-out both; }
-  .cover h1 { animation: drop 0.7s 0.1s ease-out both; }
-  .cover .hl { animation: sweep 0.6s 0.6s ease-in-out both; }
-  .cover .expo { animation: draw 1.2s 0.8s ease-in-out both; }
-  .cover .tagline { animation-delay: 0.4s; }
-  .cover .toc { animation-delay: 0.6s; }
+@media (max-width: 520px) {
+  .page { aspect-ratio: auto; transform: none; }
+  .page:nth-child(even) { transform: none; }
 }
 
 @media print {
   body { background: white; }
+  .zine { display: block; padding: 0; }
+  .page { box-shadow: none; transform: none; break-after: page; margin: 0; }
+  .page:nth-child(even) { transform: none; }
 }
