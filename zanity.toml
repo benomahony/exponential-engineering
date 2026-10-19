@@ -1,0 +1,2 @@
+[paths.".github/workflows/"]
+disable = ["plaintext-config-secret"]

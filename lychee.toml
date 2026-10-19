@@ -1,0 +1,14 @@
+# Link checking for index.html and README.md. See the links job in .github/workflows/lint.yml.
+
+# Share intents need a signed in browser and refuse automated clients; the font
+# preconnect origins have no page at their root. Neither is a link a reader follows.
+exclude = [
+    '^https://www\.linkedin\.com/sharing/',
+    '^https://x\.com/intent/',
+    '^https://bsky\.app/intent/',
+    '^mailto:',
+    '^https://fonts\.(googleapis|gstatic)\.com/?$',
+]
+
+max_retries = 3
+timeout = 20

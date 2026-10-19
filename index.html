@@ -19,8 +19,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
-  <link rel="stylesheet" href="animations.css?v=2">
+  <link rel="stylesheet" href="style.css?v=f94cb863">
+  <link rel="stylesheet" href="animations.css?v=e8cfa2dd">
 </head>
 <body>
 <main class="pages">
@@ -329,6 +329,21 @@ thu  371  ✓ ratchet tightened</code></pre>
     </ul>
   </section>
 
+  <section class="page" id="preach">
+    <h2>we <span class="hl">practice what we preach</span></h2>
+    <p>This page only ships when every check below passes on its strictest setting, with zero findings.</p>
+    <ul class="checks">
+      <li><b>zanity</b> strict, on the code and the CI workflows</li>
+      <li><b>axe</b> accessibility, light and dark, desktop and phone</li>
+      <li><b>W3C Nu validator</b> for HTML, warnings are errors</li>
+      <li><b>stylelint</b> standard for CSS</li>
+      <li><b>actionlint</b> and <b>zizmor</b> pedantic for the workflows</li>
+      <li><b>typos</b> for spelling, <b>lychee</b> for every link</li>
+      <li><b>pytest</b>: every correction we got became a deterministic rule</li>
+    </ul>
+    <p class="credit">See them run: <a href="https://github.com/benomahony/exponential-engineering/blob/main/.github/workflows/lint.yml">.github/workflows/lint.yml</a></p>
+  </section>
+
   <section class="page" id="rebrand">
     <h2>wait, isn't this just <span class="hl">continuous improvement</span>?</h2>
     <p>...yes. 🤫</p>
@@ -345,7 +360,7 @@ thu  371  ✓ ratchet tightened</code></pre>
     <p class="aside">Please don't tell W. Edwards Deming we put a GPU in it.</p>
   </section>
 
-  <section class="page back" id="back">
+  <footer class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
     <p class="pledge grab">From today, any mistake my agent makes twice becomes a deterministic rule.</p>
     <p class="kicker">steal this: everything on, every language, one tap selects it</p>
@@ -354,7 +369,7 @@ zanity init
 zanity check . --fail-on warning --strict</code></pre>
     <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
-  </section>
+  </footer>
 
 </main>
 </body>
