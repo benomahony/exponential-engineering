@@ -55,7 +55,7 @@ body {
 
 .page:nth-child(even) { transform: rotate(0.7deg); }
 
-.page.cover, .page.back {
+.page.cover, .page.back, .page.demo {
   grid-column: 1 / -1;
   aspect-ratio: auto;
   text-align: center;
@@ -202,7 +202,28 @@ pre.good { border-color: var(--good); }
 .stations .hot, .stations .hot span { background: var(--hl); color: var(--on-hl); }
 .stations span { color: var(--muted); font-size: 1.05rem; }
 
+.page.demo { text-align: left; }
+.tui { background: #15161a; color: #e8e6e1; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; font: 0.8rem/1.55 "Space Mono", monospace; margin: 1rem 0; box-shadow: 4px 4px 0 var(--ink); }
+.tui-bar { display: flex; align-items: center; gap: 6px; padding: 0.45rem 0.75rem; background: #24262c; color: #9a9ca3; }
+.tui-bar i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+.tui-bar i:nth-child(2) { background: #febc2e; }
+.tui-bar i:nth-child(3) { background: #28c840; }
+.tui-bar span { margin-left: 0.5rem; }
+.tui-body { padding: 0.75rem 1rem 0.25rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+.tui-step { margin-bottom: 0.6rem; }
+.tui-step.s1 { color: #9a9ca3; }
+.tui-input { margin: 0 0.75rem 0.75rem; padding: 0.35rem 0.6rem; border: 1px solid #4a4c53; border-radius: 6px; }
+.tui-prompt, .tui-think { color: #d97757; }
+.tui-dot { color: #e8e6e1; }
+.tui .add { color: #7ee2a8; }
+.tui .del { color: #ff8a80; }
+.tui .err { color: #ff8a80; }
+.tui .ok { color: #7ee2a8; }
+.tui .dim { color: #8a8c93; }
+
 @media (max-width: 520px) {
+  .tui { font-size: 0.68rem; }
+  .tui-body { padding: 0.6rem 0.6rem 0.2rem; }
   .page { aspect-ratio: auto; transform: none; }
   .page:nth-child(even) { transform: none; }
 }

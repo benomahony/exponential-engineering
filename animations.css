@@ -6,10 +6,29 @@
 @keyframes tilt { from { opacity: 0; transform: rotate(-4deg) scale(0.9); } }
 @keyframes slide-left { from { opacity: 0; transform: translateX(-2rem); } }
 @keyframes slide-right { from { opacity: 0; transform: translateX(2rem); } }
-@keyframes sweep { from { background-size: 0% 100%; } }
+@keyframes sweep { from { background-size: 0% 100%; color: var(--ink); } }
 @keyframes draw { from { stroke-dashoffset: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes tui-s1 { 0%, 3.1% { opacity: 0; transform: translateY(4px); } 5.1%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes tui-s2 { 0%, 15.6% { opacity: 0; transform: translateY(4px); } 17.6%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes tui-s3 { 0%, 31.2% { opacity: 0; transform: translateY(4px); } 33.2%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes tui-s4 { 0%, 43.8% { opacity: 0; transform: translateY(4px); } 45.8%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes tui-s5 { 0%, 53.1% { opacity: 0; transform: translateY(4px); } 55.1%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes tui-s6 { 0%, 62.5% { opacity: 0; transform: translateY(4px); } 64.5%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes tui-s7 { 0%, 78.1% { opacity: 0; transform: translateY(4px); } 80.1%, 95% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes blink { 50% { opacity: 0; } }
 
 @media (prefers-reduced-motion: no-preference) {
+  .tui-step.s1 { animation: tui-s1 16s linear infinite; }
+  .tui-step.s2 { animation: tui-s2 16s linear infinite; }
+  .tui-step.s3 { animation: tui-s3 16s linear infinite; }
+  .tui-step.s4 { animation: tui-s4 16s linear infinite; }
+  .tui-step.s5 { animation: tui-s5 16s linear infinite; }
+  .tui-step.s6 { animation: tui-s6 16s linear infinite; }
+  .tui-step.s7 { animation: tui-s7 16s linear infinite; }
+  .tui-cursor { animation: blink 1s steps(1) infinite; }
+  .tui-think { display: inline-block; animation: spin 2s linear infinite; }
   .chart .expo, .chart .better { stroke-dasharray: 1; }
 
   @supports (animation-timeline: view()) {

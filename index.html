@@ -31,6 +31,27 @@
     <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
   </section>
 
+  <section class="page demo" id="demo">
+    <h2>the whole idea in <span class="hl">fifteen seconds</span></h2>
+    <div class="tui" role="img" aria-label="A coding agent writes a blind except, the linter rejects it with an actionable hint, and the agent reads the hint and fixes it without a human">
+      <div class="tui-bar"><i></i><i></i><i></i><span>agent · ~/shop</span></div>
+      <div class="tui-body"><div class="tui-step s1"><span class="tui-prompt">&gt;</span> add retries to the payments client</div><div class="tui-step s2"><span class="tui-dot">●</span> <b>Edit</b>(src/payments/client.py)
+<span class="dim">  ⎿ </span><span class="add">+     try:</span>
+<span class="add">    +         return client.post(url)</span>
+<span class="add">    +     except Exception:</span>
+<span class="add">    +         pass</span></div><div class="tui-step s3"><span class="tui-dot err">●</span> <b>overwatch</b> <span class="err">✗ lint failed</span>
+<span class="dim">  ⎿ </span><span class="err">client.py:14 BLE001 Do not catch blind exception: `Exception`</span>
+<span class="dim">    hint: catch httpx.HTTPError and log it with log.warning
+    see docs/errors.md</span></div><div class="tui-step s4"><span class="tui-think">✻</span> <span class="dim">Read the error (2s)</span></div><div class="tui-step s5"><span class="tui-dot">●</span> A blind except hides failed payments. Catching httpx.HTTPError and logging it instead.</div><div class="tui-step s6"><span class="tui-dot">●</span> <b>Edit</b>(src/payments/client.py)
+<span class="dim">  ⎿ </span><span class="del">-     except Exception:</span>
+<span class="del">    -         pass</span>
+<span class="add">    +     except httpx.HTTPError as err:</span>
+<span class="add">    +         log.warning("retry", error=err)</span></div><div class="tui-step s7"><span class="tui-dot ok">●</span> <b>overwatch</b> <span class="ok">✓ lint clean · 48/48 tests passed</span></div></div>
+      <div class="tui-input"><span class="tui-prompt">&gt;</span> <span class="tui-cursor">▌</span></div>
+    </div>
+    <p class="big">Nobody reviewed that. <span class="hl">The rule did.</span></p>
+  </section>
+
   <section class="page" id="problem">
     <h2>agentic engineering</h2>
     <p>Your agent writes a bug. You spot it. You say <em>"please don't do that"</em>. It fixes it.</p>
