@@ -113,7 +113,8 @@ pre.good { border-color: var(--good); }
 
 .curve, .chart { width: 100%; max-width: 260px; display: block; margin: 0.5rem auto; }
 .chart { max-width: 340px; }
-.axis, .linear, .expo { fill: none; stroke-linecap: round; }
+.axis, .linear, .expo, .better { fill: none; stroke-linecap: round; }
+.better { stroke: var(--good); stroke-width: 4; }
 .axis { stroke: var(--ink); stroke-width: 2; }
 .linear { stroke: var(--muted); stroke-width: 3; stroke-dasharray: 6 6; }
 .expo { stroke: var(--accent); stroke-width: 4; }

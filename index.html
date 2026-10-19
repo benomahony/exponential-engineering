@@ -27,12 +27,16 @@
       <a href="#idea">2. the big idea</a>
       <a href="#loop">3. the loop</a>
       <a href="#why">4. why exponential?</a>
-      <a href="#ladder">5. the ladder</a>
-      <a href="#anatomy">6. anatomy of a rule</a>
-      <a href="#examples">7. real rules</a>
-      <a href="#where">8. where rules live</a>
-      <a href="#careful">9. careful now</a>
-      <a href="#monday">10. try it monday</a>
+      <a href="#both-ways">5. it cuts both ways</a>
+      <a href="#codebase">6. harden the codebase</a>
+      <a href="#ladder">7. the ladder</a>
+      <a href="#anatomy">8. anatomy of a rule</a>
+      <a href="#examples">9. real rules</a>
+      <a href="#ratchets">10. quality ratchets</a>
+      <a href="#where">11. where rules live</a>
+      <a href="#overwatch">12. overwatch</a>
+      <a href="#careful">13. careful now</a>
+      <a href="#monday">14. try it monday</a>
     </nav>
   </section>
 
@@ -90,8 +94,36 @@
     <p>Rules compound like interest. Your agents get <em>better</em> without getting <em>smarter</em>, because the space of wrong answers keeps shrinking.</p>
   </section>
 
-  <section class="page" id="ladder">
+  <section class="page" id="both-ways">
     <span class="num">5</span>
+    <h2>it cuts <span class="hl">both ways</span></h2>
+    <p>Agents copy what they see. Every pattern in your repo is a template for the next thousand lines.</p>
+    <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="With rules quality compounds upwards, without rules it compounds downwards">
+      <path d="M20 75 H250 M20 140 V10" class="axis"/>
+      <path d="M20 75 C140 74 200 55 242 12" class="better"/>
+      <path d="M20 75 C140 76 200 95 242 138" class="expo"/>
+      <text x="120" y="38" class="label">ratchet up</text>
+      <text x="110" y="118" class="label">rot down</text>
+      <text x="200" y="88" class="label small">time →</text>
+    </svg>
+    <p>One sloppy <code>except: pass</code> becomes ten. Ten becomes the house style. The agent isn't wrong, it's <em>consistent</em>.</p>
+    <p class="big">No rules isn't standing still.<br>It's <span class="hl">compounding the other way</span>.</p>
+  </section>
+
+  <section class="page" id="codebase">
+    <span class="num">6</span>
+    <h2>harden the <span class="hl">codebase</span>, not the agent</h2>
+    <p>Agents come and go. Claude Code today, Codex tomorrow, something new next quarter.</p>
+    <div class="stations">
+      <div><b>tied to one agent</b><span>prompts, skills, memory, clever system messages</span></div>
+      <div><b>lives in the repo</b><span>lint config, types, tests, CI, watchers</span></div>
+    </div>
+    <p>The repo is the <strong>shared context</strong>. Every agent and every human reads it, every session, no setup required.</p>
+    <p class="aside">Tune the agent and you improve one tool. Harden the codebase and you improve all of them, including the ones that don't exist yet.</p>
+  </section>
+
+  <section class="page" id="ladder">
+    <span class="num">7</span>
     <h2>the enforcement ladder</h2>
     <p>Not all "rules" are equal. Climb as high as you can.</p>
     <ol class="ladder" reversed>
@@ -106,7 +138,7 @@
   </section>
 
   <section class="page" id="anatomy">
-    <span class="num">6</span>
+    <span class="num">8</span>
     <h2>anatomy of a good rule</h2>
     <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
     <pre class="bad"><code>error: banned import</code></pre>
@@ -125,7 +157,7 @@
   </section>
 
   <section class="page" id="examples">
-    <span class="num">7</span>
+    <span class="num">9</span>
     <h2>real rules, real cheap</h2>
     <p>Ban a library with <b>ruff</b>:</p>
     <pre><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
@@ -141,8 +173,21 @@ severity: error</code></pre>
     <p class="aside">Most mistakes are already a rule someone wrote. Turn it on before you write your own.</p>
   </section>
 
+  <section class="page" id="ratchets">
+    <span class="num">10</span>
+    <h2>quality <span class="hl">ratchets</span></h2>
+    <p>A ratchet only turns one way. Pick a number: lint violations, type errors, coverage. Commit it. CI fails if it gets worse and tightens it when it gets better.</p>
+    <pre><code>lint violations
+mon  412
+tue  398  ✓ ratchet tightened
+wed  401  ✗ CI fails: 401 &gt; 398
+thu  371  ✓ ratchet tightened</code></pre>
+    <p>No big bang cleanup. Turn the new rule on <em>today</em>, freeze the existing violations, block every new one, and let the count only fall.</p>
+    <p class="aside">Every gain gets locked in. Nobody, human or agent, can quietly give it back.</p>
+  </section>
+
   <section class="page" id="where">
-    <span class="num">8</span>
+    <span class="num">11</span>
     <h2>where rules live</h2>
     <p>Run them where the agent will trip over them <span class="hl">fastest</span>.</p>
     <div class="stations">
@@ -154,8 +199,23 @@ severity: error</code></pre>
     <p class="aside">The shorter the loop, the less the agent wanders off building on a broken idea.</p>
   </section>
 
+  <section class="page" id="overwatch">
+    <span class="num">12</span>
+    <h2><span class="hl">overwatch</span></h2>
+    <p>The fastest loop is the one nobody has to start. Run your tests and linters in <b>watch mode</b>, right beside the agent.</p>
+    <ul class="checks">
+      <li>full suite runs first, so you start green</li>
+      <li>every save reruns what changed</li>
+      <li>failures go <b>straight back to the agent</b>, before it moves on</li>
+      <li>the turn can't end while the build is red</li>
+    </ul>
+    <pre><code>overwatch zig ✓ 4/4 steps succeeded; 48/48 tests passed</code></pre>
+    <pre><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
+    <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
+  </section>
+
   <section class="page" id="careful">
-    <span class="num">9</span>
+    <span class="num">13</span>
     <h2>careful now</h2>
     <ul class="warn">
       <li><b>noisy rules are bugs.</b> A false positive teaches agents (and humans) to add <code>noqa</code> everywhere.</li>
@@ -166,14 +226,14 @@ severity: error</code></pre>
   </section>
 
   <section class="page" id="monday">
-    <span class="num">10</span>
+    <span class="num">14</span>
     <h2>try it monday</h2>
     <ul class="todo">
       <li>keep a <b>"that again?!"</b> list for one week</li>
       <li>for each entry, find an existing lint rule</li>
       <li>no rule exists? write one with ast-grep or semgrep</li>
-      <li>wire lint into your agent's post edit hook</li>
-      <li>make CI fail on it</li>
+      <li>run tests and lint in watch mode with overwatch</li>
+      <li>make CI fail on it, and ratchet the count down</li>
       <li>delete the matching line from AGENTS.md 🎉</li>
     </ul>
   </section>
