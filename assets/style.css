@@ -78,7 +78,11 @@ h2 { font-size: 2rem; }
   padding: 0 0.15em;
 }
 
-.num {
+.zine { counter-reset: page; }
+div.page { counter-increment: page; }
+
+div.page::after {
+  content: counter(page);
   position: absolute;
   bottom: 0.75rem;
   right: 1rem;
@@ -125,15 +129,22 @@ pre.good { border-color: var(--good); }
 .label { fill: var(--ink); font: 14px "Patrick Hand", cursive; }
 .label.small { font-size: 11px; fill: var(--muted); }
 
-.toc {
+.toc ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.4rem 1rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc;
 }
 
 .toc a { text-decoration: none; border-bottom: 2px solid var(--hl); }
+.toc a::before { counter-increment: toc; content: counter(toc) ". "; }
+
+.page h2 a { color: inherit; text-decoration: none; }
+.block > p:empty { display: none; }
 
 .speech {
   border: 2px solid var(--ink);
@@ -153,9 +164,9 @@ pre.good { border-color: var(--good); }
   margin: 1rem 0;
 }
 
-.q { font-size: 1.5rem; color: var(--accent); }
+.box em { font-size: 1.4rem; color: var(--accent); }
 
-.loop, .ladder { padding-left: 0; list-style: none; }
+.loop ol, .ladder ul { padding-left: 0; list-style: none; }
 
 .loop li {
   border: 2px solid var(--ink);
@@ -176,7 +187,7 @@ pre.good { border-color: var(--good); }
 .ladder li:first-child { background: var(--hl); color: var(--on-hl); border-top: 2px solid var(--ink); }
 .ladder li:last-child { color: var(--muted); }
 
-.checks, .todo, .warn { padding-left: 1.25rem; }
+.checks ul, .todo ul, .warn ul { padding-left: 1.25rem; }
 .checks li::marker { content: "✓ "; color: var(--good); }
 .todo li::marker { content: "☐ "; }
 .warn li::marker { content: "⚠ "; color: var(--accent); }
@@ -184,7 +195,7 @@ pre.good { border-color: var(--good); }
 
 .credit { font-size: 1rem; color: var(--muted); }
 
-.rebrand { width: 100%; border-collapse: collapse; font-size: 1.05rem; line-height: 1.25; }
+.rebrand table { width: 100%; border-collapse: collapse; font-size: 1.05rem; line-height: 1.25; }
 .rebrand th, .rebrand td { border: 2px solid var(--ink); padding: 0.3rem 0.5rem; text-align: left; vertical-align: top; }
 .rebrand th { background: var(--hl); color: var(--on-hl); font-weight: normal; font-family: "Permanent Marker", cursive; }
 .rebrand td:first-child { color: var(--muted); }
