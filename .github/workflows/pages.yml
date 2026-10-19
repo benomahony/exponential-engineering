@@ -1,9 +1,8 @@
-name: Website
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -17,19 +16,15 @@ concurrency:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - name: Setup Zine
-        uses: kristoff-it/setup-zine@v2
-      - name: Build site
-        run: zine release
+      - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: public
-      - uses: actions/deploy-pages@v4
-        id: deployment
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
