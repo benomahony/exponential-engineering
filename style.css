@@ -239,6 +239,11 @@ pre.good { border-color: var(--good); }
 .tui .err { color: #ff8a80; }
 .tui .ok { color: #7ee2a8; }
 .tui .dim { color: #8a8c93; }
+.tui-dot::before { content: "●" / ""; }
+.tui-prompt::before { content: ">" / ""; }
+.tui-think::before { content: "✻" / ""; }
+.tui-cursor::before { content: "▌" / ""; }
+.tree::before { content: "  ⎿ " / ""; color: #8a8c93; }
 
 @media (max-width: 520px) {
   .tui { font-size: 0.68rem; }
