@@ -5,10 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: pages
@@ -16,12 +13,19 @@ concurrency:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write # publish the site to GitHub Pages
+      id-token: write # prove to Pages this run is allowed to deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
