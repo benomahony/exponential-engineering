@@ -187,11 +187,11 @@
   <section class="page" id="examples">
     <h2>real rules, real cheap</h2>
     <p>Ban a library with <b>ruff</b>:</p>
-    <pre><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
+    <pre class="grab"><code>[tool.ruff.lint.flake8-tidy-imports.banned-api]
 "pandas".msg = "Use duckdb or polars instead."
 "requests".msg = "Use httpx with a timeout."</code></pre>
     <p>Ban a pattern with <b>ast-grep</b>:</p>
-    <pre><code>id: no-print-in-lib
+    <pre class="grab"><code>id: no-print-in-lib
 language: python
 rule:
   pattern: print($$$ARGS)
@@ -240,7 +240,7 @@ thu  371  ✓ ratchet tightened</code></pre>
       <li>failures go <b>straight back to the agent</b>, before it moves on</li>
       <li>the turn can't end while the build is red</li>
     </ul>
-    <pre><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
+    <pre class="grab"><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
     <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
   </section>
 
@@ -307,6 +307,15 @@ thu  371  ✓ ratchet tightened</code></pre>
 
   <section class="page back" id="back">
     <p class="big">Every mistake is a gift.<br><span class="hl">Unwrap it once.</span></p>
+    <p class="pledge grab">From today, any mistake my agent makes twice becomes a rule.</p>
+    <p class="kicker">steal this starter config, one tap selects it</p>
+    <pre class="grab"><code>[tool.ruff.lint]
+select = ["E", "F", "BLE", "S", "TID"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"pandas".msg = "Use duckdb or polars instead."
+"requests".msg = "Use httpx with a timeout."</code></pre>
+    <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </section>
 

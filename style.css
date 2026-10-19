@@ -188,6 +188,12 @@ pre.good { border-color: var(--good); }
 
 .credit { font-size: 1rem; color: var(--muted); }
 
+.grab { -webkit-user-select: all; user-select: all; cursor: copy; }
+.back pre { text-align: left; max-width: 34rem; margin: 0.5rem auto 1.25rem; }
+.pledge { font: 1.5rem/1.3 "Permanent Marker", cursive; max-width: 30rem; margin: 1rem auto; }
+.share a { display: inline-block; margin: 0.25rem; padding: 0.15rem 0.7rem; border: 2px solid var(--ink); background: var(--hl); color: var(--on-hl); text-decoration: none; box-shadow: 3px 3px 0 var(--ink); }
+.share a:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+
 @property --violations { syntax: "<integer>"; inherits: false; initial-value: 317; }
 .ratchet { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 0.5rem 0 1rem; }
 .gear { width: 90px; overflow: visible; }
