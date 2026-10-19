@@ -90,6 +90,10 @@ h2 { font-size: 2rem; }
 .aside { font-style: italic; border-left: 3px dashed var(--muted); padding-left: 0.75rem; }
 .big { font-size: 1.6rem; line-height: 1.25; }
 .tagline { font-size: 1.6rem; }
+.lede { font-size: 1.35rem; max-width: 34rem; margin: 0 auto 0.5rem; }
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; list-style: none; padding: 0; margin: 0 0 0.5rem; }
+.chips li { font-family: "Space Mono", monospace; font-size: 0.8rem; background: var(--hl); color: var(--on-hl); border: 2px solid var(--ink); padding: 0.1rem 0.5rem; transform: rotate(-2deg); }
+.chips li:nth-child(2) { transform: rotate(1.5deg); }
 .verdict { margin: 0.25rem 0 0.75rem; }
 
 a { color: inherit; }

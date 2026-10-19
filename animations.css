@@ -10,7 +10,7 @@
 @keyframes draw { from { stroke-dashoffset: 1; } }
 
 @media (prefers-reduced-motion: no-preference) {
-  .expo, .better { stroke-dasharray: 1; }
+  .chart .expo, .chart .better { stroke-dasharray: 1; }
 
   @supports (animation-timeline: view()) {
     .page > *, .ladder li, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
@@ -33,11 +33,15 @@
     }
   }
 
-  .cover > *, .cover .hl, .cover .expo { animation-timeline: auto; animation-range: normal; }
+  .cover > *, .cover .hl { animation-timeline: auto; animation-range: normal; }
   .cover > * { animation: rise 0.6s ease-out both; }
   .cover h1 { animation: drop 0.7s 0.1s ease-out both; }
   .cover .hl { animation: sweep 0.6s 0.6s ease-in-out both; }
-  .cover .expo { animation: draw 1.2s 0.8s ease-in-out both; }
+  .cover .chips li { animation: drop 0.4s ease-out both; }
+  .cover .chips li:nth-child(1) { animation-delay: 1.2s; }
+  .cover .chips li:nth-child(2) { animation-delay: 2.2s; }
+  .cover .chips li:nth-child(3) { animation-delay: 3.2s; }
+  .cover .lede { animation-delay: 0.3s; }
   .cover .tagline { animation-delay: 0.4s; }
 }
 
