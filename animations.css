@@ -1,4 +1,4 @@
-.zine { overflow-x: clip; }
+.pages { overflow-x: clip; }
 .hl { background-repeat: no-repeat; }
 
 @keyframes rise { from { opacity: 0; transform: translateY(1.5rem); } }
