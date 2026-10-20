@@ -144,17 +144,30 @@
 
   <section class="page" id="ladder">
     <h2>the enforcement ladder</h2>
-    <p>Not all "rules" are equal. Climb as high as you can.</p>
+    <p>One bug, every rung: <b>a password ends up in the logs</b>. Climb as high as you can.</p>
     <ol class="ladder" reversed>
-      <li><b>unrepresentable</b> types make it impossible</li>
-      <li><b>type checker</b> fails the build</li>
-      <li><b>lint rule</b> fails with a fix hint</li>
-      <li><b>test</b> catches it after the fact</li>
+      <li><b>delete it</b> hash at the edge, the raw password never enters the code</li>
+      <li><b>unrepresentable</b> a <code>Secret</code> with no readable value, so there is nothing to log</li>
+      <li><b>type checker</b> a <code>Secret</code> won't pass where a <code>str</code> is expected</li>
+      <li><b>runtime assertion</b> the logger refuses anything shaped like a secret</li>
+      <li><b>lint rule</b> flags <code>log.info(password)</code> as it's typed</li>
+      <li><b>test</b> catches it after it's written</li>
       <li><b>review comment</b> catches it sometimes</li>
-      <li><b>AGENTS.md, RULES.md</b> prose: a polite wish</li>
+      <li><b>AGENTS.md, RULES.md</b> "please don't log secrets"</li>
     </ol>
     <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
     <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
+  </section>
+
+  <section class="page" id="protect">
+    <h2>protect the <span class="hl">ladder</span></h2>
+    <p>Agents climb down. Stuck on a red build, they reach for the escape hatch.</p>
+    <div class="stations">
+      <div><b>climbing down</b><span>a <code>noqa</code>, a loosened config, a skipped test, a deleted assertion</span></div>
+      <div class="hot"><b>rules about the rules</b><span>lint config changes need review, relaxed checks fail the build, the ratchet only tightens</span></div>
+    </div>
+    <p class="big">The top rung is a rule that <span class="hl">stops the rules getting weaker</span>.</p>
+    <p class="credit">zanity's <code>relaxed-check</code> rule catches <code>continue-on-error: true</code>, <code>|| true</code>, <code>--exit-zero</code> and friends.</p>
   </section>
 
   <section class="page" id="strict">
