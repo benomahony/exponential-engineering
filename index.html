@@ -148,24 +148,22 @@
     <h2>the enforcement ladder</h2>
     <p>Remember the agent's blind <code>except</code>? Push every mistake as high up as it will go.</p>
     <div class="diagram chart" style="--vbw: 300">
-      <svg viewBox="0 0 300 290" role="img" aria-label="A ladder with five rungs. From the top: gone, it can't exist. Impossible, it can't be written. Type checker, it won't build. Lint rule, caught as it's typed, which is where the blind except is caught. AGENTS.md at the bottom, a polite wish.">
-        <path d="M85 15 V280 M155 15 V280" class="axis"/>
+      <svg viewBox="0 0 300 235" role="img" aria-label="A ladder with four rungs. From the top: impossible, it can't be written. Type checker, it won't build. Lint rule, caught as it's typed, which is where the blind except is caught. AGENTS.md at the bottom, a polite wish.">
+        <path d="M85 15 V225 M155 15 V225" class="axis"/>
         <path d="M85 40 H155" class="better"/>
-        <path d="M85 95 H155 M85 150 H155 M85 205 H155" class="axis"/>
-        <path d="M85 260 H155" class="linear"/>
-        <circle cx="120" cy="205" r="7" class="node caught"/>
+        <path d="M85 95 H155 M85 150 H155" class="axis"/>
+        <path d="M85 205 H155" class="linear"/>
+        <circle cx="120" cy="150" r="7" class="node caught"/>
       </svg>
-      <span class="tag step" style="left: 56.7%; top: 12.4%" aria-hidden="true">gone</span>
-      <span class="tag label" style="left: 56.7%; top: 20.0%" aria-hidden="true">can't exist</span>
-      <span class="tag step" style="left: 56.7%; top: 31.4%" aria-hidden="true">impossible</span>
-      <span class="tag label" style="left: 56.7%; top: 39.0%" aria-hidden="true">can't be written</span>
-      <span class="tag step" style="left: 56.7%; top: 50.3%" aria-hidden="true">type checker</span>
-      <span class="tag label" style="left: 56.7%; top: 57.9%" aria-hidden="true">won't build</span>
-      <span class="tag step" style="left: 56.7%; top: 69.3%" aria-hidden="true">lint rule</span>
-      <span class="tag label" style="left: 56.7%; top: 76.9%" aria-hidden="true">caught as it's typed</span>
-      <span class="tag step" style="left: 56.7%; top: 88.3%" aria-hidden="true">AGENTS.md</span>
-      <span class="tag label" style="left: 56.7%; top: 95.9%" aria-hidden="true">a polite wish</span>
-      <span class="tag label end" style="left: 25.0%; top: 72.4%" aria-hidden="true">blind except</span>
+      <span class="tag step" style="left: 56.7%; top: 15.3%" aria-hidden="true">impossible</span>
+      <span class="tag label" style="left: 56.7%; top: 24.7%" aria-hidden="true">can't be written</span>
+      <span class="tag step" style="left: 56.7%; top: 38.7%" aria-hidden="true">type checker</span>
+      <span class="tag label" style="left: 56.7%; top: 48.1%" aria-hidden="true">won't build</span>
+      <span class="tag step" style="left: 56.7%; top: 62.1%" aria-hidden="true">lint rule</span>
+      <span class="tag label" style="left: 56.7%; top: 71.5%" aria-hidden="true">caught as it's typed</span>
+      <span class="tag step" style="left: 56.7%; top: 85.5%" aria-hidden="true">AGENTS.md</span>
+      <span class="tag label" style="left: 56.7%; top: 94.9%" aria-hidden="true">a polite wish</span>
+      <span class="tag label end" style="left: 25.0%; top: 66.0%" aria-hidden="true">blind except</span>
     </div>
     <p class="q">Every rung up removes a way to be wrong.</p>
     <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
