@@ -260,24 +260,6 @@ pre.good { border-color: var(--good); }
   border-bottom: 2px solid var(--hl);
 }
 
-.speech {
-  border: 2px solid var(--ink);
-  border-radius: 1rem;
-  padding: 0.4rem 0.8rem;
-  margin: 0.5rem 0;
-  max-width: 85%;
-  background: var(--paper);
-}
-
-.speech.left { border-bottom-left-radius: 0; }
-
-.speech.right {
-  margin-left: auto;
-  border-bottom-right-radius: 0;
-  background: var(--hl);
-  color: var(--on-hl);
-}
-
 .box {
   border: 2px dashed var(--ink);
   padding: 0.5rem 1rem;

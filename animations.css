@@ -21,20 +21,6 @@
   }
 }
 
-@keyframes slide-left {
-  from {
-    opacity: 0;
-    transform: translateX(-2rem);
-  }
-}
-
-@keyframes slide-right {
-  from {
-    opacity: 0;
-    transform: translateX(2rem);
-  }
-}
-
 @keyframes sweep {
   from {
     background: linear-gradient(transparent var(--hl-top), var(--hl) var(--hl-top)) 0 0 / 0% 100% no-repeat;
@@ -166,7 +152,11 @@
   50% { opacity: 0; }
 }
 
+.cover .morph { display: none; }
+
 @media (prefers-reduced-motion: no-preference) {
+  .cover .still { display: none; }
+  .cover .morph { display: inline; }
   .tui-step.s1 { animation: tui-s1 16s linear infinite; }
   .tui-step.s2 { animation: tui-s2 16s linear infinite; }
   .tui-step.s3 { animation: tui-s3 16s linear infinite; }
@@ -189,8 +179,6 @@
       animation-range: entry 0% entry 70%;
     }
     .page h2 { animation-name: tilt; }
-    .speech.left { animation-name: slide-left; }
-    .speech.right { animation-name: slide-right; }
 
     .hl {
       animation: sweep linear both;

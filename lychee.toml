@@ -3,7 +3,7 @@
 # Share intents need a signed in browser and refuse automated clients; the font
 # preconnect origins have no page at their root. Neither is a link a reader follows.
 exclude = [
-    '^https://www\.linkedin\.com/sharing/',
+    '^https://www\.linkedin\.com/feed/',
     '^https://x\.com/intent/',
     '^https://bsky\.app/intent/',
     '^mailto:',
