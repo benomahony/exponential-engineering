@@ -363,15 +363,26 @@ thu  371  ✓ ratchet tightened</code></pre>
 
   <section class="page" id="preach">
     <h2>we <span class="hl">practice what we preach</span></h2>
-    <p>This page only ships when every check below passes on its strictest setting, with zero findings.</p>
+    <p>Every change runs zanity strict, axe, the W3C Nu validator, stylelint, actionlint, zizmor pedantic, typos and lychee with zero findings. Then these rules, each one a correction we got along the way:</p>
     <ul class="checks">
-      <li><b>zanity</b> strict, on the code and the CI workflows</li>
-      <li><b>axe</b> accessibility, light and dark, desktop and phone</li>
-      <li><b>W3C Nu validator</b> for HTML, warnings are errors</li>
-      <li><b>stylelint</b> standard for CSS</li>
-      <li><b>actionlint</b> and <b>zizmor</b> pedantic for the workflows</li>
-      <li><b>typos</b> for spelling, <b>lychee</b> for every link</li>
-      <li><b>pytest</b>: every correction we got became a deterministic rule</li>
+      <li data-test="test_page_has_no_accessibility_findings">axe finds nothing, light and dark, desktop and phone</li>
+      <li data-test="test_copy_has_no_em_or_en_dashes">no em or en dashes in the copy</li>
+      <li data-test="test_copy_does_not_name_and_shame_libraries">no naming and shaming libraries</li>
+      <li data-test="test_copy_does_not_ban_things">no banning language</li>
+      <li data-test="test_cover_says_deterministic_rule_not_rules_md">the cover says deterministic rule, not RULES.md</li>
+      <li data-test="test_page_ships_no_javascript">no JavaScript</li>
+      <li data-test="test_local_stylesheets_are_versioned_by_their_content">stylesheets versioned by their content, so phones never keep stale CSS</li>
+      <li data-test="test_social_card_is_1200_by_630_and_linked">a 1200x630 social card behind every share</li>
+      <li data-test="test_in_page_links_point_at_real_ids">every in page link lands</li>
+      <li data-test="test_external_links_use_https">every external link is https</li>
+      <li data-test="test_page_never_scrolls_sideways">never scrolls sideways, from 320 to 1440px</li>
+      <li data-test="test_everything_animated_in_ends_visible">nothing stays invisible after its animation</li>
+      <li data-test="test_page_loads_without_console_errors">no console errors</li>
+      <li data-test="test_highlighted_text_reads_on_its_band_and_on_the_paper">highlighted text reads on its band and on the paper</li>
+      <li data-test="test_highlights_never_cover_a_neighbouring_line">highlights never cover a neighbouring line</li>
+      <li data-test="test_reduced_motion_shows_the_finished_cover_curve_without_animating">reduced motion means a still cover</li>
+      <li data-test="test_every_card_grows_to_fit_its_content">every card grows to fit its content</li>
+      <li data-test="test_the_rules_on_this_page_match_the_test_suite">this list matches the test suite</li>
     </ul>
     <p class="credit">See them run: <a href="https://github.com/benomahony/exponential-engineering/blob/main/.github/workflows/lint.yml">.github/workflows/lint.yml</a></p>
   </section>

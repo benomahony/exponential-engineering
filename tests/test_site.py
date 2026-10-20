@@ -11,6 +11,7 @@ ROOT = Path(__file__).parent.parent
 SITE = ROOT / "index.html"
 HTML = SITE.read_text()
 STYLESHEETS = {path.name: path.read_bytes() for path in ROOT.glob("*.css")}
+TEST_NAMES = {name for path in (ROOT / "tests").glob("test_*.py") for name in re.findall(r"^def (test_\w+)", path.read_text(), re.M)}
 SHAMED_LIBRARIES = ["pandas", "requests", "numpy", "django", "flask", "jquery"]
 DASHES = ["—", "–"]
 WIDTHS = [320, 402, 768, 1100, 1440]
@@ -272,3 +273,9 @@ def test_every_card_grows_to_fit_its_content(page: Page, width: int) -> None:
         .filter((card) => card.scrollHeight > card.clientHeight + 1)
         .map((card) => `${card.id} needs ${card.scrollHeight}px but has ${card.clientHeight}px`)""")
     assert overflowing == [], f"at {width}px these cards spill into the next one: {overflowing}. Let the card grow instead of fixing its height"
+
+
+def test_the_rules_on_this_page_match_the_test_suite() -> None:
+    listed = {attrs["data-test"] for _, attrs in parsed().tags if "data-test" in attrs}
+    assert listed, "the practice what we preach card lists no rules: give each <li> a data-test naming its test"
+    assert listed == TEST_NAMES, f"missing from the page: {sorted(TEST_NAMES - listed)}; listed but no such test: {sorted(listed - TEST_NAMES)}"
