@@ -240,6 +240,11 @@ pre.good { border-color: var(--good); }
 }
 .arrowhead { fill: var(--ink); }
 
+.zone {
+  fill: var(--hl);
+  opacity: 0.6;
+}
+
 .node {
   fill: var(--hl);
   stroke: var(--ink);

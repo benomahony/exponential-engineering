@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=cd85b784">
+  <link rel="stylesheet" href="style.css?v=627fd1ee">
   <link rel="stylesheet" href="animations.css?v=6a9bfb29">
 </head>
 <body>
@@ -267,15 +267,36 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="where">
-    <h2>where rules live</h2>
-    <p>Run them where the agent will trip over them <span class="hl">fastest</span>.</p>
-    <div class="stations">
-      <div class="hot"><b>LSP</b><span>diagnostics on every save, for every agent and every editor</span></div>
-      <div class="hot"><b>watch mode daemons</b><span>tests and linters rerun on every change, failures handed straight back</span></div>
-      <div><b>pre commit</b><span>nothing broken gets saved</span></div>
-      <div><b>CI</b><span>the backstop that never sleeps</span></div>
+    <h2>certain and <span class="hl">instant</span></h2>
+    <p>Every check sits on two axes: how sure it is, and how fast the agent hears about it. Aim for the top left.</p>
+    <div class="diagram chart" style="--vbw: 360">
+      <svg viewBox="-40 0 360 250" role="img" aria-label="Checks plotted by certainty and time to feedback: types and lint in the LSP are certain and instant, watch mode tests and pre commit are close, CI is certain but slower, a user finding it is certain but far too late, a review comment is slow and unsure, AGENTS.md is fast but only a guess">
+        <rect x="40" y="15" width="110" height="80" class="zone"/>
+        <path d="M40 210 H310 M40 210 V15" class="axis"/>
+        <circle cx="60" cy="32" r="6" class="node"/>
+        <circle cx="82" cy="52" r="6" class="node"/>
+        <circle cx="108" cy="74" r="6" class="node"/>
+        <circle cx="165" cy="92" r="6" class="node"/>
+        <circle cx="215" cy="110" r="6" class="node"/>
+        <circle cx="292" cy="42" r="6" class="node"/>
+        <circle cx="252" cy="165" r="6" class="node"/>
+        <circle cx="70" cy="186" r="6" class="node"/>
+      </svg>
+      <span class="tag label" style="left: 30.6%; top: 14.8%" aria-hidden="true">types</span>
+      <span class="tag label" style="left: 36.7%; top: 22.8%" aria-hidden="true">lint in the LSP</span>
+      <span class="tag label" style="left: 43.9%; top: 31.6%" aria-hidden="true">watch mode tests</span>
+      <span class="tag label" style="left: 59.7%; top: 38.8%" aria-hidden="true">pre commit</span>
+      <span class="tag label" style="left: 73.6%; top: 46.0%" aria-hidden="true">CI</span>
+      <span class="tag label end" style="left: 89.4%; top: 18.8%" aria-hidden="true">a user finds it</span>
+      <span class="tag label end" style="left: 78.3%; top: 68.0%" aria-hidden="true">review comment</span>
+      <span class="tag label" style="left: 33.3%; top: 76.4%" aria-hidden="true">AGENTS.md</span>
+      <span class="tag label small end" style="left: 20.6%; top: 8.8%" aria-hidden="true">certain</span>
+      <span class="tag label small end" style="left: 20.6%; top: 83.2%" aria-hidden="true">a guess</span>
+      <span class="tag label small" style="left: 22.2%; top: 92.8%" aria-hidden="true">keystroke</span>
+      <span class="tag label small end" style="left: 97.2%; top: 92.8%" aria-hidden="true">days</span>
+      <span class="tag step" style="left: 23.3%; top: 43.2%" aria-hidden="true">aim here</span>
     </div>
-    <p>Agent hooks tie you to one agent. LSPs and daemons live with the codebase and work for all of them, humans included.</p>
+    <p>Agent hooks tie you to one agent. LSPs and watch mode daemons live with the codebase and work for all of them, humans included.</p>
   </section>
 
   <section class="page" id="overwatch">
