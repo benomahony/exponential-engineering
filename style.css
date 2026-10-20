@@ -256,6 +256,7 @@ pre.good { border-color: var(--good); }
 
 .cheese {
   fill: var(--cheese);
+  fill-rule: evenodd;
   stroke: var(--ink);
   stroke-width: 2;
   stroke-linejoin: round;
@@ -266,6 +267,15 @@ pre.good { border-color: var(--good); }
   stroke: var(--ink);
   stroke-width: 2;
   stroke-linejoin: round;
+}
+
+.wall { fill: var(--rind); }
+
+.bug {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
 .hole {
