@@ -222,6 +222,7 @@ OVERLAPPING_HIGHLIGHTS = """() => {
         }
         return rects;
     };
+    for (const card of document.querySelectorAll('.page')) card.style.transform = 'none';
     const overlaps = [];
     for (const highlight of document.querySelectorAll('.hl')) {
         const block = highlight.closest('h1, h2, h3, p, li, td, th');
