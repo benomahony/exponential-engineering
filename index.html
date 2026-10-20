@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=627fd1ee">
+  <link rel="stylesheet" href="style.css?v=54c5db4e">
   <link rel="stylesheet" href="animations.css?v=6a9bfb29">
 </head>
 <body>
@@ -222,6 +222,20 @@ severity: error</code></pre>
     <p class="aside">Most mistakes are already a rule someone wrote. Turn it on before you write your own.</p>
   </section>
 
+  <section class="page" id="first-five">
+    <h2>your first <span class="hl">five rules</span></h2>
+    <p>The mistakes agents make most, and a rule that already catches each one. Turn them on today.</p>
+    <table class="rebrand">
+      <tr><th>the mistake</th><th>the rule</th></tr>
+      <tr><td>a silenced exception</td><td>ruff <code>BLE001</code>, <code>S110</code>, zanity <code>swallowed-error</code></td></tr>
+      <tr><td>an HTTP call with no timeout</td><td>ruff <code>S113</code></td></tr>
+      <tr><td>a naive <code>datetime.now()</code></td><td>ruff <code>DTZ005</code></td></tr>
+      <tr><td><code>print</code> instead of the logger</td><td>ruff <code>T201</code></td></tr>
+      <tr><td>a skipped test</td><td>zanity <code>skipped-test</code></td></tr>
+    </table>
+    <p class="aside">Each is one line of config. None of them is a line in RULES.md.</p>
+  </section>
+
   <section class="page" id="ratchets">
     <h2>quality <span class="hl">ratchets</span></h2>
     <p>Pick a number. Commit it. CI fails if it gets worse and tightens when it gets better.</p>
@@ -309,6 +323,18 @@ thu  371  ✓ ratchet tightened</code></pre>
     </ul>
     <pre class="grab"><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
     <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
+  </section>
+
+  <section class="page" id="no-factory">
+    <h2>no <span class="hl">software factory</span></h2>
+    <p>The pitch: write a spec, start a fleet of long running agents, come back to a finished product. We don't buy it.</p>
+    <div class="stations">
+      <div><b>the factory</b><span>hours of autonomous work, judged at the end, often the wrong thing built well</span></div>
+      <div class="hot"><b>I know exactly what I want</b><span>then I want it fast: a thin slice, on trunk in minutes</span></div>
+      <div class="hot"><b>I don't know what I want yet</b><span>then I want feedback fast: something real to react to in minutes, then another lap</span></div>
+    </div>
+    <p class="big">Either way the answer is <span class="hl">short loops</span>.</p>
+    <p class="aside">A long running agent is a long lived feature branch with extra steps.</p>
   </section>
 
   <section class="page" id="slices">

@@ -436,6 +436,7 @@ pre.good { border-color: var(--good); }
   font-family: "Permanent Marker", cursive;
 }
 .rebrand td:first-child { color: var(--muted); }
+.rebrand code { white-space: nowrap; }
 
 .stations {
   display: grid;
