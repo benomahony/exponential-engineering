@@ -260,3 +260,15 @@ def test_reduced_motion_shows_the_finished_cover_curve_without_animating(page: P
         .map((path) => [path.getAttribute('d'), path.querySelectorAll('animate').length])""")
     assert len(visible) == 1, f"with reduced motion the cover should show exactly one curve, found {len(visible)}"
     assert visible[0] == [FINISHED_CURVE, 0], f"with reduced motion the cover curve should be the finished one with no animation, found {visible[0]}"
+
+
+@pytest.mark.parametrize("width", WIDTHS)
+def test_every_card_grows_to_fit_its_content(page: Page, width: int) -> None:
+    page.emulate_media(reduced_motion="reduce")
+    page.set_viewport_size({"width": width, "height": 900})
+    page.goto(SITE.as_uri())
+    page.evaluate("document.fonts.ready.then(() => true)")
+    overflowing = page.evaluate("""() => [...document.querySelectorAll('.page')]
+        .filter((card) => card.scrollHeight > card.clientHeight + 1)
+        .map((card) => `${card.id} needs ${card.scrollHeight}px but has ${card.clientHeight}px`)""")
+    assert overflowing == [], f"at {width}px these cards spill into the next one: {overflowing}. Let the card grow instead of fixing its height"
