@@ -275,10 +275,11 @@ pre.good { border-color: var(--good); }
 
 .slice {
   --holes:
-    radial-gradient(3.4cqi 3.4cqi at 50% 42%, #0000 97%, #000),
-    radial-gradient(2.4cqi 2.4cqi at 30% 18%, #0000 97%, #000),
-    radial-gradient(1.4cqi 1.4cqi at 70% 68%, #0000 97%, #000),
-    radial-gradient(3cqi 3cqi at 100% 75%, #0000 97%, #000);
+    radial-gradient(3cqi 3cqi at 35% 25%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 65% 52%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 40% 78%, #0000 97%, #000),
+    radial-gradient(1.2cqi 1.2cqi at 80% 12%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 100% 30%, #0000 97%, #000);
 
   position: absolute;
   left: 50%;
@@ -294,28 +295,28 @@ pre.good { border-color: var(--good); }
 .slice:nth-child(2) {
   --i: 1;
   --holes:
-    radial-gradient(3.4cqi 3.4cqi at 50% 42%, #0000 97%, #000),
-    radial-gradient(2cqi 2cqi at 25% 70%, #0000 97%, #000),
-    radial-gradient(3cqi 3cqi at 72% 20%, #0000 97%, #000),
-    radial-gradient(1.2cqi 1.2cqi at 40% 85%, #0000 97%, #000),
-    radial-gradient(3cqi 3cqi at 0% 30%, #0000 97%, #000);
+    radial-gradient(3cqi 3cqi at 65% 52%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 40% 78%, #0000 97%, #000),
+    radial-gradient(1.4cqi 1.4cqi at 75% 20%, #0000 97%, #000),
+    radial-gradient(2cqi 2cqi at 20% 55%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 0% 92%, #0000 97%, #000);
 }
 
 .slice:nth-child(3) {
   --i: 2;
   --holes:
-    radial-gradient(3.4cqi 3.4cqi at 50% 42%, #0000 97%, #000),
-    radial-gradient(2.6cqi 2.6cqi at 68% 78%, #0000 97%, #000),
-    radial-gradient(1.4cqi 1.4cqi at 25% 15%, #0000 97%, #000),
-    radial-gradient(3cqi 3cqi at 40% 0%, #0000 97%, #000);
+    radial-gradient(3cqi 3cqi at 40% 78%, #0000 97%, #000),
+    radial-gradient(2.4cqi 2.4cqi at 30% 22%, #0000 97%, #000),
+    radial-gradient(1.4cqi 1.4cqi at 80% 85%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 45% 0%, #0000 97%, #000);
 }
 
 .slice:nth-child(4) {
   --i: 3;
   --holes:
-    radial-gradient(3.4cqi 3.4cqi at 35% 22%, #0000 97%, #000),
-    radial-gradient(2cqi 2cqi at 30% 75%, #0000 97%, #000),
-    radial-gradient(1.6cqi 1.6cqi at 75% 15%, #0000 97%, #000),
+    radial-gradient(3cqi 3cqi at 70% 25%, #0000 97%, #000),
+    radial-gradient(2cqi 2cqi at 28% 50%, #0000 97%, #000),
+    radial-gradient(1.6cqi 1.6cqi at 70% 70%, #0000 97%, #000),
     radial-gradient(3cqi 3cqi at 100% 60%, #0000 97%, #000);
 }
 
@@ -343,6 +344,18 @@ pre.good { border-color: var(--good); }
   transform: translateZ(-2.5cqi);
 }
 
+.hit {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 6cqi;
+  height: 6cqi;
+  margin: -3cqi 0 0 -3cqi;
+  border: 0.8cqi solid var(--good);
+  border-radius: 50%;
+  transform: translateZ(0.3cqi);
+}
+
 .stack .name {
   position: absolute;
   left: 50%;
@@ -355,25 +368,15 @@ pre.good { border-color: var(--good); }
   transform: translate(-50%, 0) translateZ(calc(var(--z) * var(--gap))) rotateY(55deg) rotateX(12deg);
 }
 
-.bug, .leak {
-  position: absolute;
-  left: 50%;
-  top: calc(50% - 3cqi);
-  height: 0.9cqi;
-  transform-origin: 0 50%;
-}
-
 .bug {
-  width: calc(var(--gap) * 3.9);
+  position: absolute;
+  left: calc(50% + var(--x) * 1cqi);
+  top: calc(50% + var(--y) * 1cqi - 0.45cqi);
+  width: calc(var(--len) * var(--gap));
+  height: 0.9cqi;
   background: var(--accent);
+  transform-origin: 0 50%;
   transform: translateZ(calc(var(--gap) * 2.9)) rotateY(90deg);
-}
-
-.leak {
-  width: calc(var(--gap) * 2.4);
-  background: repeating-linear-gradient(90deg, var(--muted) 0 2cqi, #0000 0 4cqi);
-  opacity: 0.35;
-  transform: translateZ(calc(var(--gap) * -1)) rotateY(90deg);
 }
 
 .toc {

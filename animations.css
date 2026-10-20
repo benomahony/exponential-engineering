@@ -41,15 +41,9 @@
   from { translate: 0 -90cqi; }
 }
 
-@keyframes stretch {
-  from { width: 0; }
-}
-
-@keyframes leak {
-  from {
-    opacity: 1;
-    background: var(--accent);
-  }
+@keyframes fly {
+  0% { width: 0; }
+  25%, 92% { width: calc(var(--gap) * 6.3); }
 }
 
 @keyframes spin {
@@ -215,7 +209,7 @@
       transform-origin: 0 0;
     }
 
-    .swiss .slice, .swiss .name:not(.end), .swiss .bug, .swiss .leak {
+    .swiss .slice, .swiss .name:not(.end), .swiss .bug {
       animation: fall linear both;
       animation-timeline: --swiss;
     }
@@ -225,17 +219,10 @@
     .swiss .slice:nth-child(4), .swiss .name:nth-of-type(4) { animation-range: cover 36% cover 44%; }
     .swiss .slice:nth-child(5), .swiss .name:nth-of-type(5) { animation-range: cover 42% cover 50%; }
 
-    .swiss .bug {
-      animation-name: stretch;
-      animation-range: cover 4% cover 13%;
-    }
-
-    .swiss .leak {
-      animation-name: stretch, leak;
-      animation-timing-function: linear, steps(1, end);
-      animation-timeline: --swiss, --swiss;
-      animation-range: cover 13% cover 18%, cover 44% cover 47%;
-    }
+    .swiss .bug { animation-name: fly; }
+    .swiss .bug:nth-of-type(1) { animation-range: cover 4% cover 34%; }
+    .swiss .bug:nth-of-type(2) { animation-range: cover 4% cover 40%; }
+    .swiss .bug:nth-of-type(3) { animation-range: cover 4% cover 46%; }
 
     .chart .expo, .chart .better {
       animation: draw linear both;

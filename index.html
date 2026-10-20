@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9c2a7a36">
-  <link rel="stylesheet" href="animations.css?v=ace5a8ec">
+  <link rel="stylesheet" href="style.css?v=6e0833ca">
+  <link rel="stylesheet" href="animations.css?v=7f64b948">
 </head>
 <body>
 <main class="pages">
@@ -147,37 +147,38 @@
   <section class="page" id="cheese">
     <h2>the swiss cheese model</h2>
     <p>Every check is a slice with holes in it, and no slice catches everything. Stack slices whose holes sit in different places and a bug that slips through one <span class="hl">hits cheese in the next</span>.</p>
-    <div class="swiss" role="img" aria-label="A bug flies towards prod. Slices of Swiss cheese drop into its path one by one: types, lint, property tests, deterministic simulation testing and asynchronous code review. The bug slips through holes in types, lint and property tests, then hits solid cheese in deterministic simulation testing and never reaches prod.">
+    <div class="swiss" role="img" aria-label="Three bugs fly towards prod. Slices of Swiss cheese drop into their path one by one: types, lint, property tests, deterministic simulation testing and asynchronous code review. Each slice has holes in different places, so all three bugs slip through types, then lint stops one, property tests stop the second and deterministic simulation testing stops the third. None reaches prod.">
       <div class="stack">
         <div class="slice"></div>
+        <div class="slice"><i class="hit" style="--x: 35%; --y: 25%"></i></div>
+        <div class="slice"><i class="hit" style="--x: 65%; --y: 52%"></i></div>
+        <div class="slice"><i class="hit" style="--x: 40%; --y: 78%"></i></div>
         <div class="slice"></div>
-        <div class="slice"></div>
-        <div class="slice"></div>
-        <div class="slice"></div>
-        <i class="bug"></i>
-        <i class="leak"></i>
+        <i class="bug" style="--x: -3.9; --y: -8.5; --len: 1.9"></i>
+        <i class="bug" style="--x: 3.9; --y: 0.7; --len: 2.9"></i>
+        <i class="bug" style="--x: -2.6; --y: 9.5; --len: 3.9"></i>
         <span class="name" style="--z: 2; --y: -27">types</span>
         <span class="name" style="--z: 1; --y: -33">lint</span>
         <span class="name" style="--z: 0; --y: -27">property tests</span>
         <span class="name" style="--z: -1; --y: -33">DST</span>
         <span class="name" style="--z: -2; --y: -27">async review</span>
-        <span class="name end" style="--z: 2.9; --y: -9">bug</span>
+        <span class="name end" style="--z: 2.9; --y: -15">bugs</span>
         <span class="name end" style="--z: -3.4; --y: -6">prod</span>
       </div>
     </div>
-    <p>The agent's retry double charges a customer when the network drops a reply. Types, lint and property tests all pass it. Deterministic simulation testing (DST) drops the reply and catches it. No single slice had to be perfect.</p>
+    <p>Three bugs from the agent's payments change: a swallowed error, a rounding bug that loses a penny, and a retry that double charges when the network drops a reply. Types miss all three. Lint catches the swallowed error, property tests catch the lost penny and deterministic simulation testing (DST) catches the double charge. No single slice had to be perfect.</p>
     <p class="q">One slice leaks. The stack doesn't.</p>
     <p class="credit">More: <a href="https://en.wikipedia.org/wiki/Swiss_cheese_model">James Reason's Swiss cheese model</a></p>
   </section>
 
   <section class="page" id="protect">
-    <h2>keep the holes <span class="hl">plugged</span></h2>
-    <p>Agents drill new holes. Stuck on a red build, they reach for the escape hatch.</p>
+    <h2>don't let agents <span class="hl">drill holes</span></h2>
+    <p>Stuck on a red build, an agent reaches for the escape hatch.</p>
     <div class="stations">
       <div><b>drilling holes</b><span>a <code>noqa</code>, a loosened config, a skipped test, a deleted assertion</span></div>
       <div class="hot"><b>rules about the rules</b><span>lint config changes need review, relaxed checks fail the build, the ratchet only tightens</span></div>
     </div>
-    <p class="big">The last plug is a rule that <span class="hl">stops the rules getting weaker</span>.</p>
+    <p class="big">So add a rule that <span class="hl">stops the rules getting weaker</span>.</p>
     <p class="credit">zanity's <code>relaxed-check</code> rule catches <code>continue-on-error: true</code>, <code>|| true</code>, <code>--exit-zero</code> and friends.</p>
   </section>
 
