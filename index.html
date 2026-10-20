@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Exponential Engineering</title>
+  <meta name="author" content="Ben O'Mahony">
   <meta name="description" content="Every time your agent makes a mistake, add a deterministic rule, a lint check not a line in RULES.md, that rules out the whole category. Rules compound. So does quality.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://exponentialengineering.dev/">
@@ -19,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=cd85b784">
-  <link rel="stylesheet" href="animations.css?v=6a9bfb29">
+  <link rel="stylesheet" href="style.css?v=6e0833ca">
+  <link rel="stylesheet" href="animations.css?v=7f64b948">
 </head>
 <body>
 <main class="pages">
@@ -40,6 +41,7 @@
       <li>+ http needs a timeout</li>
     </ul>
     <p class="tagline">how to make every mistake<br><strong>the last of its kind</strong></p>
+    <p class="colophon">by <a href="https://benomahony.com">Ben O'Mahony</a></p>
   </section>
 
   <section class="page demo" id="demo">
@@ -142,19 +144,42 @@
     <p class="credit">More: <a href="https://benomahony.com/blog/hardening-codebases-for-agentic-coding/">hardening codebases for agentic coding</a></p>
   </section>
 
-  <section class="page" id="ladder">
-    <h2>the enforcement ladder</h2>
-    <p>Not all "rules" are equal. Climb as high as you can.</p>
-    <ol class="ladder" reversed>
-      <li><b>unrepresentable</b> types make it impossible</li>
-      <li><b>type checker</b> fails the build</li>
-      <li><b>lint rule</b> fails with a fix hint</li>
-      <li><b>test</b> catches it after the fact</li>
-      <li><b>review comment</b> catches it sometimes</li>
-      <li><b>AGENTS.md, RULES.md</b> prose: a polite wish</li>
-    </ol>
-    <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
-    <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
+  <section class="page" id="cheese">
+    <h2>the swiss cheese model</h2>
+    <p>Every check is a slice with holes in it, and no slice catches everything. Stack slices whose holes sit in different places and a bug that slips through one <span class="hl">hits cheese in the next</span>.</p>
+    <div class="swiss" role="img" aria-label="Three bugs fly towards prod. Slices of Swiss cheese drop into their path one by one: types, lint, property tests, deterministic simulation testing and asynchronous code review. Each slice has holes in different places, so all three bugs slip through types, then lint stops one, property tests stop the second and deterministic simulation testing stops the third. None reaches prod.">
+      <div class="stack">
+        <div class="slice"></div>
+        <div class="slice"><i class="hit" style="--x: 35%; --y: 25%"></i></div>
+        <div class="slice"><i class="hit" style="--x: 65%; --y: 52%"></i></div>
+        <div class="slice"><i class="hit" style="--x: 40%; --y: 78%"></i></div>
+        <div class="slice"></div>
+        <i class="bug" style="--x: -3.9; --y: -8.5; --len: 1.9"></i>
+        <i class="bug" style="--x: 3.9; --y: 0.7; --len: 2.9"></i>
+        <i class="bug" style="--x: -2.6; --y: 9.5; --len: 3.9"></i>
+        <span class="name" style="--z: 2; --y: -27">types</span>
+        <span class="name" style="--z: 1; --y: -33">lint</span>
+        <span class="name" style="--z: 0; --y: -27">property tests</span>
+        <span class="name" style="--z: -1; --y: -33">DST</span>
+        <span class="name" style="--z: -2; --y: -27">async review</span>
+        <span class="name end" style="--z: 2.9; --y: -15">bugs</span>
+        <span class="name end" style="--z: -3.4; --y: -6">prod</span>
+      </div>
+    </div>
+    <p>Three bugs from the agent's payments change: a swallowed error, a rounding bug that loses a penny, and a retry that double charges when the network drops a reply. Types miss all three. Lint catches the swallowed error, property tests catch the lost penny and deterministic simulation testing (DST) catches the double charge. No single slice had to be perfect.</p>
+    <p class="q">One slice leaks. The stack doesn't.</p>
+    <p class="credit">More: <a href="https://en.wikipedia.org/wiki/Swiss_cheese_model">James Reason's Swiss cheese model</a></p>
+  </section>
+
+  <section class="page" id="protect">
+    <h2>don't let agents <span class="hl">drill holes</span></h2>
+    <p>Stuck on a red build, an agent reaches for the escape hatch.</p>
+    <div class="stations">
+      <div><b>drilling holes</b><span>a <code>noqa</code>, a loosened config, a skipped test, a deleted assertion</span></div>
+      <div class="hot"><b>rules about the rules</b><span>lint config changes need review, relaxed checks fail the build, the ratchet only tightens</span></div>
+    </div>
+    <p class="big">So add a rule that <span class="hl">stops the rules getting weaker</span>.</p>
+    <p class="credit">zanity's <code>relaxed-check</code> rule catches <code>continue-on-error: true</code>, <code>|| true</code>, <code>--exit-zero</code> and friends.</p>
   </section>
 
   <section class="page" id="strict">
@@ -176,11 +201,7 @@
     </div>
     <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
     <p>A lint rule that never fires costs zero tokens. One that fires is the most relevant prompt the agent will see all day.</p>
-  </section>
-
-  <section class="page" id="anatomy">
-    <h2>anatomy of a good rule</h2>
-    <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
+    <p>The error message <strong>is the prompt</strong>:</p>
     <pre class="bad"><code>error: forbidden call</code></pre>
     <p class="verdict">😐 the agent guesses</p>
     <pre class="good"><code>error: datetime.now() reads the wall clock.
@@ -209,6 +230,20 @@ rule:
 message: Use the logger from app.log, not print().
 severity: error</code></pre>
     <p class="aside">Most mistakes are already a rule someone wrote. Turn it on before you write your own.</p>
+  </section>
+
+  <section class="page" id="first-five">
+    <h2>your first <span class="hl">five rules</span></h2>
+    <p>The mistakes agents make most, and a rule that already catches each one. Turn them on today.</p>
+    <table class="rebrand">
+      <tr><th>the mistake</th><th>the rule</th></tr>
+      <tr><td>a silenced exception</td><td>ruff <code>BLE001</code>, <code>S110</code>, zanity <code>swallowed-error</code></td></tr>
+      <tr><td>an <code>httpx</code> call with no timeout</td><td>ruff <code>S113</code></td></tr>
+      <tr><td>a naive <code>datetime.now()</code></td><td>ruff <code>DTZ005</code></td></tr>
+      <tr><td><code>print</code> instead of the logger</td><td>ruff <code>T201</code></td></tr>
+      <tr><td>a skipped test</td><td>zanity <code>skipped-test</code></td></tr>
+    </table>
+    <p class="aside">Each is one line of config. None of them is a line in RULES.md.</p>
   </section>
 
   <section class="page" id="ratchets">
@@ -254,15 +289,36 @@ thu  371  ✓ ratchet tightened</code></pre>
   </section>
 
   <section class="page" id="where">
-    <h2>where rules live</h2>
-    <p>Run them where the agent will trip over them <span class="hl">fastest</span>.</p>
-    <div class="stations">
-      <div class="hot"><b>LSP</b><span>diagnostics on every save, for every agent and every editor</span></div>
-      <div class="hot"><b>watch mode daemons</b><span>tests and linters rerun on every change, failures handed straight back</span></div>
-      <div><b>pre commit</b><span>nothing broken gets saved</span></div>
-      <div><b>CI</b><span>the backstop that never sleeps</span></div>
+    <h2>certain and <span class="hl">instant</span></h2>
+    <p>Every check sits on two axes: how sure it is, and how fast the agent hears about it. Aim for the top left.</p>
+    <div class="diagram chart" style="--vbw: 360">
+      <svg viewBox="-40 0 360 250" role="img" aria-label="Checks plotted by certainty and time to feedback: types and lint in the LSP are certain and instant, watch mode tests and pre commit are close, CI is certain but slower, a user finding it is certain but far too late, a review comment is slow and unsure, AGENTS.md is fast but only a guess">
+        <rect x="40" y="15" width="110" height="80" class="zone"/>
+        <path d="M40 210 H310 M40 210 V15" class="axis"/>
+        <circle cx="60" cy="32" r="6" class="node"/>
+        <circle cx="82" cy="52" r="6" class="node"/>
+        <circle cx="108" cy="74" r="6" class="node"/>
+        <circle cx="165" cy="92" r="6" class="node"/>
+        <circle cx="215" cy="110" r="6" class="node"/>
+        <circle cx="292" cy="42" r="6" class="node"/>
+        <circle cx="252" cy="165" r="6" class="node"/>
+        <circle cx="70" cy="186" r="6" class="node"/>
+      </svg>
+      <span class="tag label" style="left: 30.6%; top: 14.8%" aria-hidden="true">types</span>
+      <span class="tag label" style="left: 36.7%; top: 22.8%" aria-hidden="true">lint in the LSP</span>
+      <span class="tag label" style="left: 43.9%; top: 31.6%" aria-hidden="true">watch mode tests</span>
+      <span class="tag label" style="left: 59.7%; top: 38.8%" aria-hidden="true">pre commit</span>
+      <span class="tag label" style="left: 73.6%; top: 46.0%" aria-hidden="true">CI</span>
+      <span class="tag label end" style="left: 89.4%; top: 18.8%" aria-hidden="true">a user finds it</span>
+      <span class="tag label end" style="left: 78.3%; top: 68.0%" aria-hidden="true">review comment</span>
+      <span class="tag label" style="left: 33.3%; top: 76.4%" aria-hidden="true">AGENTS.md</span>
+      <span class="tag label small end" style="left: 20.6%; top: 8.8%" aria-hidden="true">certain</span>
+      <span class="tag label small end" style="left: 20.6%; top: 83.2%" aria-hidden="true">a guess</span>
+      <span class="tag label small" style="left: 22.2%; top: 92.8%" aria-hidden="true">keystroke</span>
+      <span class="tag label small end" style="left: 97.2%; top: 92.8%" aria-hidden="true">days</span>
+      <span class="tag step" style="left: 23.3%; top: 43.2%" aria-hidden="true">aim here</span>
     </div>
-    <p>Agent hooks tie you to one agent. LSPs and daemons live with the codebase and work for all of them, humans included.</p>
+    <p>Agent hooks tie you to one agent. LSPs and watch mode daemons live with the codebase and work for all of them, humans included.</p>
   </section>
 
   <section class="page" id="overwatch">
@@ -277,6 +333,18 @@ thu  371  ✓ ratchet tightened</code></pre>
     </ul>
     <pre class="grab"><code>/plugin install overwatch --marketplace benomahony/overwatch</code></pre>
     <p class="aside">Works with Claude Code, Codex and Neovim. <a href="https://github.com/benomahony/overwatch">github.com/benomahony/overwatch</a></p>
+  </section>
+
+  <section class="page" id="no-factory">
+    <h2>no <span class="hl">software factory</span></h2>
+    <p>The pitch: write a spec, start a fleet of long running agents, come back to a finished product. We don't buy it.</p>
+    <div class="stations">
+      <div><b>the factory</b><span>hours of autonomous work, judged at the end, often the wrong thing built well</span></div>
+      <div class="hot"><b>I know exactly what I want</b><span>then I want it fast: a thin slice, on trunk in minutes</span></div>
+      <div class="hot"><b>I don't know what I want yet</b><span>then I want feedback fast: something real to react to in minutes, then another lap</span></div>
+    </div>
+    <p class="big">Either way the answer is <span class="hl">short loops</span>.</p>
+    <p class="aside">A long running agent is a long lived feature branch with extra steps.</p>
   </section>
 
   <section class="page" id="slices">
@@ -327,15 +395,26 @@ thu  371  ✓ ratchet tightened</code></pre>
 
   <section class="page" id="preach">
     <h2>we <span class="hl">practice what we preach</span></h2>
-    <p>This page only ships when every check below passes on its strictest setting, with zero findings.</p>
+    <p>Every change runs zanity strict, axe, the W3C Nu validator, stylelint, actionlint, zizmor pedantic, typos and lychee with zero findings. Then these rules, each one a correction we got along the way:</p>
     <ul class="checks">
-      <li><b>zanity</b> strict, on the code and the CI workflows</li>
-      <li><b>axe</b> accessibility, light and dark, desktop and phone</li>
-      <li><b>W3C Nu validator</b> for HTML, warnings are errors</li>
-      <li><b>stylelint</b> standard for CSS</li>
-      <li><b>actionlint</b> and <b>zizmor</b> pedantic for the workflows</li>
-      <li><b>typos</b> for spelling, <b>lychee</b> for every link</li>
-      <li><b>pytest</b>: every correction we got became a deterministic rule</li>
+      <li data-test="test_page_has_no_accessibility_findings">axe finds nothing, light and dark, desktop and phone</li>
+      <li data-test="test_copy_has_no_em_or_en_dashes">no em or en dashes in the copy</li>
+      <li data-test="test_copy_does_not_name_and_shame_libraries">no naming and shaming libraries</li>
+      <li data-test="test_copy_does_not_ban_things">no banning language</li>
+      <li data-test="test_cover_says_deterministic_rule_not_rules_md">the cover says deterministic rule, not RULES.md</li>
+      <li data-test="test_page_ships_no_javascript">no JavaScript</li>
+      <li data-test="test_local_stylesheets_are_versioned_by_their_content">stylesheets versioned by their content, so phones never keep stale CSS</li>
+      <li data-test="test_social_card_is_1200_by_630_and_linked">a 1200x630 social card behind every share</li>
+      <li data-test="test_in_page_links_point_at_real_ids">every in page link lands</li>
+      <li data-test="test_external_links_use_https">every external link is https</li>
+      <li data-test="test_page_never_scrolls_sideways">never scrolls sideways, from 320 to 1440px</li>
+      <li data-test="test_everything_animated_in_ends_visible">nothing stays invisible after its animation</li>
+      <li data-test="test_page_loads_without_console_errors">no console errors</li>
+      <li data-test="test_highlighted_text_reads_on_its_band_and_on_the_paper">highlighted text reads on its band and on the paper</li>
+      <li data-test="test_highlights_never_cover_a_neighbouring_line">highlights never cover a neighbouring line</li>
+      <li data-test="test_reduced_motion_shows_the_finished_cover_curve_without_animating">reduced motion means a still cover</li>
+      <li data-test="test_every_card_grows_to_fit_its_content">every card grows to fit its content</li>
+      <li data-test="test_the_rules_on_this_page_match_the_test_suite">this list matches the test suite</li>
     </ul>
     <p class="credit">See them run: <a href="https://github.com/benomahony/exponential-engineering/blob/main/.github/workflows/lint.yml">.github/workflows/lint.yml</a></p>
   </section>
@@ -364,7 +443,7 @@ thu  371  ✓ ratchet tightened</code></pre>
 zanity init
 zanity check . --fail-on warning --strict</code></pre>
     <p class="share">pass it on, the post is written for you: <a href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
-    <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
+    <p class="colophon">by <a href="https://benomahony.com">Ben O'Mahony</a> · <a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </footer>
 
 </main>

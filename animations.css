@@ -37,6 +37,15 @@
   from { stroke-dashoffset: 1; }
 }
 
+@keyframes fall {
+  from { translate: 0 -90cqi; }
+}
+
+@keyframes fly {
+  0% { width: 0; }
+  25%, 92% { width: calc(var(--gap) * 6.3); }
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -173,7 +182,7 @@
   .chart .expo, .chart .better { stroke-dasharray: 1; }
 
   @supports (animation-timeline: view()) {
-    .page > *, .ladder li, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
+    .page > *, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
       animation: rise linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 70%;
@@ -199,6 +208,21 @@
       transform-box: view-box;
       transform-origin: 0 0;
     }
+
+    .swiss .slice, .swiss .name:not(.end), .swiss .bug {
+      animation: fall linear both;
+      animation-timeline: --swiss;
+    }
+    .swiss .slice:nth-child(1), .swiss .name:nth-of-type(1) { animation-range: cover 18% cover 26%; }
+    .swiss .slice:nth-child(2), .swiss .name:nth-of-type(2) { animation-range: cover 24% cover 32%; }
+    .swiss .slice:nth-child(3), .swiss .name:nth-of-type(3) { animation-range: cover 30% cover 38%; }
+    .swiss .slice:nth-child(4), .swiss .name:nth-of-type(4) { animation-range: cover 36% cover 44%; }
+    .swiss .slice:nth-child(5), .swiss .name:nth-of-type(5) { animation-range: cover 42% cover 50%; }
+
+    .swiss .bug { animation-name: fly; }
+    .swiss .bug:nth-of-type(1) { animation-range: cover 4% cover 34%; }
+    .swiss .bug:nth-of-type(2) { animation-range: cover 4% cover 40%; }
+    .swiss .bug:nth-of-type(3) { animation-range: cover 4% cover 46%; }
 
     .chart .expo, .chart .better {
       animation: draw linear both;
