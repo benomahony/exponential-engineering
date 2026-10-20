@@ -52,10 +52,6 @@
   }
 }
 
-@keyframes pop {
-  from { scale: 0; }
-}
-
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -219,7 +215,7 @@
       transform-origin: 0 0;
     }
 
-    .swiss .slice, .swiss .name:not(.end), .swiss .bug, .swiss .leak, .swiss .plug {
+    .swiss .slice, .swiss .name:not(.end), .swiss .bug, .swiss .leak {
       animation: fall linear both;
       animation-timeline: --swiss;
     }
@@ -231,21 +227,14 @@
 
     .swiss .bug {
       animation-name: stretch;
-      animation-range: cover 4% cover 11%;
+      animation-range: cover 4% cover 13%;
     }
 
     .swiss .leak {
       animation-name: stretch, leak;
       animation-timing-function: linear, steps(1, end);
       animation-timeline: --swiss, --swiss;
-    }
-    .swiss .near { animation-range: cover 11% cover 14%, cover 52% cover 55%; }
-    .swiss .far { animation-range: cover 14% cover 18%, cover 44% cover 47%; }
-
-    .swiss .plug {
-      animation-name: pop;
-      animation-timing-function: cubic-bezier(0.3, 1.6, 0.6, 1);
-      animation-range: cover 50% cover 54%;
+      animation-range: cover 13% cover 18%, cover 44% cover 47%;
     }
 
     .chart .expo, .chart .better {

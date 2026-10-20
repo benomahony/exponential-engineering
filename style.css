@@ -355,18 +355,6 @@ pre.good { border-color: var(--good); }
   transform: translate(-50%, 0) translateZ(calc(var(--z) * var(--gap))) rotateY(55deg) rotateX(12deg);
 }
 
-.plug {
-  position: absolute;
-  left: 50%;
-  top: 42%;
-  width: 6.8cqi;
-  height: 6.8cqi;
-  margin: -3.4cqi 0 0 -3.4cqi;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateZ(0.5cqi);
-}
-
 .bug, .leak {
   position: absolute;
   left: 50%;
@@ -376,23 +364,15 @@ pre.good { border-color: var(--good); }
 }
 
 .bug {
-  width: calc(var(--gap) * 1.9);
+  width: calc(var(--gap) * 3.9);
   background: var(--accent);
   transform: translateZ(calc(var(--gap) * 2.9)) rotateY(90deg);
 }
 
 .leak {
+  width: calc(var(--gap) * 2.4);
   background: repeating-linear-gradient(90deg, var(--muted) 0 2cqi, #0000 0 4cqi);
   opacity: 0.35;
-}
-
-.near {
-  width: calc(var(--gap) * 2);
-  transform: translateZ(var(--gap)) rotateY(90deg);
-}
-
-.far {
-  width: calc(var(--gap) * 2.4);
   transform: translateZ(calc(var(--gap) * -1)) rotateY(90deg);
 }
 
