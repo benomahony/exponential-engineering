@@ -10,6 +10,7 @@
   --hl-top: 45%;
   --on-hl: #1c1b19;
   --cheese: #ffd447;
+  --rind: #d99a1e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -257,6 +258,14 @@ pre.good { border-color: var(--good); }
   fill: var(--cheese);
   stroke: var(--ink);
   stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.rind {
+  fill: var(--rind);
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
 }
 
 .hole {

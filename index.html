@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=f8465e76">
+  <link rel="stylesheet" href="style.css?v=39f3ae98">
   <link rel="stylesheet" href="animations.css?v=617aaa3c">
 </head>
 <body>
@@ -147,48 +147,69 @@
   <section class="page" id="cheese">
     <h2>the swiss cheese model</h2>
     <p>Every check is a slice with holes in it. A bug ships when the holes line up. When one slips through, <span class="hl">plug the hole</span> in the earliest slice it passed.</p>
-    <div class="diagram chart" style="--vbw: 300">
-      <svg viewBox="0 0 300 330" role="img" aria-label="Eight slices of cheese stacked from the top: types, lint rules, runtime assertions, unit tests, property tests, fuzzing, deterministic simulation, code review. Every slice has a hole in the same place, so a blind except would fall straight through all of them, but the hole in the lint rules slice is plugged and stops it.">
-        <path d="M100 4 V66" class="arc"/>
-        <rect x="30" y="30" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="39" rx="9" ry="5" class="hole"/>
-        <ellipse cx="55" cy="39" rx="9" ry="5" class="hole"/>
-        <ellipse cx="140" cy="39" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="67" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="76" rx="9" ry="5" class="caught"/>
-        <ellipse cx="60" cy="76" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="104" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="113" rx="9" ry="5" class="hole"/>
-        <ellipse cx="145" cy="113" rx="9" ry="5" class="hole"/>
-        <ellipse cx="50" cy="113" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="141" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="150" rx="9" ry="5" class="hole"/>
-        <ellipse cx="130" cy="150" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="178" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="187" rx="9" ry="5" class="hole"/>
-        <ellipse cx="48" cy="187" rx="9" ry="5" class="hole"/>
-        <ellipse cx="150" cy="187" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="215" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="224" rx="9" ry="5" class="hole"/>
-        <ellipse cx="70" cy="224" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="252" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="261" rx="9" ry="5" class="hole"/>
-        <ellipse cx="135" cy="261" rx="9" ry="5" class="hole"/>
-        <ellipse cx="55" cy="261" rx="9" ry="5" class="hole"/>
-        <rect x="30" y="289" width="140" height="18" rx="5" class="cheese"/>
-        <ellipse cx="100" cy="298" rx="9" ry="5" class="hole"/>
-        <ellipse cx="150" cy="298" rx="9" ry="5" class="hole"/>
+    <div class="diagram chart" style="--vbw: 380">
+      <svg viewBox="0 0 380 250" role="img" aria-label="Eight slices of Swiss cheese in a row: types, lint, runtime assertions, unit tests, property tests, fuzzing, deterministic simulation testing and code review. Their holes line up, so the blind except could pass through every slice, but the hole in the lint slice is plugged and stops it.">
+        <path d="M347 50 L353 53 V203 L347 200 z" class="rind"/>
+        <path d="M309 64 L347 50 V200 L309 214 z" class="cheese"/>
+        <ellipse cx="328" cy="91" rx="7" ry="10" class="hole"/>
+        <ellipse cx="331" cy="171" rx="6" ry="8" class="hole"/>
+        <ellipse cx="322" cy="192" rx="6" ry="8" class="hole"/>
+        <ellipse cx="328" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M306 50 L312 53 V203 L306 200 z" class="rind"/>
+        <path d="M268 64 L306 50 V200 L268 214 z" class="cheese"/>
+        <ellipse cx="281" cy="104" rx="5" ry="7" class="hole"/>
+        <ellipse cx="289" cy="185" rx="7" ry="10" class="hole"/>
+        <ellipse cx="282" cy="157" rx="5" ry="7" class="hole"/>
+        <ellipse cx="287" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M265 50 L271 53 V203 L265 200 z" class="rind"/>
+        <path d="M227 64 L265 50 V200 L227 214 z" class="cheese"/>
+        <ellipse cx="241" cy="162" rx="7" ry="10" class="hole"/>
+        <ellipse cx="249" cy="97" rx="6" ry="8" class="hole"/>
+        <ellipse cx="249" cy="186" rx="4" ry="6" class="hole"/>
+        <ellipse cx="246" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M224 50 L230 53 V203 L224 200 z" class="rind"/>
+        <path d="M186 64 L224 50 V200 L186 214 z" class="cheese"/>
+        <ellipse cx="203" cy="192" rx="4" ry="6" class="hole"/>
+        <ellipse cx="215" cy="83" rx="6" ry="8" class="hole"/>
+        <ellipse cx="197" cy="105" rx="4" ry="6" class="hole"/>
+        <ellipse cx="205" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M183 50 L189 53 V203 L183 200 z" class="rind"/>
+        <path d="M145 64 L183 50 V200 L145 214 z" class="cheese"/>
+        <ellipse cx="168" cy="73" rx="6" ry="8" class="hole"/>
+        <ellipse cx="170" cy="162" rx="5" ry="7" class="hole"/>
+        <ellipse cx="155" cy="95" rx="5" ry="7" class="hole"/>
+        <ellipse cx="164" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M142 50 L148 53 V203 L142 200 z" class="rind"/>
+        <path d="M104 64 L142 50 V200 L104 214 z" class="cheese"/>
+        <ellipse cx="129" cy="169" rx="5" ry="7" class="hole"/>
+        <ellipse cx="118" cy="106" rx="6" ry="8" class="hole"/>
+        <ellipse cx="113" cy="74" rx="8" ry="11" class="hole"/>
+        <ellipse cx="123" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M101 50 L107 53 V203 L101 200 z" class="rind"/>
+        <path d="M63 64 L101 50 V200 L63 214 z" class="cheese"/>
+        <ellipse cx="89" cy="96" rx="8" ry="11" class="hole"/>
+        <ellipse cx="75" cy="156" rx="7" ry="10" class="hole"/>
+        <ellipse cx="72" cy="81" rx="6" ry="8" class="hole"/>
+        <ellipse cx="82" cy="130" rx="7" ry="10" class="caught"/>
+        <path d="M60 50 L66 53 V203 L60 200 z" class="rind"/>
+        <path d="M22 64 L60 50 V200 L22 214 z" class="cheese"/>
+        <ellipse cx="44" cy="92" rx="4" ry="6" class="hole"/>
+        <ellipse cx="33" cy="157" rx="7" ry="10" class="hole"/>
+        <ellipse cx="50" cy="154" rx="5" ry="7" class="hole"/>
+        <ellipse cx="41" cy="130" rx="7" ry="10" class="hole"/>
+        <path d="M2 130 H72" class="arc" marker-end="url(#arrowhead)"/>
+        <path d="M91 130 H376" class="linear"/>
       </svg>
-      <span class="tag label end" style="left: 30.7%; top: 4.2%" aria-hidden="true">blind except</span>
-      <span class="tag label" style="left: 63.3%; top: 13.3%" aria-hidden="true">types</span>
-      <span class="tag label" style="left: 63.3%; top: 24.5%" aria-hidden="true">lint rules</span>
-      <span class="tag label" style="left: 63.3%; top: 35.8%" aria-hidden="true">runtime assertions</span>
-      <span class="tag label" style="left: 63.3%; top: 47.0%" aria-hidden="true">unit tests</span>
-      <span class="tag label" style="left: 63.3%; top: 58.2%" aria-hidden="true">property tests</span>
-      <span class="tag label" style="left: 63.3%; top: 69.4%" aria-hidden="true">fuzzing</span>
-      <span class="tag label" style="left: 63.3%; top: 80.6%" aria-hidden="true">deterministic simulation</span>
-      <span class="tag label" style="left: 63.3%; top: 91.8%" aria-hidden="true">code review</span>
+      <span class="tag label middle" style="left: 11.6%; top: 14.0%" aria-hidden="true">types</span>
+      <span class="tag label middle" style="left: 22.4%; top: 92.0%" aria-hidden="true">lint</span>
+      <span class="tag label middle" style="left: 33.2%; top: 14.0%" aria-hidden="true">asserts</span>
+      <span class="tag label middle" style="left: 43.9%; top: 92.0%" aria-hidden="true">unit tests</span>
+      <span class="tag label middle" style="left: 54.7%; top: 14.0%" aria-hidden="true">property tests</span>
+      <span class="tag label middle" style="left: 65.5%; top: 92.0%" aria-hidden="true">fuzzing</span>
+      <span class="tag label middle" style="left: 76.3%; top: 14.0%" aria-hidden="true">DST</span>
+      <span class="tag label middle" style="left: 87.1%; top: 92.0%" aria-hidden="true">review</span>
     </div>
+    <p>The agent's blind <code>except</code> slips through types, then hits a plugged hole in lint. Asserts, property tests, fuzzing and deterministic simulation testing (DST) are more slices: add as many as the risk deserves.</p>
     <p class="q">Every mistake plugs a hole. The cheese only gets more solid.</p>
     <p class="credit">More: <a href="https://en.wikipedia.org/wiki/Swiss_cheese_model">James Reason's Swiss cheese model</a></p>
   </section>
