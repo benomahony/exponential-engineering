@@ -238,8 +238,9 @@
       animation-name: stretch, leak;
       animation-timing-function: linear, steps(1, end);
       animation-timeline: --swiss, --swiss;
-      animation-range: cover 11% cover 18%, cover 50% cover 54%;
     }
+    .swiss .near { animation-range: cover 11% cover 14%, cover 52% cover 55%; }
+    .swiss .far { animation-range: cover 14% cover 18%, cover 44% cover 47%; }
 
     .swiss .plug {
       animation-name: pop;

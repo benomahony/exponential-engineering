@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4e06fef1">
-  <link rel="stylesheet" href="animations.css?v=fb2bda52">
+  <link rel="stylesheet" href="style.css?v=0c63f4dd">
+  <link rel="stylesheet" href="animations.css?v=a1a7ca01">
 </head>
 <body>
 <main class="pages">
@@ -146,8 +146,8 @@
 
   <section class="page" id="cheese">
     <h2>the swiss cheese model</h2>
-    <p>Every check is a slice with holes in it. A bug ships when the holes line up. When one slips through, <span class="hl">plug the hole</span> in the earliest slice it passed.</p>
-    <div class="swiss" role="img" aria-label="A bug, the blind except, flies towards prod. Slices of Swiss cheese drop into its path one by one: types, lint, property tests, deterministic simulation testing and asynchronous code review. Their holes line up, so the bug threads through every slice, until a plug fills the hole in the lint slice and stops it.">
+    <p>Every check is a slice with holes in it, and no slice catches everything. Stack slices whose holes sit in different places and a bug that slips through one hits cheese in the next. Then <span class="hl">plug the hole</span> in the earliest slice it passed.</p>
+    <div class="swiss" role="img" aria-label="A bug flies towards prod. Slices of Swiss cheese drop into its path one by one: types, lint, property tests, deterministic simulation testing and asynchronous code review. The bug slips through holes in types, lint and property tests, then hits solid cheese in deterministic simulation testing. Finally a plug fills the hole in the lint slice, so the bug stops there next time.">
       <div class="stack">
         <div class="slice"></div>
         <div class="slice"><i class="plug"></i></div>
@@ -155,7 +155,8 @@
         <div class="slice"></div>
         <div class="slice"></div>
         <i class="bug"></i>
-        <i class="leak"></i>
+        <i class="leak near"></i>
+        <i class="leak far"></i>
         <span class="name" style="--z: 2; --y: -27">types</span>
         <span class="name" style="--z: 1; --y: -33">lint</span>
         <span class="name" style="--z: 0; --y: -27">property tests</span>
@@ -165,7 +166,7 @@
         <span class="name end" style="--z: -3.4; --y: -6">prod</span>
       </div>
     </div>
-    <p>The agent's blind <code>except</code> slips through types, then hits a plugged hole in lint. Asserts, property tests, fuzzing and deterministic simulation testing (DST) are more slices: add as many as the risk deserves.</p>
+    <p>The agent's retry double charges a customer when the network drops a reply. Types, lint and property tests all pass it. Deterministic simulation testing (DST) drops the reply and catches it. Then plug the hole earlier: a lint rule that every retried payment call carries an idempotency key.</p>
     <p class="q">Every mistake plugs a hole. The cheese only gets more solid.</p>
     <p class="credit">More: <a href="https://en.wikipedia.org/wiki/Swiss_cheese_model">James Reason's Swiss cheese model</a></p>
   </section>
