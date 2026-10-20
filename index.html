@@ -148,7 +148,7 @@
     <h2>the swiss cheese model</h2>
     <p>Every check is a slice with holes in it. A bug ships when the holes line up. When one slips through, <span class="hl">plug the hole</span> in the earliest slice it passed.</p>
     <div class="diagram chart" style="--vbw: 380">
-      <svg viewBox="0 0 380 250" role="img" aria-label="Eight slices of Swiss cheese in a row: types, lint, runtime assertions, unit tests, property tests, fuzzing, deterministic simulation testing and code review. Their holes line up, so the blind except could pass through every slice, but the hole in the lint slice is plugged and stops it.">
+      <svg viewBox="0 0 380 250" role="img" aria-label="Eight slices of Swiss cheese in a row: types, lint, runtime assertions, unit tests, property tests, fuzzing, deterministic simulation testing and asynchronous code review. Their holes line up, so the blind except could pass through every slice, but the hole in the lint slice is plugged and stops it.">
         <path d="M347 50 L353 53 V203 L347 200 z" class="rind"/>
         <path d="M309 64 L347 50 V200 L309 214 z" class="cheese"/>
         <ellipse cx="328" cy="91" rx="7" ry="10" class="hole"/>
@@ -207,7 +207,7 @@
       <span class="tag label middle" style="left: 54.7%; top: 14.0%" aria-hidden="true">property tests</span>
       <span class="tag label middle" style="left: 65.5%; top: 92.0%" aria-hidden="true">fuzzing</span>
       <span class="tag label middle" style="left: 76.3%; top: 14.0%" aria-hidden="true">DST</span>
-      <span class="tag label middle" style="left: 87.1%; top: 92.0%" aria-hidden="true">review</span>
+      <span class="tag label middle" style="left: 87.1%; top: 92.0%" aria-hidden="true">async review</span>
     </div>
     <p>The agent's blind <code>except</code> slips through types, then hits a plugged hole in lint. Asserts, property tests, fuzzing and deterministic simulation testing (DST) are more slices: add as many as the risk deserves.</p>
     <p class="q">Every mistake plugs a hole. The cheese only gets more solid.</p>
