@@ -250,7 +250,7 @@ pre.good { border-color: var(--good); }
   stroke: var(--ink);
   stroke-width: 2.5;
 }
-.runner { fill: var(--accent); }
+.runner, .caught { fill: var(--accent); }
 
 .toc {
   display: flex;
@@ -274,11 +274,6 @@ pre.good { border-color: var(--good); }
 .q {
   font-size: 1.5rem;
   color: var(--accent);
-}
-
-.ladder {
-  padding-left: 0;
-  list-style: none;
 }
 
 .checks, .todo, .warn { padding-left: 1.25rem; }
@@ -315,19 +310,6 @@ pre.good { border-color: var(--good); }
   transform: rotate(-2deg);
 }
 
-.ladder li {
-  border-left: 4px solid var(--ink);
-  border-right: 4px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  padding: 0.3rem 0.75rem;
-}
-
-.ladder li:first-child {
-  background: var(--hl);
-  color: var(--on-hl);
-  border-top: 2px solid var(--ink);
-}
-.ladder li:last-child { color: var(--muted); }
 .chips li:nth-child(2) { transform: rotate(1.5deg); }
 
 .credit {

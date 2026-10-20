@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=54c5db4e">
-  <link rel="stylesheet" href="animations.css?v=6a9bfb29">
+  <link rel="stylesheet" href="style.css?v=ec207abc">
+  <link rel="stylesheet" href="animations.css?v=617aaa3c">
 </head>
 <body>
 <main class="pages">
@@ -146,17 +146,28 @@
 
   <section class="page" id="ladder">
     <h2>the enforcement ladder</h2>
-    <p>One bug, every rung: <b>a password ends up in the logs</b>. Climb as high as you can.</p>
-    <ol class="ladder" reversed>
-      <li><b>delete it</b> hash at the edge, the raw password never enters the code</li>
-      <li><b>unrepresentable</b> a <code>Secret</code> with no readable value, so there is nothing to log</li>
-      <li><b>type checker</b> a <code>Secret</code> won't pass where a <code>str</code> is expected</li>
-      <li><b>runtime assertion</b> the logger refuses anything shaped like a secret</li>
-      <li><b>lint rule</b> flags <code>log.info(password)</code> as it's typed</li>
-      <li><b>test</b> catches it after it's written</li>
-      <li><b>review comment</b> catches it sometimes</li>
-      <li><b>AGENTS.md, RULES.md</b> "please don't log secrets"</li>
-    </ol>
+    <p>Remember the agent's blind <code>except</code>? Push every mistake as high up as it will go.</p>
+    <div class="diagram chart" style="--vbw: 300">
+      <svg viewBox="0 0 300 290" role="img" aria-label="A ladder with five rungs. From the top: gone, it can't exist. Impossible, it can't be written. Type checker, it won't build. Lint rule, caught as it's typed, which is where the blind except is caught. AGENTS.md at the bottom, a polite wish.">
+        <path d="M85 15 V280 M155 15 V280" class="axis"/>
+        <path d="M85 40 H155" class="better"/>
+        <path d="M85 95 H155 M85 150 H155 M85 205 H155" class="axis"/>
+        <path d="M85 260 H155" class="linear"/>
+        <circle cx="120" cy="205" r="7" class="node caught"/>
+      </svg>
+      <span class="tag step" style="left: 56.7%; top: 12.4%" aria-hidden="true">gone</span>
+      <span class="tag label" style="left: 56.7%; top: 20.0%" aria-hidden="true">can't exist</span>
+      <span class="tag step" style="left: 56.7%; top: 31.4%" aria-hidden="true">impossible</span>
+      <span class="tag label" style="left: 56.7%; top: 39.0%" aria-hidden="true">can't be written</span>
+      <span class="tag step" style="left: 56.7%; top: 50.3%" aria-hidden="true">type checker</span>
+      <span class="tag label" style="left: 56.7%; top: 57.9%" aria-hidden="true">won't build</span>
+      <span class="tag step" style="left: 56.7%; top: 69.3%" aria-hidden="true">lint rule</span>
+      <span class="tag label" style="left: 56.7%; top: 76.9%" aria-hidden="true">caught as it's typed</span>
+      <span class="tag step" style="left: 56.7%; top: 88.3%" aria-hidden="true">AGENTS.md</span>
+      <span class="tag label" style="left: 56.7%; top: 95.9%" aria-hidden="true">a polite wish</span>
+      <span class="tag label end" style="left: 25.0%; top: 72.4%" aria-hidden="true">blind except</span>
+    </div>
+    <p class="q">Every rung up removes a way to be wrong.</p>
     <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
     <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
   </section>

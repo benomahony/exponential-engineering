@@ -173,7 +173,7 @@
   .chart .expo, .chart .better { stroke-dasharray: 1; }
 
   @supports (animation-timeline: view()) {
-    .page > *, .ladder li, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
+    .page > *, .stations > div, .rebrand tr, .checks li, .todo li, .warn li {
       animation: rise linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 70%;
