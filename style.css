@@ -9,8 +9,9 @@
   --code-bg: #f1ece0;
   --hl-top: 45%;
   --on-hl: #1c1b19;
-  --cheese: #ffd447;
-  --rind: #d99a1e;
+  --cheese: #ffd23f;
+  --rind: #f2a516;
+  --pit: #c9780a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -254,22 +255,22 @@ pre.good { border-color: var(--good); }
 }
 .runner, .caught { fill: var(--accent); }
 
-.cheese {
+.cheese, .rind {
   fill: var(--cheese);
   fill-rule: evenodd;
   stroke: var(--ink);
-  stroke-width: 2;
+  stroke-width: 3;
   stroke-linejoin: round;
 }
-
-.rind {
-  fill: var(--rind);
-  stroke: var(--ink);
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-
+.rind { fill: var(--rind); }
 .wall { fill: var(--rind); }
+
+.shine {
+  stroke: #fff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
 
 .bug {
   fill: none;
@@ -279,9 +280,9 @@ pre.good { border-color: var(--good); }
 }
 
 .hole {
-  fill: var(--paper);
+  fill: var(--pit);
   stroke: var(--ink);
-  stroke-width: 1.5;
+  stroke-width: 2.5;
 }
 
 .toc {
