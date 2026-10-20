@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=ec207abc">
+  <link rel="stylesheet" href="style.css?v=f8465e76">
   <link rel="stylesheet" href="animations.css?v=617aaa3c">
 </head>
 <body>
@@ -144,40 +144,63 @@
     <p class="credit">More: <a href="https://benomahony.com/blog/hardening-codebases-for-agentic-coding/">hardening codebases for agentic coding</a></p>
   </section>
 
-  <section class="page" id="ladder">
-    <h2>the enforcement ladder</h2>
-    <p>Remember the agent's blind <code>except</code>? Push every mistake as high up as it will go.</p>
+  <section class="page" id="cheese">
+    <h2>the swiss cheese model</h2>
+    <p>Every check is a slice with holes in it. A bug ships when the holes line up. When one slips through, <span class="hl">plug the hole</span> in the earliest slice it passed.</p>
     <div class="diagram chart" style="--vbw: 300">
-      <svg viewBox="0 0 300 235" role="img" aria-label="A ladder with four rungs. From the top: impossible, it can't be written. Type checker, it won't build. Lint rule, caught as it's typed, which is where the blind except is caught. AGENTS.md at the bottom, a polite wish.">
-        <path d="M85 15 V225 M155 15 V225" class="axis"/>
-        <path d="M85 40 H155" class="better"/>
-        <path d="M85 95 H155 M85 150 H155" class="axis"/>
-        <path d="M85 205 H155" class="linear"/>
-        <circle cx="120" cy="150" r="7" class="node caught"/>
+      <svg viewBox="0 0 300 330" role="img" aria-label="Eight slices of cheese stacked from the top: types, lint rules, runtime assertions, unit tests, property tests, fuzzing, deterministic simulation, code review. Every slice has a hole in the same place, so a blind except would fall straight through all of them, but the hole in the lint rules slice is plugged and stops it.">
+        <path d="M100 4 V66" class="arc"/>
+        <rect x="30" y="30" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="39" rx="9" ry="5" class="hole"/>
+        <ellipse cx="55" cy="39" rx="9" ry="5" class="hole"/>
+        <ellipse cx="140" cy="39" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="67" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="76" rx="9" ry="5" class="caught"/>
+        <ellipse cx="60" cy="76" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="104" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="113" rx="9" ry="5" class="hole"/>
+        <ellipse cx="145" cy="113" rx="9" ry="5" class="hole"/>
+        <ellipse cx="50" cy="113" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="141" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="150" rx="9" ry="5" class="hole"/>
+        <ellipse cx="130" cy="150" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="178" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="187" rx="9" ry="5" class="hole"/>
+        <ellipse cx="48" cy="187" rx="9" ry="5" class="hole"/>
+        <ellipse cx="150" cy="187" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="215" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="224" rx="9" ry="5" class="hole"/>
+        <ellipse cx="70" cy="224" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="252" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="261" rx="9" ry="5" class="hole"/>
+        <ellipse cx="135" cy="261" rx="9" ry="5" class="hole"/>
+        <ellipse cx="55" cy="261" rx="9" ry="5" class="hole"/>
+        <rect x="30" y="289" width="140" height="18" rx="5" class="cheese"/>
+        <ellipse cx="100" cy="298" rx="9" ry="5" class="hole"/>
+        <ellipse cx="150" cy="298" rx="9" ry="5" class="hole"/>
       </svg>
-      <span class="tag step" style="left: 56.7%; top: 15.3%" aria-hidden="true">impossible</span>
-      <span class="tag label" style="left: 56.7%; top: 24.7%" aria-hidden="true">can't be written</span>
-      <span class="tag step" style="left: 56.7%; top: 38.7%" aria-hidden="true">type checker</span>
-      <span class="tag label" style="left: 56.7%; top: 48.1%" aria-hidden="true">won't build</span>
-      <span class="tag step" style="left: 56.7%; top: 62.1%" aria-hidden="true">lint rule</span>
-      <span class="tag label" style="left: 56.7%; top: 71.5%" aria-hidden="true">caught as it's typed</span>
-      <span class="tag step" style="left: 56.7%; top: 85.5%" aria-hidden="true">AGENTS.md</span>
-      <span class="tag label" style="left: 56.7%; top: 94.9%" aria-hidden="true">a polite wish</span>
-      <span class="tag label end" style="left: 25.0%; top: 66.0%" aria-hidden="true">blind except</span>
+      <span class="tag label end" style="left: 30.7%; top: 4.2%" aria-hidden="true">blind except</span>
+      <span class="tag label" style="left: 63.3%; top: 13.3%" aria-hidden="true">types</span>
+      <span class="tag label" style="left: 63.3%; top: 24.5%" aria-hidden="true">lint rules</span>
+      <span class="tag label" style="left: 63.3%; top: 35.8%" aria-hidden="true">runtime assertions</span>
+      <span class="tag label" style="left: 63.3%; top: 47.0%" aria-hidden="true">unit tests</span>
+      <span class="tag label" style="left: 63.3%; top: 58.2%" aria-hidden="true">property tests</span>
+      <span class="tag label" style="left: 63.3%; top: 69.4%" aria-hidden="true">fuzzing</span>
+      <span class="tag label" style="left: 63.3%; top: 80.6%" aria-hidden="true">deterministic simulation</span>
+      <span class="tag label" style="left: 63.3%; top: 91.8%" aria-hidden="true">code review</span>
     </div>
-    <p class="q">Every rung up removes a way to be wrong.</p>
-    <p class="aside">Prose in a prompt is a suggestion. A failing check is a fact.</p>
-    <p class="credit">More: <a href="https://benomahony.com/blog/my-10-rules-for-agentic-engineering/#dont-confuse-guidance-for-guardrails">don't confuse guidance for guardrails</a></p>
+    <p class="q">Every mistake plugs a hole. The cheese only gets more solid.</p>
+    <p class="credit">More: <a href="https://en.wikipedia.org/wiki/Swiss_cheese_model">James Reason's Swiss cheese model</a></p>
   </section>
 
   <section class="page" id="protect">
-    <h2>protect the <span class="hl">ladder</span></h2>
-    <p>Agents climb down. Stuck on a red build, they reach for the escape hatch.</p>
+    <h2>keep the holes <span class="hl">plugged</span></h2>
+    <p>Agents drill new holes. Stuck on a red build, they reach for the escape hatch.</p>
     <div class="stations">
-      <div><b>climbing down</b><span>a <code>noqa</code>, a loosened config, a skipped test, a deleted assertion</span></div>
+      <div><b>drilling holes</b><span>a <code>noqa</code>, a loosened config, a skipped test, a deleted assertion</span></div>
       <div class="hot"><b>rules about the rules</b><span>lint config changes need review, relaxed checks fail the build, the ratchet only tightens</span></div>
     </div>
-    <p class="big">The top rung is a rule that <span class="hl">stops the rules getting weaker</span>.</p>
+    <p class="big">The last plug is a rule that <span class="hl">stops the rules getting weaker</span>.</p>
     <p class="credit">zanity's <code>relaxed-check</code> rule catches <code>continue-on-error: true</code>, <code>|| true</code>, <code>--exit-zero</code> and friends.</p>
   </section>
 

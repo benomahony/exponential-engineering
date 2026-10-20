@@ -9,6 +9,7 @@
   --code-bg: #f1ece0;
   --hl-top: 45%;
   --on-hl: #1c1b19;
+  --cheese: #ffd447;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -251,6 +252,18 @@ pre.good { border-color: var(--good); }
   stroke-width: 2.5;
 }
 .runner, .caught { fill: var(--accent); }
+
+.cheese {
+  fill: var(--cheese);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.hole {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
 
 .toc {
   display: flex;
