@@ -191,11 +191,7 @@
     </div>
     <p class="big">Don't front load the context.<br>Deliver it <span class="hl">the moment it's needed</span>.</p>
     <p>A lint rule that never fires costs zero tokens. One that fires is the most relevant prompt the agent will see all day.</p>
-  </section>
-
-  <section class="page" id="anatomy">
-    <h2>anatomy of a good rule</h2>
-    <p>The error message <strong>is the prompt</strong>. The agent reads it and fixes itself.</p>
+    <p>The error message <strong>is the prompt</strong>:</p>
     <pre class="bad"><code>error: forbidden call</code></pre>
     <p class="verdict">😐 the agent guesses</p>
     <pre class="good"><code>error: datetime.now() reads the wall clock.
