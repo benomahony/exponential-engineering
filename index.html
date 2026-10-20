@@ -19,8 +19,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=f94cb863">
-  <link rel="stylesheet" href="animations.css?v=e8cfa2dd">
+  <link rel="stylesheet" href="style.css?v=cd85b784">
+  <link rel="stylesheet" href="animations.css?v=6a9bfb29">
 </head>
 <body>
 <main class="pages">
@@ -31,7 +31,8 @@
     <svg class="curve" viewBox="0 0 200 120" aria-hidden="true">
       <path d="M10 110 H190 M10 110 V10" class="axis"/>
       <path d="M10 108 L190 70" class="linear"/>
-      <path d="M10 108 C70 108 130 106 188 98" class="expo"><animate attributeName="d" begin="0.8s" dur="3s" fill="freeze" values="M10 108 C70 108 130 106 188 98;M10 108 C70 108 130 106 188 98;M10 108 C90 107 140 98 188 72;M10 108 C90 107 140 98 188 72;M10 108 C100 106 145 90 188 42;M10 108 C100 106 145 90 188 42;M10 108 C110 106 150 90 188 12" keyTimes="0;0.2;0.3;0.53;0.63;0.87;1"/></path>
+      <path d="M10 108 C110 106 150 90 188 12" class="expo still"/>
+      <path d="M10 108 C70 108 130 106 188 98" class="expo morph"><animate attributeName="d" begin="0.8s" dur="3s" fill="freeze" values="M10 108 C70 108 130 106 188 98;M10 108 C70 108 130 106 188 98;M10 108 C90 107 140 98 188 72;M10 108 C90 107 140 98 188 72;M10 108 C100 106 145 90 188 42;M10 108 C100 106 145 90 188 42;M10 108 C110 106 150 90 188 12" keyTimes="0;0.2;0.3;0.53;0.63;0.87;1"/></path>
     </svg>
     <ul class="chips" aria-label="Lint rules added">
       <li>+ no bare except</li>
@@ -62,28 +63,9 @@
     <p class="big">Nobody reviewed that. <span class="hl">The lint rule did.</span></p>
   </section>
 
-  <section class="page" id="problem">
-    <h2>agentic engineering</h2>
-    <p>Your agent writes a bug. You spot it. You say <em>"please don't do that"</em>. It fixes it.</p>
-    <div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
-    <div class="speech right">fixed! ✨</div>
-    <p>Next week, a different session, a different file:</p>
-    <div class="speech left">I swallowed an exception with a bare <code>except: pass</code></div>
-    <p class="big">You fixed the <span class="hl">instance</span>.<br>The <span class="hl">category</span> is still alive.</p>
-    <p class="aside">Agents don't remember last Tuesday. Your codebase does.</p>
-  </section>
-
   <section class="page" id="idea">
     <h2>the big idea</h2>
     <p class="big">When you find a mistake, don't fix <em>it</em>.<br>Fix <span class="hl">every future version of it</span>.</p>
-    <div class="box">
-      <p class="q">"What deterministic rule would have caught this <strong>automatically</strong>?"</p>
-      <p>Write it as a lint rule, not a line in RULES.md. Run it everywhere.</p>
-    </div>
-  </section>
-
-  <section class="page" id="loop">
-    <h2>the loop</h2>
     <div class="diagram loop-svg" style="--vbw: 460">
       <svg viewBox="-30 0 460 330" role="img" aria-label="The loop: spot a mistake, name the category, encode a deterministic check, run it in the LSP, watcher and CI, let the agent self correct, forever">
         <defs><marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" class="arrowhead"/></marker></defs>
@@ -111,7 +93,10 @@
       <span class="tag label end" style="left: 24.4%; top: 44.1%" aria-hidden="true">from the error</span>
       <span class="tag forever middle" style="left: 50.0%; top: 50.9%" aria-hidden="true">forever</span>
     </div>
-    <p class="aside">Five minutes. One rule. Never the same lap twice.</p>
+    <div class="box">
+      <p class="q">"What deterministic rule would have caught this <strong>automatically</strong>?"</p>
+      <p>Write it as a lint rule, not a line in RULES.md. Five minutes. One rule. Never the same lap twice.</p>
+    </div>
   </section>
 
   <section class="page" id="why">
@@ -247,13 +232,25 @@ thu  371  ✓ ratchet tightened</code></pre>
 
   <section class="page" id="no-backlog">
     <h2><span class="hl">no backlog</span></h2>
-    <p>Allen Holub: "Backlogs are a symptom, not a tool." If it's important, it will come back.</p>
+    <p>Allen Holub: "Backlogs are a symptom, not a tool." A backlog is work stockpiled in front of development, going stale while it waits.</p>
     <div class="stations">
-      <div><b>the ticket</b><span>"fix lint warnings", parked forever, growing</span></div>
-      <div class="hot"><b>fix it now</b><span>the agent just made the fix cheap, so there is nothing to defer</span></div>
+      <div><b>the backlog</b><span>hundreds of tickets, groomed, estimated, reprioritised, mostly never built</span></div>
+      <div class="hot"><b>a short queue</b><span>only what you build next, the next thing pulled when the last one ships</span></div>
     </div>
-    <p class="big">TigerStyle calls it <span class="hl">zero technical debt</span>: do it right the first time, you may never come back.</p>
-    <p class="credit">More: <a href="https://blog.holub.com/p/nobacklog">#NoBacklog</a> by Allen Holub, <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a> by TigerBeetle.</p>
+    <p class="big">Agents made building fast. <span class="hl">The queue is the delay.</span></p>
+    <p class="aside">Toss the backlog. If it's important, it will come back.</p>
+    <p class="credit">More: <a href="https://blog.holub.com/p/nobacklog">#NoBacklog</a> by Allen Holub.</p>
+  </section>
+
+  <section class="page" id="no-debt">
+    <h2>zero <span class="hl">technical debt</span></h2>
+    <p>TigerBeetle's TigerStyle: do it right the first time, because you may never come back.</p>
+    <div class="stations">
+      <div><b>fix it later</b><span>a TODO, a skipped test, a "temporary" workaround that ships</span></div>
+      <div class="hot"><b>fix it now</b><span>the agent just made the fix cheap, and "later" never gets cheaper</span></div>
+    </div>
+    <p class="big">Debt compounds too. <span class="hl">Pay it while it's small.</span></p>
+    <p class="credit">More: <a href="https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md">TigerStyle</a> by TigerBeetle.</p>
   </section>
 
   <section class="page" id="where">
@@ -366,7 +363,7 @@ thu  371  ✓ ratchet tightened</code></pre>
     <pre class="grab"><code>curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
 zanity init
 zanity check . --fail-on warning --strict</code></pre>
-    <p class="share">pass it on: <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Every%20time%20your%20agent%20makes%20a%20mistake%2C%20add%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category.%20Rules%20compound.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
+    <p class="share">pass it on, the post is written for you: <a href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">LinkedIn</a> <a href="https://x.com/intent/post?text=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.&amp;url=https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">X</a> <a href="https://bsky.app/intent/compose?text=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.%20https%3A%2F%2Fexponentialengineering.dev" target="_blank" rel="noopener">Bluesky</a> <a href="mailto:?subject=Exponential%20Engineering&amp;body=Your%20coding%20agent%20will%20make%20the%20same%20mistake%20twice.%20Exponential%20engineering%3A%20turn%20each%20mistake%20into%20a%20deterministic%20rule%20that%20rules%20out%20the%20whole%20category%2C%20so%20it%20never%20comes%20back.%20Rules%20compound.%20So%20does%20quality.%20https%3A//exponentialengineering.dev" target="_blank" rel="noopener">email</a></p>
     <p class="colophon"><a href="https://github.com/benomahony/exponential-engineering">github.com/benomahony/exponential-engineering</a><br>more in <a href="https://buildingaiagentplatforms.com"><em>Building AI Agent Platforms</em></a> (O'Reilly)</p>
   </footer>
 
