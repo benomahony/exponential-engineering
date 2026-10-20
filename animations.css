@@ -37,6 +37,25 @@
   from { stroke-dashoffset: 1; }
 }
 
+@keyframes fall {
+  from { translate: 0 -90cqi; }
+}
+
+@keyframes stretch {
+  from { width: 0; }
+}
+
+@keyframes leak {
+  from {
+    opacity: 1;
+    background: var(--accent);
+  }
+}
+
+@keyframes pop {
+  from { scale: 0; }
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -198,6 +217,34 @@
       animation-name: click;
       transform-box: view-box;
       transform-origin: 0 0;
+    }
+
+    .swiss .slice, .swiss .name:not(.end), .swiss .bug, .swiss .leak, .swiss .plug {
+      animation: fall linear both;
+      animation-timeline: --swiss;
+    }
+    .swiss .slice:nth-child(1), .swiss .name:nth-of-type(1) { animation-range: cover 18% cover 26%; }
+    .swiss .slice:nth-child(2), .swiss .name:nth-of-type(2) { animation-range: cover 24% cover 32%; }
+    .swiss .slice:nth-child(3), .swiss .name:nth-of-type(3) { animation-range: cover 30% cover 38%; }
+    .swiss .slice:nth-child(4), .swiss .name:nth-of-type(4) { animation-range: cover 36% cover 44%; }
+    .swiss .slice:nth-child(5), .swiss .name:nth-of-type(5) { animation-range: cover 42% cover 50%; }
+
+    .swiss .bug {
+      animation-name: stretch;
+      animation-range: cover 4% cover 11%;
+    }
+
+    .swiss .leak {
+      animation-name: stretch, leak;
+      animation-timing-function: linear, steps(1, end);
+      animation-timeline: --swiss, --swiss;
+      animation-range: cover 11% cover 18%, cover 50% cover 54%;
+    }
+
+    .swiss .plug {
+      animation-name: pop;
+      animation-timing-function: cubic-bezier(0.3, 1.6, 0.6, 1);
+      animation-range: cover 50% cover 54%;
     }
 
     .chart .expo, .chart .better {
