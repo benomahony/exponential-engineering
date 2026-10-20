@@ -22,4 +22,13 @@ We practice what we preach: every validator we could find, on its strictest sett
 
 The pytest rules: no em or en dashes in the copy, no naming and shaming libraries, the cover says deterministic rule not RULES.md, no JavaScript, versioned stylesheets, a 1200x630 social card, highlighted text readable on its band and on the paper, no sideways scrolling at any width, nothing left invisible after its animation, working in page links and no console errors.
 
-Install the tools with `uv sync` and `npm ci`. `npm run lint:html` needs Java.
+Install the tools:
+
+```sh
+uv sync
+npm ci
+curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
+cargo install lychee
+```
+
+`npm run lint:html` needs Java. `brew install lychee` and `mise use -g github:benomahony/zanity` work too.

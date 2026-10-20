@@ -14,6 +14,8 @@ STYLESHEETS = {path.name: path.read_bytes() for path in ROOT.glob("*.css")}
 SHAMED_LIBRARIES = ["pandas", "requests", "numpy", "django", "flask", "jquery"]
 DASHES = ["—", "–"]
 WIDTHS = [320, 402, 768, 1100, 1440]
+CODE_TAGS = {"pre", "code"}
+SHAMING_PHRASES = ["banned", "is bad", "never use", "don't use"]
 COVER_ANIMATION_MS = 4000
 MINIMUM_CONTRAST = 4.5
 
@@ -23,6 +25,8 @@ class Tags(HTMLParser):
         super().__init__()
         self.tags: list[tuple[str, dict[str, str]]] = []
         self.text: list[str] = []
+        self.prose: list[str] = []
+        self.code_depth = 0
         assert self.tags == [], "a new parser starts with no tags"
         assert self.text == [], "a new parser starts with no text"
 
@@ -30,12 +34,20 @@ class Tags(HTMLParser):
         assert tag, "the parser only reports start tags that have a name"
         count = len(self.tags)
         self.tags.append((tag, {name: value or "" for name, value in attrs}))
+        self.code_depth += tag in CODE_TAGS
         assert len(self.tags) == count + 1, "each start tag is recorded exactly once"
+
+    def handle_endtag(self, tag: str) -> None:
+        assert tag, "the parser only reports end tags that have a name"
+        self.code_depth -= tag in CODE_TAGS
+        assert self.code_depth >= 0, f"</{tag}> closes a code block that never opened"
 
     def handle_data(self, data: str) -> None:
         assert self.rawdata, "text only arrives while a document is being fed"
         count = len(self.text)
         self.text.append(data)
+        if self.code_depth == 0:
+            self.prose.append(data)
         assert len(self.text) == count + 1, "each run of text is recorded exactly once"
 
 
@@ -65,6 +77,12 @@ def test_copy_does_not_name_and_shame_libraries() -> None:
     text = " ".join(parsed().text).lower()
     named = [library for library in SHAMED_LIBRARIES if re.search(rf"\b{library}\b", text)]
     assert named == [], f"the copy names {named}: make the example about a pattern, not a library"
+
+
+def test_copy_does_not_ban_things() -> None:
+    prose = " ".join(parsed().prose).lower()
+    shaming = [phrase for phrase in SHAMING_PHRASES if phrase in prose]
+    assert shaming == [], f"the copy says {shaming}: point people at the better pattern instead of banning something by name"
 
 
 def test_cover_says_deterministic_rule_not_rules_md() -> None:
@@ -229,3 +247,16 @@ def test_highlights_never_cover_a_neighbouring_line(page: Page, scheme: str, wid
     page.evaluate("document.fonts.ready.then(() => true)")
     overlaps = page.evaluate(OVERLAPPING_HIGHLIGHTS)
     assert overlaps == [], f"at {width}px in {scheme} mode these highlights paint over the line above or below: {overlaps}. Give the block a line-height at least as tall as its font's glyph box"
+
+
+FINISHED_CURVE = "M10 108 C110 106 150 90 188 12"
+
+
+def test_reduced_motion_shows_the_finished_cover_curve_without_animating(page: Page) -> None:
+    page.emulate_media(reduced_motion="reduce")
+    page.goto(SITE.as_uri())
+    visible = page.evaluate("""() => [...document.querySelectorAll('.cover .expo')]
+        .filter((path) => getComputedStyle(path).display !== 'none')
+        .map((path) => [path.getAttribute('d'), path.querySelectorAll('animate').length])""")
+    assert len(visible) == 1, f"with reduced motion the cover should show exactly one curve, found {len(visible)}"
+    assert visible[0] == [FINISHED_CURVE, 0], f"with reduced motion the cover curve should be the finished one with no animation, found {visible[0]}"
