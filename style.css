@@ -478,6 +478,45 @@ pre.good { border-color: var(--good); }
   box-shadow: 4px 4px 0 var(--ink);
 }
 
+.subscribe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 30rem;
+  margin: 1.5rem auto 0.5rem;
+}
+
+.subscribe label {
+  flex-basis: 100%;
+  color: var(--muted);
+}
+
+.subscribe input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.subscribe button {
+  padding: 0.15rem 0.9rem;
+  border: 2px solid var(--ink);
+  background: var(--hl);
+  color: var(--on-hl);
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.subscribe button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
 @property --violations {
   syntax: "<integer>";
   inherits: false;
