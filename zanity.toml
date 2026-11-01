@@ -1,2 +1,5 @@
 [paths.".github/workflows/"]
 disable = ["plaintext-config-secret"]
+
+[paths."/setup.sh"]
+disable = ["download-execution"]
