@@ -12,6 +12,12 @@ if ! command -v uvx >/dev/null 2>&1; then
   exit 2
 fi
 
+agent=auto
+if [ "${1:-}" = '--agent' ]; then
+  agent=${2:-}
+  case "$agent" in auto|claude|codex|opencode|pi) ;; *) echo 'Unknown agent' >&2; exit 2 ;; esac
+fi
+
 printf '\n%s\n' '== Fuck Your Markdown =='
 if uvx --from fuck-your-markdown fym --hr; then
   printf '%s\n' 'fym: clean'
@@ -40,16 +46,16 @@ else
 fi
 
 printf '\n%s\n' '== Overwatch =='
-if command -v claude >/dev/null 2>&1; then
+if [ "$agent" = claude ] || { [ "$agent" = auto ] && command -v claude >/dev/null 2>&1; }; then
   printf '%s\n' 'Claude Code detected. Install Overwatch inside Claude Code:'
   printf '%s\n' '  /plugin install overwatch --marketplace benomahony/overwatch'
-elif command -v codex >/dev/null 2>&1; then
+elif [ "$agent" = codex ] || { [ "$agent" = auto ] && command -v codex >/dev/null 2>&1; }; then
   printf '%s\n' 'Codex detected. Install and trust Overwatch hooks:'
   printf '%s\n' '  codex plugin marketplace add benomahony/overwatch'
   printf '%s\n' '  codex plugin add overwatch@overwatch'
-elif command -v opencode >/dev/null 2>&1; then
+elif [ "$agent" = opencode ] || { [ "$agent" = auto ] && command -v opencode >/dev/null 2>&1; }; then
   printf '%s\n' 'OpenCode detected. Install Overwatch using the documented plugin command.'
-elif command -v pi >/dev/null 2>&1; then
+elif [ "$agent" = pi ] || { [ "$agent" = auto ] && command -v pi >/dev/null 2>&1; }; then
   printf '%s\n' 'Pi detected. Install Overwatch:'
   printf '%s\n' '  pi install git:github.com/benomahony/overwatch'
 else
