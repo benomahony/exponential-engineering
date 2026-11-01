@@ -27,10 +27,8 @@ fi
 
 printf '\n%s\n' '== Zanity =='
 if ! command -v zanity >/dev/null 2>&1; then
-  printf '%s\n' 'Installing Zanity from its official release installer.'
-  curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
-  PATH="$HOME/.local/bin:$PATH"
-  export PATH
+  printf '%s\n' 'Zanity is required. Install a verified release from https://github.com/benomahony/zanity/releases and rerun.' >&2
+  exit 2
 fi
 if ! command -v zanity >/dev/null 2>&1; then
   printf '%s\n' 'Zanity installation failed or binary is not on PATH.' >&2
