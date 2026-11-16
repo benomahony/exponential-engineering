@@ -7,6 +7,6 @@
   "devDependencies": {
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
-    "vnu-jar": "^26.10.12"
+    "vnu-jar": "^26.11.9"
   }
 }
