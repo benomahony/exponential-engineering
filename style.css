@@ -36,20 +36,6 @@ body {
   font: 1.25rem/1.55 "Patrick Hand", "Comic Sans MS", cursive;
 }
 
-.promo {
-  background: var(--hl);
-  border-bottom: 2px solid var(--ink);
-  padding: 0.6rem 16px;
-  text-align: center;
-}
-
-.promo a {
-  color: var(--on-hl);
-  text-decoration: none;
-}
-
-.promo a:hover { text-decoration: underline; }
-
 .pages {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
@@ -684,6 +670,20 @@ pre.good { border-color: var(--good); }
   content: "  ⎿ " / "";
   color: #8a8c93;
 }
+
+.promo {
+  background: var(--hl);
+  border-bottom: 2px solid var(--ink);
+  padding: 0.6rem 16px;
+  text-align: center;
+}
+
+.promo-link {
+  color: var(--on-hl);
+  text-decoration: none;
+}
+
+.promo-link:hover { text-decoration: underline; }
 
 @media (width <= 520px) {
   .tui { font-size: 0.68rem; }
