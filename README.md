@@ -18,9 +18,9 @@ We practice what we preach: every validator we could find, on its strictest sett
 | [actionlint](https://github.com/rhysd/actionlint) | GitHub workflows | defaults | `uv run actionlint` |
 | [zizmor](https://docs.zizmor.sh) | GitHub workflow security | `--pedantic` | `uv run zizmor --pedantic .github` |
 | [typos](https://github.com/crate-ci/typos) | spelling | defaults | `uv run typos` |
-| [lychee](https://lychee.cli.rs) | every link | retries, no ignored failures | `lychee --config lychee.toml index.html README.md` |
+| [lychee](https://lychee.cli.rs) | every link | retries, no ignored failures | `lychee --config lychee.toml index.html *.md.html README.md` |
 
-The pytest rules: no em or en dashes in the copy, no naming and shaming libraries, no JavaScript, versioned stylesheets, a 1200x630 social card, highlighted text readable on its band and on the paper, no sideways scrolling at any width, nothing left invisible after its animation, working in page links and no console errors.
+The pytest rules: no em or en dashes in the copy, no naming and shaming libraries, no JavaScript, versioned stylesheets on every page, a 1200x630 social card, highlighted text readable on its band and on the paper, no sideways scrolling at any width, nothing left invisible after its animation, working in page links and no console errors.
 
 Install the tools:
 
