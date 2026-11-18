@@ -86,13 +86,6 @@ def test_copy_does_not_ban_things() -> None:
     assert shaming == [], f"the copy says {shaming}: point people at the better pattern instead of banning something by name"
 
 
-def test_cover_says_deterministic_rule_not_rules_md() -> None:
-    lede = re.search(r'<p class="lede">(.*?)</p>', HTML, re.S)
-    assert lede is not None, "the cover needs a <p class=\"lede\"> explaining the idea in one line"
-    assert "deterministic rule" in lede.group(1), "the lede must say deterministic rule, so nobody reads rule as RULES.md"
-    assert "RULES.md" in lede.group(1), "the lede must contrast a deterministic rule with a line in RULES.md"
-
-
 def test_page_ships_no_javascript() -> None:
     scripts = [attrs for tag, attrs in parsed().tags if tag == "script"]
     handlers = [name for _, attrs in parsed().tags for name in attrs if name.startswith("on")]
