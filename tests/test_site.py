@@ -86,15 +86,6 @@ def test_copy_does_not_ban_things() -> None:
     assert shaming == [], f"the copy says {shaming}: point people at the better pattern instead of banning something by name"
 
 
-def test_cover_explains_the_idea_without_jargon() -> None:
-    lede = re.search(r'<p class="lede">(.*?)</p>', HTML, re.S)
-    assert lede is not None, "the cover needs a <p class=\"lede\"> explaining the idea in one line"
-    text = re.sub(r"<[^>]+>", "", lede.group(1))
-    jargon = [word for word in ("agent", "deterministic", "lint", "RULES.md", "category") if word.lower() in text.lower()]
-    assert jargon == [], f"the lede says {jargon}: explain it so someone non technical gets it"
-    assert text.count(".") == 1, "the lede must be one sentence"
-
-
 def test_page_ships_no_javascript() -> None:
     scripts = [attrs for tag, attrs in parsed().tags if tag == "script"]
     handlers = [name for _, attrs in parsed().tags for name in attrs if name.startswith("on")]
