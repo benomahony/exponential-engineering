@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Do better | Exponential Engineering</title>
+  <meta name="description" content="Stop writing rules your agent can ignore. Enforce them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=52d652ac">
+</head>
+<body>
+<main class="pages">
+  <section class="page back">
+    <h1><span class="hl">Do better.</span></h1>
+    <p class="lede">Stop writing rules your agent can ignore. <strong>Enforce them.</strong></p>
+    <p class="kicker">find the rules hiding in your markdown</p>
+    <pre class="grab"><code>uvx --from fuck-your-markdown fym --hr</code></pre>
+    <p class="kicker">turn them into checks that fail the build</p>
+    <pre class="grab"><code>curl -fsSL https://raw.githubusercontent.com/benomahony/zanity/main/install.sh | sh
+zanity init
+zanity check . --fail-on warning --strict</code></pre>
+    <p class="kicker">hand every failure straight back to OpenCode</p>
+    <pre class="grab"><code>opencode plugin add github:benomahony/overwatch</code></pre>
+    <p class="aside">On OpenCode 1 it is <code>opencode plugin github:benomahony/overwatch</code>.</p>
+    <p class="colophon">why: <a href="./">Exponential Engineering</a></p>
+  </section>
+</main>
+</body>
+</html>
