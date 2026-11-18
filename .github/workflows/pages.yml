@@ -12,8 +12,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  lint:
+    name: Lint
+    uses: ./.github/workflows/lint.yml
+    permissions:
+      contents: read
+
   deploy:
     name: Deploy
+    needs: lint
     runs-on: ubuntu-latest
     permissions:
       contents: read
