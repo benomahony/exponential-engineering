@@ -445,7 +445,6 @@ pre.good { border-color: var(--good); }
 }
 
 .grab {
-  -webkit-user-select: all;
   user-select: all;
   cursor: copy;
 }
