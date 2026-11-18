@@ -11,6 +11,7 @@ ROOT = Path(__file__).parent.parent
 SITE = ROOT / "index.html"
 HTML = SITE.read_text()
 STYLESHEETS = {path.name: path.read_bytes() for path in ROOT.glob("*.css")}
+AGENT_PAGES = {path.name: path.read_text() for path in sorted(ROOT.glob("*.md.html"))}
 TEST_NAMES = {name for path in (ROOT / "tests").glob("test_*.py") for name in re.findall(r"^def (test_\w+)", path.read_text(), re.M)}
 SHAMED_LIBRARIES = ["pandas", "requests", "numpy", "django", "flask", "jquery"]
 DASHES = ["—", "–"]
@@ -100,6 +101,12 @@ def test_local_stylesheets_are_versioned_by_their_content() -> None:
     assert {href.split("?")[0] for href in links} == set(expected), f"index.html should link exactly {sorted(expected)}"
     stale = [f"{href} should end ?v={expected[href.split('?')[0]]}" for href in links if href != f"{href.split('?')[0]}?v={expected[href.split('?')[0]]}"]
     assert stale == [], f"phones cache stylesheets for days, so each link carries the first 8 characters of its file's sha256: {stale}"
+
+
+@pytest.mark.parametrize("name", AGENT_PAGES)
+def test_agent_pages_link_the_current_stylesheet(name: str) -> None:
+    expected = f'href="style.css?v={hashlib.sha256(STYLESHEETS["style.css"]).hexdigest()[:8]}"'
+    assert expected in AGENT_PAGES[name], f"{name} should link {expected}: the agent pages share the site's stylesheet"
 
 
 def test_social_card_is_1200_by_630_and_linked() -> None:
