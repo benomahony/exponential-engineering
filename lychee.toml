@@ -1,4 +1,4 @@
-# Link checking for index.html and README.md. See the links job in .github/workflows/lint.yml.
+# Link checking for every page and README.md. See the links job in .github/workflows/lint.yml.
 
 # Share intents and LinkedIn profiles need a signed in browser and refuse automated clients; the font
 # preconnect origins have no page at their root.

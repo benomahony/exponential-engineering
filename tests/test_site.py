@@ -102,6 +102,12 @@ def test_local_stylesheets_are_versioned_by_their_content() -> None:
     assert stale == [], f"phones cache stylesheets for days, so each link carries the first 8 characters of its file's sha256: {stale}"
 
 
+@pytest.mark.parametrize("site", sorted(ROOT.glob("*.md.html")), ids=lambda path: path.name)
+def test_agent_pages_link_the_current_stylesheet(site: Path) -> None:
+    expected = f'href="style.css?v={hashlib.sha256(STYLESHEETS["style.css"]).hexdigest()[:8]}"'
+    assert expected in site.read_text(), f"{site.name} should link {expected}: the agent pages share the site's stylesheet"
+
+
 def test_social_card_is_1200_by_630_and_linked() -> None:
     card = ROOT / "og.png"
     with card.open("rb") as image:
