@@ -10,5 +10,5 @@ dev = [
     "axe-playwright-python>=0.1.8",
     "pytest-playwright>=0.10.0",
     "typos>=1.51.1",
-    "zizmor>=1.31.1",
+    "zizmor>=1.32.0",
 ]
