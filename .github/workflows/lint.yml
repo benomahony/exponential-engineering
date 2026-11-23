@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: benomahony/zanity@d2a2ffaef5f0e7b6c6090088e575163e3e8d3fed # v0.1.22
+      - uses: benomahony/zanity@08a2173a078d90d83b75d8586658f6ebcb52adcf # v0.3.1
         with:
           version: 0.1.22
           args: check . --fail-on warning --strict
